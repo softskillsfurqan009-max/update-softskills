@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Zeetech | Premium Services - AC, Solar, Electrical & More</title>
+  
+  <link rel="icon" type="image/png" href="static/zpic.jpeg">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    @font-face {
+      font-family: 'Good Times Rg';
+      src: url('fonts/Good Times Rg.otf') format('opentype'),
+           url('fonts/good times rg.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    
+    :root {
+      --primary-color: #0c5ca8;
+      --primary-dark: #094a86;
+    }
+    
+    html {
+      font-size: 16px;
+    }
+    
+    @media (min-width: 1920px) { html { font-size: 18px; } }
+    @media (max-width: 1280px) { html { font-size: 15px; } }
+    @media (max-width: 1024px) { html { font-size: 14px; } }
+    @media (max-width: 768px) { html { font-size: 13px; } }
+    @media (max-width: 640px) { html { font-size: 12px; } }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9fafb;
+      overflow-x: hidden;
+    }
+    
+    .good-times, h1, h2, h3, .nav-link {
+      font-family: 'Good Times Rg', 'Poppins', sans-serif;
+      letter-spacing: 0.05em;
+    }
+    
+    .container-custom {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 4vw, 3rem);
+    }
+    
+    /* Floating buttons */
+    .whatsapp-float, .location-float {
+      position: fixed;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      box-shadow: 0 0.25rem 1rem rgba(0,0,0,0.25);
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+    
+    .whatsapp-float {
+      background-color: #25D366;
+      bottom: clamp(0.8rem, 3vw, 1.5rem);
+      right: clamp(0.8rem, 3vw, 1.5rem);
+      width: clamp(3rem, 8vw, 4rem);
+      height: clamp(3rem, 8vw, 4rem);
+    }
+    
+    .location-float {
+      background-color: var(--primary-color);
+      bottom: clamp(4.5rem, 12vw, 6rem);
+      right: clamp(0.8rem, 3vw, 1.5rem);
+      width: clamp(3rem, 8vw, 4rem);
+      height: clamp(3rem, 8vw, 4rem);
+    }
+    
+    .whatsapp-float i, .location-float i {
+      font-size: clamp(1.2rem, 4vw, 1.8rem);
+    }
+    
+    .whatsapp-float:hover, .location-float:hover {
+      transform: scale(1.08);
+    }
+    
+    /* Logo */
+    .logo-img, .footer-logo-img {
+      width: clamp(2.5rem, 8vw, 4rem);
+      height: clamp(2.5rem, 8vw, 4rem);
+      object-fit: contain;
+      border-radius: 0.75rem;
+      background-color: var(--primary-color);
+      padding: clamp(0.25rem, 1vw, 0.5rem);
+    }
+    
+    .navbar-padding {
+      padding-top: clamp(0.5rem, 2vw, 0.8rem);
+      padding-bottom: clamp(0.5rem, 2vw, 0.8rem);
+    }
+    
+    .nav-link {
+      font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+      transition: color 0.2s;
+    }
+    
+    .active-nav {
+      border-bottom: 2px solid var(--primary-color);
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    
+    /* Flip Card */
+    .flip-card {
+      background-color: transparent;
+      width: 100%;
+      height: clamp(30rem, 75vh, 42rem);
+      perspective: 1500px;
+      cursor: pointer;
+    }
+    
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      transform-style: preserve-3d;
+      border-radius: 1.25rem;
+    }
+    
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 1.25rem;
+      overflow-y: auto;
+      box-shadow: 0 0.5rem 1rem -0.5rem rgba(0,0,0,0.15);
+    }
+    
+    .flip-card-front {
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .flip-card-back {
+      background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      padding: clamp(0.8rem, 2vw, 1.2rem);
+    }
+    
+    /* IMAGE CONTAINER */
+    .front-img-wrapper {
+      width: 100%;
+      height: clamp(18rem, 45vh, 26rem);
+      background: linear-gradient(135deg, #f8fafc 0%, #eef2f6 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0.5rem 1rem -0.5rem rgba(12,92,168,0.3);
+    }
+    
+    .front-img-wrapper::after {
+      display: none;
+    }
+    
+    .front-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center -3%;
+      transition: transform 0.3s ease;
+      background: transparent;
+    }
+    
+    .flip-card:hover .front-img {
+      transform: scale(1.03);
+    }
+    
+    .front-content {
+      padding: clamp(0.8rem, 2vw, 1.2rem);
+      text-align: center;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: white;
+    }
+    
+    .service-icon {
+      width: clamp(2.5rem, 8vw, 3.5rem);
+      height: clamp(2.5rem, 8vw, 3.5rem);
+      background: rgba(12,92,168,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.5rem auto;
+    }
+    
+    .service-icon i {
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      color: var(--primary-color);
+    }
+    
+    .front-title {
+      font-size: clamp(0.9rem, 3vw, 1.2rem);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .book-now-btn {
+      background-color: var(--primary-color);
+      border-radius: 3rem;
+      padding: clamp(0.5rem, 1.5vw, 0.8rem) 0;
+      font-size: clamp(0.7rem, 2vw, 0.85rem);
+      font-weight: 600;
+      color: white;
+      transition: all 0.3s ease;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .book-now-btn:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-0.125rem);
+    }
+    
+    .back-icon {
+      width: clamp(2.5rem, 7vw, 3.2rem);
+      height: clamp(2.5rem, 7vw, 3.2rem);
+      background: rgba(12,92,168,0.12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    
+    .back-icon i {
+      font-size: clamp(1rem, 3vw, 1.4rem);
+      color: var(--primary-color);
+    }
+    
+    .back-title {
+      font-size: clamp(1rem, 3vw, 1.3rem);
+      font-weight: 800;
+    }
+    
+    .back-description {
+      font-size: clamp(0.7rem, 2.2vw, 0.85rem);
+      line-height: 1.45;
+      margin-bottom: 0.75rem;
+      text-align: left;
+      color: #2d3748;
+      font-weight: 500;
+    }
+    
+    .feature-tag {
+      font-size: clamp(0.6rem, 2vw, 0.72rem);
+      padding: clamp(0.2rem, 1vw, 0.35rem) clamp(0.5rem, 1.5vw, 0.8rem);
+      background: rgba(12,92,168,0.1);
+      border-radius: 99px;
+      color: var(--primary-color);
+      font-weight: 600;
+      display: inline-block;
+      margin: 0.2rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+    }
+    
+    .feature-tag:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-0.125rem);
+      box-shadow: 0 0.25rem 0.5rem rgba(12,92,168,0.3);
+    }
+    
+    /* Timer Banner */
+    .offer-timer-section {
+      max-width: 1400px;
+      margin: 0 auto 1.5rem auto;
+      padding: 0 clamp(0.8rem, 3vw, 2rem);
+    }
+    
+    .offer-container {
+      background: linear-gradient(95deg, var(--primary-color) 0%, #0e6bbd 100%);
+      border-radius: clamp(1rem, 3vw, 2rem);
+      padding: clamp(0.8rem, 2vw, 1.5rem) clamp(1rem, 3vw, 2rem);
+      box-shadow: 0 0.75rem 1.5rem -0.5rem rgba(12,92,168,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: clamp(0.8rem, 2vw, 1.2rem);
+    }
+    
+    .offer-badge {
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(4px);
+      border-radius: 60px;
+      padding: clamp(0.2rem, 1vw, 0.4rem) clamp(0.6rem, 2vw, 1rem);
+      font-weight: 700;
+      font-size: clamp(0.65rem, 2vw, 0.8rem);
+    }
+    
+    .discount-number {
+      font-size: clamp(1.2rem, 5vw, 2rem);
+      font-weight: 800;
+      text-shadow: 0.125rem 0.125rem 0 rgba(0,0,0,0.1);
+    }
+    
+    .offer-text-sm {
+      font-size: clamp(0.65rem, 2vw, 0.8rem);
+      font-weight: 500;
+    }
+    
+    .timer-block {
+      background: white;
+      border-radius: clamp(0.5rem, 2vw, 0.75rem);
+      min-width: clamp(2.5rem, 8vw, 4rem);
+      text-align: center;
+      padding: clamp(0.2rem, 1vw, 0.4rem) clamp(0.2rem, 1vw, 0.3rem);
+    }
+    
+    .timer-number {
+      font-size: clamp(1rem, 4vw, 1.5rem);
+      font-weight: 800;
+      color: var(--primary-color);
+    }
+    
+    .timer-label {
+      font-size: clamp(0.45rem, 1.5vw, 0.55rem);
+      font-weight: 600;
+      color: #4a5568;
+      text-transform: uppercase;
+    }
+    
+    .offer-ends-text {
+      font-size: clamp(0.6rem, 2vw, 0.75rem);
+      font-weight: 500;
+    }
+    
+    /* Section styles */
+    .section-badge {
+      display: inline-block;
+      background: rgba(12,92,168,0.1);
+      border-radius: 60px;
+      padding: clamp(0.4rem, 1.5vw, 0.6rem) clamp(1.2rem, 3vw, 1.8rem);
+      font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+    
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: #1f2937;
+    }
+    
+    .section-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: #4a5568;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(0.8rem, 3vw, 1.5rem);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .modal-container {
+      background: white;
+      max-width: min(90vw, 550px);
+      width: 100%;
+      border-radius: clamp(1rem, 4vw, 2rem);
+      overflow: hidden;
+      transform: scale(0.9) translateY(30px);
+      transition: transform 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
+      box-shadow: 0 1.5rem 2.5rem rgba(0,0,0,0.4);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    
+    .modal-overlay.active .modal-container {
+      transform: scale(1) translateY(0);
+    }
+    
+    .modal-header {
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      padding: clamp(0.8rem, 3vw, 1.2rem) clamp(1rem, 4vw, 1.8rem);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    
+    .modal-header h3 {
+      font-size: clamp(0.9rem, 3vw, 1.2rem);
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .modal-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: clamp(1.2rem, 5vw, 2rem);
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    
+    .modal-body {
+      padding: clamp(1rem, 4vw, 1.8rem);
+    }
+    
+    /* Form */
+    .form-group {
+      margin-bottom: clamp(0.8rem, 3vw, 1.2rem);
+    }
+    
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      font-size: clamp(0.75rem, 2.5vw, 0.85rem);
+      color: #374151;
+    }
+    
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%;
+      border: 1px solid #d1d5db;
+      border-radius: 0.75rem;
+      padding: clamp(0.5rem, 2vw, 0.7rem) clamp(0.6rem, 2vw, 0.9rem);
+      font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+      transition: all 0.2s;
+    }
+    
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 2px rgba(12,92,168,0.2);
+    }
+    
+    .btn-submit {
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      color: white;
+      padding: clamp(0.6rem, 2vw, 0.9rem);
+      border-radius: 2rem;
+      font-weight: 600;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+    }
+    
+    .btn-submit:hover {
+      transform: translateY(-0.125rem);
+      opacity: 0.9;
+    }
+    
+    .success-message {
+      background: #10b981;
+      color: white;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      font-size: clamp(0.7rem, 2vw, 0.85rem);
+    }
+    
+    .error-message {
+      background: #ef4444;
+      color: white;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      font-size: clamp(0.7rem, 2vw, 0.85rem);
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+      gap: clamp(1rem, 3vw, 1.8rem);
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e6f0fa 100%);
+      padding: clamp(2rem, 8vw, 4rem) 0;
+    }
+    
+    /* Feedback Widget */
+    .feedback-widget {
+      position: fixed;
+      bottom: clamp(0.8rem, 3vw, 1.5rem);
+      left: clamp(0.8rem, 3vw, 1.5rem);
+      z-index: 999;
+    }
+    
+    .feedback-main-btn {
+      display: flex;
+      align-items: center;
+      gap: clamp(0.3rem, 1.5vw, 0.6rem);
+      background-color: var(--primary-color);
+      border-radius: 60px;
+      padding: clamp(0.3rem, 1.5vw, 0.6rem) clamp(0.8rem, 2.5vw, 1.2rem) clamp(0.3rem, 1.5vw, 0.6rem) clamp(0.5rem, 2vw, 0.9rem);
+      cursor: pointer;
+      box-shadow: 0 0.5rem 1.25rem rgba(12,92,168,0.35);
+      transition: all 0.3s ease;
+    }
+    
+    .feedback-icon-circle {
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      width: clamp(1.8rem, 6vw, 2.2rem);
+      height: clamp(1.8rem, 6vw, 2.2rem);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .feedback-icon-circle i {
+      font-size: clamp(0.8rem, 3vw, 1rem);
+      color: white;
+    }
+    
+    .feedback-label-text {
+      color: white;
+      font-weight: 600;
+      font-size: clamp(0.6rem, 2vw, 0.75rem);
+    }
+    
+    .feedback-label-text small {
+      font-size: clamp(0.5rem, 1.5vw, 0.6rem);
+      font-weight: 400;
+      opacity: 0.9;
+      display: block;
+    }
+    
+    .feedback-panel {
+      position: absolute;
+      bottom: 110%;
+      left: 0;
+      width: min(85vw, 320px);
+      background: white;
+      border-radius: 1.25rem;
+      box-shadow: 0 1.5rem 2.8rem -0.75rem rgba(0,0,0,0.35);
+      overflow: hidden;
+      transition: all 0.3s;
+      transform: translateY(20px);
+      opacity: 0;
+      visibility: hidden;
+    }
+    
+    .feedback-panel.active {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .panel-header {
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      padding: clamp(0.6rem, 2vw, 0.9rem) clamp(0.8rem, 2.5vw, 1.2rem);
+      color: white;
+    }
+    
+    .star-rating {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: center;
+      gap: 0.5rem;
+      margin: 0.5rem 0;
+    }
+    
+    .star-rating input { display: none; }
+    .star-rating label {
+      font-size: clamp(1.2rem, 5vw, 1.8rem);
+      color: #ddd;
+      cursor: pointer;
+    }
+    .star-rating input:checked ~ label,
+    .star-rating label:hover,
+    .star-rating label:hover ~ label { color: #ffc107; }
+    
+    .feedback-whatsapp-btn {
+      background-color: #25D366;
+      transition: all 0.2s;
+      font-weight: 600;
+      padding: clamp(0.5rem, 1.5vw, 0.7rem);
+      font-size: clamp(0.7rem, 2vw, 0.85rem);
+    }
+    
+    .social-icon {
+      transition: all 0.3s ease;
+      width: clamp(1.8rem, 6vw, 2.2rem);
+      height: clamp(1.8rem, 6vw, 2.2rem);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #1f2937;
+      border-radius: 50%;
+    }
+    
+    .social-icon:hover {
+      transform: translateY(-3px);
+    }
+    
+    footer a, .footer-link {
+      transition: all 0.2s ease;
+      font-size: clamp(0.65rem, 2vw, 0.75rem);
+    }
+    
+    .navbar-spacer {
+      margin-bottom: clamp(0.8rem, 3vw, 1.5rem);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="location-float" id="locationBtn"><i class="fas fa-map-marker-alt text-white"></i></div>
+  <a href="https://wa.me/923005518622?text=Hello%20Zeetech" target="_blank" class="whatsapp-float"><i class="fab fa-whatsapp text-white"></i></a>
+
+  <!-- Feedback Widget -->
+  <div class="feedback-widget">
+    <div class="feedback-main-btn" id="feedbackMainBtn">
+      <div class="feedback-icon-circle"><i class="fas fa-comment-dots"></i></div>
+      <div class="feedback-label-text">Feedback <small>rate & suggest</small></div>
+    </div>
+    <div class="feedback-panel" id="feedbackPanel">
+      <div class="panel-header"><h3 class="text-sm font-bold"><i class="fas fa-star-half-alt"></i> Share Your Experience</h3></div>
+      <div class="p-4">
+        <div class="mb-3 text-center">
+          <div class="star-rating">
+            <input type="radio" id="star5_fb" name="fb_rating" value="5"><label for="star5_fb" class="fas fa-star"></label>
+            <input type="radio" id="star4_fb" name="fb_rating" value="4"><label for="star4_fb" class="fas fa-star"></label>
+            <input type="radio" id="star3_fb" name="fb_rating" value="3"><label for="star3_fb" class="fas fa-star"></label>
+            <input type="radio" id="star2_fb" name="fb_rating" value="2"><label for="star2_fb" class="fas fa-star"></label>
+            <input type="radio" id="star1_fb" name="fb_rating" value="1"><label for="star1_fb" class="fas fa-star"></label>
+          </div>
+        </div>
+        <textarea id="feedbackTextMsg" rows="2" placeholder="Write your feedback..." class="w-full border rounded-xl px-3 py-2 text-sm focus:ring-2 focus:ring-[#0c5ca8]"></textarea>
+        <button id="submitFeedbackBtn" class="feedback-whatsapp-btn w-full text-white rounded-xl font-semibold mt-3"><i class="fab fa-whatsapp mr-2"></i> Send Feedback</button>
+        <div class="mt-2 text-center"><span id="closeFeedbackPanel" class="close-panel-link" style="font-size:0.65rem; color:#94a3b8; cursor:pointer;"><i class="fas fa-times-circle"></i> Close</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="container-custom navbar-padding flex flex-wrap items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-2">
+        <img id="siteLogo" src="static/zeetech-lago.jpeg" alt="Zeetech Logo" class="logo-img">
+        <div><span class="font-black text-lg md:text-xl text-gray-800 good-times">ZEETECH</span><div class="text-[10px] text-gray-500 -mt-1">Technical Services</div></div>
+      </a>
+      <nav class="hidden md:flex space-x-6 text-gray-700">
+        <a href="index.html" class="nav-link hover:text-[#0c5ca8] good-times">Home</a>
+        <a href="services.html" class="nav-link hover:text-[#0c5ca8] active-nav good-times">Services</a>
+        <a href="about.html" class="nav-link hover:text-[#0c5ca8] good-times">About Us</a>
+        <a href="contact.html" class="nav-link hover:text-[#0c5ca8] good-times">Contact</a>
+      </nav>
+      <button id="mobileMenuBtn" class="md:hidden text-gray-600 text-2xl"><i class="fas fa-bars"></i></button>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t px-5 py-3 flex flex-col space-y-3">
+      <a href="index.html" class="py-2 hover:text-[#0c5ca8] good-times">Home</a>
+      <a href="services.html" class="py-2 text-[#0c5ca8] font-semibold good-times">Services</a>
+      <a href="about.html" class="py-2 hover:text-[#0c5ca8] good-times">About Us</a>
+      <a href="contact.html" class="py-2 hover:text-[#0c5ca8] good-times">Contact</a>
+    </div>
+  </header>
+
+  <div class="navbar-spacer"></div>
+
+  <!-- Timer Banner -->
+  <div class="offer-timer-section">
+    <div class="offer-container">
+      <div class="flex items-center gap-3 flex-wrap">
+        <div class="offer-badge text-white"><i class="fas fa-fire mr-1"></i> LIMITED OFFER</div>
+        <div class="flex items-baseline gap-2">
+          <span class="discount-number text-white font-extrabold">30% OFF</span>
+          <span class="offer-text-sm text-white">on any service</span>
+        </div>
+        <div class="text-white text-[0.65rem] bg-black/20 px-3 py-1 rounded-full"><i class="fas fa-tools mr-1"></i> AC · Fridge · Solar · Electrical · Carpenter</div>
+      </div>
+      <div class="flex items-center gap-2 md:gap-3">
+        <span class="offer-ends-text text-white"><i class="far fa-clock mr-1"></i> Offer ends in:</span>
+        <div class="flex gap-2">
+          <div class="timer-block"><div class="timer-number" id="days">00</div><div class="timer-label">Days</div></div>
+          <div class="timer-block"><div class="timer-number" id="hours">00</div><div class="timer-label">Hrs</div></div>
+          <div class="timer-block"><div class="timer-number" id="minutes">00</div><div class="timer-label">Mins</div></div>
+          <div class="timer-block"><div class="timer-number" id="seconds">00</div><div class="timer-label">Secs</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <div class="gradient-bg">
+      <div class="container-custom text-center" data-aos="fade-up">
+        <div class="section-badge">
+          <i class="fas fa-cogs mr-2"></i> What We Offer
+        </div>
+        <h1 class="section-title good-times">
+          Our <span class="text-[#0c5ca8]">Professional Services</span>
+        </h1>
+        <p class="section-subtitle">
+          Click on any card to flip — click on feature tags to learn more
+        </p>
+      </div>
+    </div>
+    <div class="container-custom py-8 pb-16">
+      <div class="services-grid" id="servicesGrid"></div>
+    </div>
+  </main>
+
+  <!-- Feature Details Popup Modal -->
+  <div id="featureModal" class="modal-overlay">
+    <div class="modal-container" style="max-width: 450px;">
+      <div class="modal-header">
+        <h3><i class="fas fa-info-circle"></i> <span id="featureTitle">Feature Details</span></h3>
+        <button class="modal-close" id="closeFeatureModalBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p id="featureDescription" class="text-gray-700"></p>
+      </div>
+      <div class="modal-footer" style="padding: 1rem 1.5rem 1.5rem; text-align: center;">
+        <button class="btn-zeetech" id="featureGotItBtn"><i class="fas fa-check mr-2"></i> Got it</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Booking Modal - Web3Forms (No Backend Required) -->
+  <div id="bookingModal" class="modal-overlay">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3><i class="fas fa-envelope"></i> Book Your Service</h3>
+        <button class="modal-close" id="closeBookingModalBtn">&times;</button>
+      </div>
+      <form id="bookingForm" class="modal-body" action="https://api.web3forms.com/submit" method="POST">
+        <div id="formMessage"></div>
+        
+        <!-- Web3Forms Access Key -->
+        <input type="hidden" name="access_key" value="4c4c9b02-6bd4-40c0-98eb-ef7946ccfa5a">
+        
+        <!-- Redirect after submit -->
+        <input type="hidden" name="redirect" value="https://web3forms.com/success">
+        
+        <!-- Email subject -->
+        <input type="hidden" name="subject" value="Zeetech - New Service Booking Request">
+        
+        <!-- From name -->
+        <input type="hidden" name="from_name" value="Zeetech Website">
+        
+        <input type="hidden" id="serviceName" name="service_name">
+        
+        <div class="form-group">
+          <label><i class="fas fa-wrench mr-1"></i> Service Required *</label>
+          <div id="selectedServiceDisplay" class="bg-gray-100 text-[#0c5ca8] font-semibold px-4 py-2 rounded-lg text-sm border border-gray-200"></div>
+        </div>
+        
+        <div class="form-group">
+          <label><i class="fas fa-user mr-1"></i> Full Name *</label>
+          <input type="text" id="name" name="name" required placeholder="Enter your full name">
+        </div>
+        
+        <div class="form-group">
+          <label><i class="fas fa-phone mr-1"></i> Phone Number *</label>
+          <input type="tel" id="phone" name="phone" required placeholder="e.g., 0300 1234567">
+        </div>
+        
+        <div class="form-group">
+          <label><i class="fas fa-envelope mr-1"></i> Email Address *</label>
+          <input type="email" id="email" name="email" required placeholder="your@email.com">
+        </div>
+        
+        <div class="form-group">
+          <label><i class="fas fa-map-marker-alt mr-1"></i> Address / Location *</label>
+          <textarea id="address" name="address" rows="2" required placeholder="Street, area, landmark, city"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label><i class="fas fa-calendar-alt mr-1"></i> Preferred Date</label>
+          <input type="date" id="preferredDate" name="preferred_date">
+        </div>
+        
+        <div class="form-group">
+          <label><i class="fas fa-clock mr-1"></i> Preferred Time</label>
+          <select id="preferredTime" name="preferred_time">
+            <option value="">Select time slot</option>
+            <option value="Morning (9am - 12pm)">Morning (9am - 12pm)</option>
+            <option value="Afternoon (12pm - 3pm)">Afternoon (12pm - 3pm)</option>
+            <option value="Evening (3pm - 6pm)">Evening (3pm - 6pm)</option>
+            <option value="Any time">Any time</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label><i class="fas fa-comment mr-1"></i> Additional Message</label>
+          <textarea id="extraMsg" name="message" rows="2" placeholder="Any special requirements..."></textarea>
+        </div>
+        
+        <!-- Honeypot spam protection -->
+        <input type="checkbox" name="botcheck" style="display: none;">
+        
+        <button type="submit" id="submitBtn" class="btn-submit">
+          <i class="fas fa-paper-plane"></i> Send Request via Email
+        </button>
+        <p class="text-xs text-gray-400 text-center mt-3">We'll receive your request instantly on email.</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white mt-12">
+    <div class="container-custom py-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div><div class="flex items-center space-x-3"><img id="footerLogo" src="static/zeetech-lago.jpeg" class="footer-logo-img"><div><div class="font-bold good-times text-base">ZEETECH</div><div class="text-[10px] text-gray-400">Technical Services</div></div></div><p class="text-gray-400 text-xs mt-2">Professional home and commercial technical service provider.</p><div class="flex space-x-2 mt-3"><a href="#" class="social-icon"><i class="fab fa-facebook-f text-gray-400 text-xs"></i></a><a href="#" class="social-icon"><i class="fab fa-instagram text-gray-400 text-xs"></i></a><a href="#" class="social-icon"><i class="fab fa-whatsapp text-gray-400 text-xs"></i></a></div></div>
+        <div><h3 class="font-semibold mb-3 good-times text-sm">Quick Links</h3><ul class="space-y-1"><li><a href="index.html" class="text-gray-400 hover:text-[#0c5ca8] text-xs">Home</a></li><li><a href="services.html" class="text-gray-400 hover:text-[#0c5ca8] text-xs">Services</a></li><li><a href="about.html" class="text-gray-400 hover:text-[#0c5ca8] text-xs">About Us</a></li><li><a href="contact.html" class="text-gray-400 hover:text-[#0c5ca8] text-xs">Contact</a></li></ul></div>
+        <div><h3 class="font-semibold mb-3 good-times text-sm">Our Services</h3><ul class="space-y-1"><li><a href="#" class="text-gray-400 hover:text-[#0c5ca8] text-xs">Air Conditioner</a></li><li><a href="#" class="text-gray-400 hover:text-[#0c5ca8] text-xs">Refrigerator</a></li><li><a href="#" class="text-gray-400 hover:text-[#0c5ca8] text-xs">Solar Energy</a></li><li><a href="#" class="text-gray-400 hover:text-[#0c5ca8] text-xs">Inverter Services</a></li></ul></div>
+        <div><h3 class="font-semibold mb-3 good-times text-sm">Contact Info</h3><ul class="space-y-2"><li><a href="https://wa.me/923005518622" class="flex items-center gap-2 text-gray-400 text-xs"><i class="fab fa-whatsapp text-green-500"></i> +92 300 5518622</a></li><li><a href="mailto:info.zeetech26@gmail.com" class="flex items-center gap-2 text-gray-400 text-xs"><i class="fas fa-envelope text-red-500"></i> info.zeetech26@gmail.com</a></li><li class="flex items-center gap-2 text-gray-400 text-xs"><i class="fas fa-map-marker-alt text-[#0c5ca8]"></i> G-12 Ghazali Road, Islamabad</li></ul></div>
+      </div>
+      <div class="border-t border-gray-800 my-5"></div>
+      <div class="text-center text-gray-500 text-[10px]">© 2025 Zeetech Technical Services. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const locationBtn = document.getElementById('locationBtn');
+      if (locationBtn) locationBtn.addEventListener('click', () => window.open('https://www.google.com/maps?q=33.6598056,72.9891944&z=15', '_blank'));
+      
+      document.getElementById('siteLogo').src = "static/zeetech-lago.jpeg";
+      document.getElementById('footerLogo').src = "static/zeetech-lago.jpeg";
+      
+      const SERVICE_IMAGES = {
+        "Air Conditioner": "static/ac.jpeg",
+        "Refrigerator": "static/fridge.jpeg",
+        "Solar Energy": "static/solor-pic.png",
+        "Inverter Services": "static/invertor.jpeg",
+        "Carpenter": "static/carpenter.jpeg",
+        "General Electrician": "static/general.jpeg"
+      };
+      
+      const FEATURE_DETAILS = {
+        "Installation": "✅ Professional AC installation includes proper unit placement, bracket fitting, electrical connections, drainage setup, and testing. 1-month warranty.",
+        "Repair Service": "🔧 Comprehensive AC repair covering compressor issues, fan motor problems, sensor failures, PCB board repairs. Same-day service.",
+        "Gas Filling": "💨 AC gas filling/recharging for all refrigerant types (R32, R410, R22). Leak detection included. 3-month warranty.",
+        "Maintenance": "🛠️ Regular AC maintenance includes filter cleaning, coil cleaning, drain pipe check, thermostat calibration. Recommended every 6 months.",
+        "All Brands Support": "🏭 We service Gree, Dawlance, Haier, Kenwood, LG, Mitsubishi, Samsung, Pel, Orient.",
+        "Emergency Service": "🚨 24/7 emergency AC repair. Team responds within 2 hours in Islamabad/Rawalpindi.",
+        "Cooling Issue Fix": "❄️ Expert diagnosis of fridge cooling problems. Fix insufficient cooling, no cooling, freezer issues.",
+        "Gas Refilling": "🔄 Professional refrigerator gas refilling using R134a, R600a. Leak detection included.",
+        "Compressor Repair": "⚙️ Specialized compressor repair and replacement. Fix overheating, starting issues.",
+        "Door Seal Replacement": "🚪 Door gasket/seal replacement. Fix air leakage, improve efficiency, reduce electricity bills.",
+        "Thermostat Fix": "🌡️ Accurate thermostat repair and replacement. Digital and mechanical thermostats supported.",
+        "Deep Cleaning": "🧼 Comprehensive fridge deep cleaning including interior sanitization, odor removal.",
+        "Panel Installation": "☀️ Complete solar panel installation including roof mounting, structural assessment. 5-year warranty.",
+        "Inverter Setup": "🔋 Professional solar inverter installation for on-grid, off-grid, and hybrid inverters.",
+        "Battery Bank Configuration": "🔋🔋 Expert battery bank setup for optimal storage.",
+        "Maintenance": "🛡️ Regular solar system maintenance including panel cleaning, inverter checks.",
+        "Panel Cleaning": "🧽 Professional solar panel cleaning. Increases efficiency by 15-25%.",
+        "Net Metering Support": "📊 Complete net metering assistance including documentation, IESCO coordination.",
+        "Battery Check & Replacement": "🔋 Expert battery health check, load testing, terminal cleaning.",
+        "Charging Issue Fix": "⚡ Diagnosis of inverter charging problems. Fix slow/no charging, overcharging.",
+        "Furniture Repair": "🪑 Expert furniture repair including structural fixes, joint repairs, drawer alignment.",
+        "Custom Woodwork": "✂️ Custom woodworking for bespoke furniture, shelves, cabinets, wardrobes.",
+        "Assembly Service": "🔨 Professional furniture assembly for beds, sofas, tables, chairs.",
+        "Polishing": "✨ Complete wood polishing including sanding, staining, finishing.",
+        "Cabinet Making": "📦 Custom cabinet making for kitchens, bedrooms, offices.",
+        "Door & Window Fitting": "🚪 Expert door and window fitting, repair, alignment.",
+        "Wiring Installation": "⚡ Complete electrical wiring for homes, offices.",
+        "Troubleshooting": "🔍 Expert electrical troubleshooting for short circuits, power fluctuations.",
+        "Home Maintenance": "🏠 Regular home electrical maintenance including switch checks, MCB inspection.",
+        "Quick Fixes": "⏱️ Fast response for electrical emergencies - switch replacements, socket repairs.",
+        "Panel Upgrades": "📊 Electrical panel upgrade including MCB replacement, load balancing.",
+        "Fan & Light Fitting": "💡 Professional ceiling fan installation, LED light installation."
+      };
+      
+      const services = [
+        { name: "Air Conditioner", icon: "fas fa-wind", description: "Complete AC solutions: installation, repair, gas filling & maintenance. All major brands. Certified technicians. Same-day service.", features: ["Installation", "Repair Service", "Gas Filling", "Maintenance", "All Brands Support", "Emergency Service"] },
+        { name: "Refrigerator", icon: "fas fa-thermometer-half", description: "Expert fridge repair: cooling issues, gas refilling, compressor repair, door seals, thermostat fix & deep cleaning. 30-day warranty.", features: ["Cooling Issue Fix", "Gas Refilling", "Compressor Repair", "Door Seal Replacement", "Thermostat Fix", "Deep Cleaning"] },
+        { name: "Solar Energy", icon: "fas fa-solar-panel", description: "Complete solar solutions: panel installation, inverter setup, battery configuration, maintenance & net metering. Reduce bills by 70%.", features: ["Panel Installation", "Inverter Setup", "Battery Bank Configuration", "Maintenance", "Panel Cleaning", "Net Metering Support"] },
+        { name: "Inverter Services", icon: "fas fa-battery-full", description: "Professional inverter services: installation, repair, battery check & replacement, charging fix & maintenance. All brands supported.", features: ["Installation", "Repair Service", "Battery Check & Replacement", "Charging Issue Fix", "Maintenance", "All Brands Support"] },
+        { name: "Carpenter", icon: "fas fa-hammer", description: "Expert carpentry: furniture repair, custom woodwork, assembly, polishing, cabinet making & door fitting. Quality craftsmanship.", features: ["Furniture Repair", "Custom Woodwork", "Assembly Service", "Polishing", "Cabinet Making", "Door & Window Fitting"] },
+        { name: "General Electrician", icon: "fas fa-bolt", description: "Complete electrical solutions: wiring, troubleshooting, home maintenance, quick fixes, panel upgrades & fan/light fitting.", features: ["Wiring Installation", "Troubleshooting", "Home Maintenance", "Quick Fixes", "Panel Upgrades", "Fan & Light Fitting"] }
+      ];
+  
+      AOS.init({ duration: 600, once: true });
+      let currentlyFlippedCard = null;
+      
+      // Feature Modal
+      const featureModal = document.getElementById('featureModal');
+      const closeFeatureBtn = document.getElementById('closeFeatureModalBtn');
+      const featureGotItBtn = document.getElementById('featureGotItBtn');
+      
+      window.showFeatureDetail = function(featureName) {
+        const description = FEATURE_DETAILS[featureName] || `${featureName} service is available with our expert team.`;
+        document.getElementById('featureTitle').innerText = featureName;
+        document.getElementById('featureDescription').innerHTML = description;
+        featureModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      };
+      
+      function closeFeatureModal() {
+        featureModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+      
+      if (closeFeatureBtn) closeFeatureBtn.onclick = closeFeatureModal;
+      if (featureGotItBtn) featureGotItBtn.onclick = closeFeatureModal;
+      if (featureModal) featureModal.addEventListener('click', function(e) { if (e.target === featureModal) closeFeatureModal(); });
+      
+      // Booking Modal
+      const bookingModal = document.getElementById('bookingModal');
+      const closeBookingBtn = document.getElementById('closeBookingModalBtn');
+      const bookingForm = document.getElementById('bookingForm');
+      const submitBtn = document.getElementById('submitBtn');
+      const formMessage = document.getElementById('formMessage');
+      
+      function openBookingModal(service) {
+        document.getElementById('serviceName').value = service;
+        document.getElementById('selectedServiceDisplay').innerHTML = `<i class="fas fa-wrench mr-2"></i>${service}`;
+        bookingModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        if (formMessage) formMessage.innerHTML = '';
+      }
+      
+      function closeBookingModal() {
+        bookingModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+      
+      if (closeBookingBtn) closeBookingBtn.onclick = closeBookingModal;
+      if (bookingModal) bookingModal.addEventListener('click', function(e) { if (e.target === bookingModal) closeBookingModal(); });
+      
+      // Handle Web3Forms submit
+      if (bookingForm) {
+        bookingForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          
+          // Validate fields
+          const name = document.getElementById('name').value.trim();
+          const phone = document.getElementById('phone').value.trim();
+          const email = document.getElementById('email').value.trim();
+          const address = document.getElementById('address').value.trim();
+          
+          if (!name) { showMessage('❌ Please enter your full name', 'error'); return; }
+          if (!phone) { showMessage('❌ Please enter your phone number', 'error'); return; }
+          if (!email) { showMessage('❌ Please enter your email address', 'error'); return; }
+          if (!address) { showMessage('❌ Please enter your address', 'error'); return; }
+          
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+          
+          try {
+            const formData = new FormData(bookingForm);
+            const response = await fetch('https://api.web3forms.com/submit', {
+              method: 'POST',
+              body: formData
+            });
+            const data = await response.json();
+            
+            if (data.success) {
+              showMessage('✅ Booking request sent successfully! We will contact you shortly.', 'success');
+              bookingForm.reset();
+              setTimeout(() => {
+                closeBookingModal();
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Request via Email';
+              }, 2000);
+            } else {
+              throw new Error(data.message || 'Failed to send');
+            }
+          } catch (error) {
+            console.error('Error:', error);
+            showMessage('❌ Failed to send request. Please try again or contact us on WhatsApp.', 'error');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Request via Email';
+          }
+        });
+      }
+      
+      function showMessage(msg, type) {
+        if (formMessage) {
+          formMessage.innerHTML = `<div class="${type === 'success' ? 'success-message' : 'error-message'}">${msg}</div>`;
+          setTimeout(() => { if (formMessage.innerHTML) formMessage.innerHTML = ''; }, 5000);
+        } else {
+          alert(msg);
+        }
+      }
+  
+      function renderServices() {
+        const grid = document.getElementById('servicesGrid');
+        if (!grid) return;
+        grid.innerHTML = services.map((s, i) => {
+          let imgUrl = SERVICE_IMAGES[s.name] || `https://placehold.co/800x600/0c5ca8/white?text=${encodeURIComponent(s.name)}`;
+          return `
+          <div class="flip-card" data-aos="fade-up" data-aos-delay="${i * 80}">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="front-img-wrapper"><img src="${imgUrl}" class="front-img" onerror="this.src='https://placehold.co/800x600/0c5ca8/white?text=${encodeURIComponent(s.name)}';"></div>
+                <div class="front-content">
+                  <div class="service-icon"><i class="${s.icon}"></i></div>
+                  <h3 class="front-title text-gray-800 good-times">${s.name}</h3>
+                  <button class="book-now-btn booking-trigger" data-sname="${s.name}"><i class="fas fa-calendar-alt mr-2"></i> Book Now</button>
+                </div>
+              </div>
+              <div class="flip-card-back">
+                <div class="text-left flex flex-col h-full">
+                  <div class="flex items-center gap-2 mb-3"><div class="back-icon"><i class="${s.icon}"></i></div><h3 class="back-title text-gray-800 good-times">${s.name}</h3></div>
+                  <p class="back-description">${s.description}</p>
+                  <div class="flex flex-wrap gap-1.5 mb-3">${s.features.map(f => `<span class="feature-tag" onclick="event.stopPropagation(); showFeatureDetail('${f}');">📌 ${f}</span>`).join('')}</div>
+                  <button class="book-now-btn booking-trigger" data-sname="${s.name}"><i class="fas fa-calendar-alt mr-2"></i> Book Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `}).join('');
+        
+        document.querySelectorAll('.flip-card').forEach(card => {
+          card.addEventListener('click', function(e) {
+            if (e.target.closest('.booking-trigger') || e.target.closest('.feature-tag')) return;
+            if (currentlyFlippedCard === this) { this.classList.remove('flipped'); currentlyFlippedCard = null; }
+            else { if (currentlyFlippedCard) currentlyFlippedCard.classList.remove('flipped'); this.classList.add('flipped'); currentlyFlippedCard = this; }
+          });
+        });
+        document.querySelectorAll('.booking-trigger').forEach(btn => btn.addEventListener('click', (e) => { e.stopPropagation(); openBookingModal(btn.dataset.sname); if (currentlyFlippedCard) { currentlyFlippedCard.classList.remove('flipped'); currentlyFlippedCard = null; } }));
+      }
+  
+      // Mobile menu
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (mobileBtn && mobileMenu) {
+        mobileBtn.onclick = () => mobileMenu.classList.toggle('hidden');
+        document.querySelectorAll('#mobileMenu a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+      }
+      
+      // Feedback
+      const mainBtn = document.getElementById('feedbackMainBtn');
+      const panelFB = document.getElementById('feedbackPanel');
+      const closePanelBtn = document.getElementById('closeFeedbackPanel');
+      const submitBtnFB = document.getElementById('submitFeedbackBtn');
+      const feedbackTextarea = document.getElementById('feedbackTextMsg');
+      
+      if(mainBtn && panelFB) {
+        mainBtn.addEventListener('click', (e) => { e.stopPropagation(); panelFB.classList.toggle('active'); });
+        if (closePanelBtn) closePanelBtn.addEventListener('click', () => panelFB.classList.remove('active'));
+        document.addEventListener('click', (e) => { if(!panelFB.contains(e.target) && !mainBtn.contains(e.target)) panelFB.classList.remove('active'); });
+        panelFB.addEventListener('click', (e) => e.stopPropagation());
+      }
+      
+      function getSelectedRating() { const radios = document.querySelectorAll('input[name="fb_rating"]'); for(let r of radios) if(r.checked) return r.value; return null; }
+      
+      if(submitBtnFB) {
+        submitBtnFB.addEventListener('click', () => {
+          const rating = getSelectedRating();
+          const msg = feedbackTextarea.value.trim();
+          if(!rating && !msg) { alert('❌ Please provide a rating OR feedback message.'); return; }
+          let waMsg = '';
+          if(rating) waMsg += `⭐ Rating: ${rating}/5`;
+          if(msg) { if(waMsg) waMsg += '\n'; waMsg += `💬 Feedback: ${msg}`; }
+          window.open(`https://wa.me/923005518622?text=${encodeURIComponent(waMsg)}`, '_blank');
+          document.querySelectorAll('input[name="fb_rating"]').forEach(r => r.checked = false);
+          feedbackTextarea.value = '';
+          panelFB.classList.remove('active');
+          alert('✅ Thank you for your valuable feedback!');
+        });
+      }
+  
+      // Timer
+      function setThirtyDayTimer() {
+        const target = new Date();
+        target.setDate(target.getDate() + 30);
+        target.setHours(23,59,59,999);
+        function update() {
+          const diff = target - new Date();
+          if (diff <= 0) { ['days','hours','minutes','seconds'].forEach(id => document.getElementById(id).innerText = '00'); return; }
+          document.getElementById('days').innerText = String(Math.floor(diff/(86400000))).padStart(2,'0');
+          document.getElementById('hours').innerText = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+          document.getElementById('minutes').innerText = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+          document.getElementById('seconds').innerText = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+        }
+        update();
+        setInterval(update, 1000);
+      }
+      setThirtyDayTimer();
+      renderServices();
+    })();
+  </script>
+</body>
+</html>
