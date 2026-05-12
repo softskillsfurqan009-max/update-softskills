@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Zeetech | Contact Us - Get in Touch</title>
+  
+  <link rel="icon" type="image/png" href="/static/zpic.jpeg">
+  <link rel="icon" type="image/jpeg" href="/static/zpic.jpeg">
+  <link rel="apple-touch-icon" href="/static/zpic.jpeg">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <style>
+    @font-face {
+      font-family: 'Good Times Rg';
+      src: url('fonts/Good Times Rg.otf') format('opentype'),
+           url('fonts/good times rg.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+    
+    .good-times, h1, h2, h3, .zeetech-brand, .nav-link {
+      font-family: 'Good Times Rg', 'Poppins', 'Segoe UI', sans-serif;
+      letter-spacing: 1px;
+    }
+    
+    body, p, span, div, a, button, input, textarea {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .bg-zeetech { background-color: #0c5ca8; }
+    .text-zeetech { color: #0c5ca8; }
+    .border-zeetech { border-color: #0c5ca8; }
+    .btn-zeetech { background-color: #0c5ca8; transition: all 0.3s ease; }
+    .btn-zeetech:hover { background-color: #094a86; transform: translateY(-2px); }
+    
+    /* Floating WhatsApp + Location */
+    .whatsapp-float { 
+      position: fixed; bottom: 20px; right: 16px; z-index: 999; 
+      background-color: #25D366; 
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25); 
+      transition: transform 0.2s;
+    }
+    @media (min-width: 640px) {
+      .whatsapp-float { bottom: 28px; right: 28px; width: 60px; height: 60px; }
+    }
+    .whatsapp-float:hover { transform: scale(1.08); }
+    
+    .location-float {
+      position: fixed; bottom: 92px; right: 16px; z-index: 999;
+      background-color: #0c5ca8; 
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25); 
+      transition: transform 0.2s; 
+      cursor: pointer;
+    }
+    @media (min-width: 640px) {
+      .location-float { bottom: 108px; right: 28px; width: 60px; height: 60px; }
+    }
+    .location-float:hover { transform: scale(1.08); background-color: #094a86; }
+    
+    .whatsapp-float i, .location-float i {
+      font-size: 28px;
+      line-height: 1;
+    }
+    @media (min-width: 640px) {
+      .whatsapp-float i, .location-float i {
+        font-size: 32px;
+      }
+    }
+    
+    /* Logo - HOME PAGE STYLE */
+    .logo-img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      border-radius: 12px;
+      background-color: #0c5ca8;
+      padding: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    @media (min-width: 768px) {
+      .logo-img { 
+        width: 60px; 
+        height: 60px; 
+        padding: 8px;
+        border-radius: 14px;
+      }
+    }
+    
+    .footer-logo-img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      border-radius: 12px;
+      background-color: #0c5ca8;
+      padding: 6px;
+    }
+    @media (min-width: 768px) {
+      .footer-logo-img { 
+        width: 52px; 
+        height: 52px; 
+        padding: 8px;
+      }
+    }
+    
+    /* Navigation - HOME PAGE STYLE */
+    .navbar-padding {
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+    }
+    
+    .nav-link {
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    @media (min-width: 768px) {
+      .nav-link { font-size: 0.95rem; }
+    }
+    
+    .active-nav {
+      border-bottom: 2px solid #0c5ca8;
+      color: #0c5ca8;
+      font-weight: 600;
+    }
+    
+    /* Timer offer banner - HOME PAGE STYLE */
+    .offer-timer-section {
+      background: linear-gradient(135deg, #fef9e6 0%, #fff4e0 100%);
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      margin: 20px auto 30px auto;
+      max-width: 1280px;
+      padding: 0 16px;
+    }
+    .offer-container {
+      background: linear-gradient(95deg, #0c5ca8 0%, #0e6bbd 100%);
+      border-radius: 24px;
+      padding: 18px 24px;
+      box-shadow: 0 12px 20px -8px rgba(12,92,168,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .offer-badge {
+      background-color: rgba(255,255,255,0.2);
+      backdrop-filter: blur(4px);
+      border-radius: 60px;
+      padding: 6px 16px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+    }
+    .discount-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1;
+      text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+    }
+    .timer-block {
+      background: #ffffff;
+      border-radius: 16px;
+      min-width: 70px;
+      text-align: center;
+      padding: 10px 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .timer-number {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #0c5ca8;
+      font-family: 'Poppins', monospace;
+      line-height: 1;
+    }
+    .timer-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #4a5568;
+      letter-spacing: 0.5px;
+    }
+    @media (max-width: 640px) {
+      .offer-container { padding: 16px; flex-direction: column; text-align: center; gap: 12px; }
+      .timer-block { min-width: 60px; padding: 6px 4px; }
+      .timer-number { font-size: 1.3rem; }
+      .discount-number { font-size: 1.7rem; }
+    }
+    
+    /* Navbar spacer */
+    .navbar-spacer {
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: 640px) {
+      .navbar-spacer {
+        margin-bottom: 1rem;
+      }
+    }
+    
+    /* CONTACT PAGE ORIGINAL STYLES */
+    .gradient-bg { background: linear-gradient(135deg, #f0f9ff 0%, #e6f0fa 100%); }
+    
+    .contact-card { transition: all 0.3s ease; }
+    .contact-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px -10px rgba(12,92,168,0.2); }
+    
+    /* FEEDBACK WIDGET - HOME PAGE STYLE */
+    .feedback-widget { 
+      position: fixed; bottom: 20px; left: 16px; z-index: 999; 
+    }
+    @media (min-width: 640px) {
+      .feedback-widget { bottom: 28px; left: 28px; }
+    }
+    
+    .feedback-main-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #0c5ca8;
+      border-radius: 60px;
+      padding: 8px 16px 8px 12px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(12,92,168,0.35);
+      transition: all 0.3s ease;
+    }
+    .feedback-main-btn:hover { transform: scale(1.05); background-color: #094a86; }
+    .feedback-icon-circle {
+      background-color: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    @media (min-width: 640px) { .feedback-icon-circle { width: 42px; height: 42px; } }
+    .feedback-icon-circle i { font-size: 20px; color: white; }
+    .feedback-label-text {
+      color: white;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+    }
+    .feedback-label-text small { font-size: 0.65rem; font-weight: 400; opacity: 0.9; display: block; line-height: 1.2; }
+    
+    .feedback-panel {
+      position: absolute;
+      bottom: 70px;
+      left: 0;
+      width: calc(100vw - 32px);
+      max-width: 360px;
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 25px 45px -12px rgba(0,0,0,0.35);
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      transform: translateY(20px);
+      opacity: 0;
+      visibility: hidden;
+    }
+    @media (min-width: 480px) { .feedback-panel { width: 360px; bottom: 75px; } }
+    .feedback-panel.active { transform: translateY(0); opacity: 1; visibility: visible; }
+    
+    .panel-header {
+      background: linear-gradient(135deg, #0c5ca8, #0a4a82);
+      padding: 16px 20px;
+      color: white;
+    }
+    .panel-header h3 { font-weight: 700; font-size: 1.2rem; display: flex; align-items: center; gap: 8px; }
+    
+    .star-rating {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: center;
+      gap: 10px;
+      margin: 8px 0;
+    }
+    .star-rating input { display: none; }
+    .star-rating label {
+      font-size: 30px;
+      color: #ddd;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .star-rating input:checked ~ label,
+    .star-rating label:hover,
+    .star-rating label:hover ~ label { color: #ffc107; transform: scale(1.05); }
+    
+    .feedback-whatsapp-btn { background-color: #25D366; transition: all 0.2s; font-weight: 600; }
+    .feedback-whatsapp-btn:hover { background-color: #075e54; transform: translateY(-2px); }
+    .close-panel-link { font-size: 0.7rem; color: #94a3b8; cursor: pointer; }
+    .close-panel-link:hover { color: #0c5ca8; }
+    
+    .social-icon { transition: all 0.3s ease; }
+    .social-icon:hover { transform: translateY(-3px); }
+    .footer-link { transition: all 0.3s ease; display: inline-flex; align-items: center; }
+    
+    /* Footer text size */
+    footer a, .footer-link {
+      font-size: 0.75rem;
+    }
+    @media (min-width: 640px) {
+      footer a, .footer-link { font-size: 0.8rem; }
+    }
+    
+    @media (max-width: 640px) {
+      .contact-card { padding: 8px; }
+    }
+  </style>
+</head>
+<body class="bg-gray-50 overflow-x-hidden">
+
+  <!-- Floating Buttons -->
+  <div class="location-float" id="locationBtn">
+    <i class="fas fa-map-marker-alt text-white"></i>
+  </div>
+
+  <a href="https://wa.me/923005518622?text=Hello%20Zeetech%2C%20I%20need%20assistance" target="_blank" class="whatsapp-float" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp text-white"></i>
+  </a>
+
+  <!-- FEEDBACK WIDGET -->
+  <div class="feedback-widget" id="zeetechFeedbackWidget">
+    <div class="feedback-main-btn" id="feedbackMainBtn">
+      <div class="feedback-icon-circle">
+        <i class="fas fa-comment-dots"></i>
+      </div>
+      <div class="feedback-label-text">
+        Feedback <small>rate & suggest</small>
+      </div>
+    </div>
+    <div class="feedback-panel" id="feedbackPanel">
+      <div class="panel-header">
+        <h3><i class="fas fa-star-half-alt"></i> Share Your Experience</h3>
+        <p class="text-xs opacity-85">Your opinion helps us improve Zeetech</p>
+      </div>
+      <div class="p-5" style="padding: 18px;">
+        <div class="mb-4 text-center">
+          <label class="block text-gray-700 text-sm font-semibold mb-1">Rating</label>
+          <div class="star-rating" id="starRatingGroup">
+            <input type="radio" id="star5_fb" name="fb_rating" value="5"><label for="star5_fb" class="fas fa-star"></label>
+            <input type="radio" id="star4_fb" name="fb_rating" value="4"><label for="star4_fb" class="fas fa-star"></label>
+            <input type="radio" id="star3_fb" name="fb_rating" value="3"><label for="star3_fb" class="fas fa-star"></label>
+            <input type="radio" id="star2_fb" name="fb_rating" value="2"><label for="star2_fb" class="fas fa-star"></label>
+            <input type="radio" id="star1_fb" name="fb_rating" value="1"><label for="star1_fb" class="fas fa-star"></label>
+          </div>
+        </div>
+        <div class="mb-4">
+          <textarea id="feedbackTextMsg" rows="3" placeholder="Write your feedback..." class="w-full border border-gray-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#0c5ca8]" style="width: 100%; resize: vertical;"></textarea>
+        </div>
+        <button id="submitFeedbackBtn" class="feedback-whatsapp-btn w-full text-white py-3 rounded-xl text-sm font-semibold flex items-center justify-center gap-2">
+          <i class="fab fa-whatsapp"></i> Send Feedback
+        </button>
+        <div class="mt-3 text-center">
+          <span id="closeFeedbackPanel" class="close-panel-link"><i class="fas fa-times-circle"></i> Close</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER - HOME PAGE STYLE -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-4 md:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-2 md:space-x-3 group">
+        <img id="siteLogo" src="/static/zeetech-lago.jpeg" alt="Zeetech Logo" class="logo-img transition-transform group-hover:scale-105">
+        <div class="flex flex-col leading-tight">
+          <span class="font-black text-lg md:text-xl tracking-wide text-gray-800 good-times">ZEETECH</span>
+          <span class="text-[10px] md:text-[11px] text-gray-500 -mt-1">Technical Services</span>
+        </div>
+      </a>
+      <nav class="hidden md:flex space-x-6 lg:space-x-8 text-gray-700 font-medium">
+        <a href="index.html" class="nav-link hover:text-zeetech transition good-times">Home</a>
+        <a href="services.html" class="nav-link hover:text-zeetech transition good-times">Services</a>
+        <a href="about.html" class="nav-link hover:text-zeetech transition good-times">About Us</a>
+        <a href="contact.html" class="nav-link hover:text-zeetech transition active-nav good-times">Contact</a>
+      </nav>
+      <button id="mobileMenuBtn" class="md:hidden text-gray-600 text-2xl focus:outline-none"><i class="fas fa-bars"></i></button>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t px-5 py-3 flex flex-col space-y-3 shadow-lg">
+      <a href="index.html" class="py-2 hover:text-zeetech font-medium good-times">Home</a>
+      <a href="services.html" class="py-2 hover:text-zeetech good-times">Services</a>
+      <a href="about.html" class="py-2 hover:text-zeetech good-times">About Us</a>
+      <a href="contact.html" class="py-2 text-zeetech font-semibold good-times">Contact</a>
+    </div>
+  </header>
+
+  <!-- NAVBAR SPACER -->
+  <div class="navbar-spacer"></div>
+
+  <!-- OFFER TIMER BANNER - HOME PAGE STYLE -->
+  <div class="offer-timer-section">
+    <div class="offer-container">
+      <div class="flex items-center gap-3 flex-wrap">
+        <div class="offer-badge text-white"><i class="fas fa-fire text-white mr-1"></i> LIMITED OFFER</div>
+        <div class="flex items-baseline gap-2">
+          <span class="discount-number text-white font-extrabold">30% OFF</span>
+          <span class="text-white text-sm font-medium">on any service</span>
+        </div>
+        <div class="text-white text-xs bg-black/20 px-3 py-1 rounded-full"><i class="fas fa-tools mr-1"></i> AC · Fridge · Solar · Electrical · Carpenter</div>
+      </div>
+      <div class="flex items-center gap-2 md:gap-3">
+        <span class="text-white text-xs font-semibold tracking-wide uppercase"><i class="far fa-clock mr-1"></i> Offer ends in:</span>
+        <div id="countdownTimer" class="flex gap-2">
+          <div class="timer-block"><div class="timer-number" id="days">00</div><div class="timer-label">Days</div></div>
+          <div class="timer-block"><div class="timer-number" id="hours">00</div><div class="timer-label">Hrs</div></div>
+          <div class="timer-block"><div class="timer-number" id="minutes">00</div><div class="timer-label">Mins</div></div>
+          <div class="timer-block"><div class="timer-number" id="seconds">00</div><div class="timer-label">Secs</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT - ORIGINAL CONTACT PAGE CONTENT -->
+  <main class="container mx-auto px-4 py-8 md:py-10 max-w-6xl">
+    
+    <div class="gradient-bg rounded-2xl md:rounded-3xl p-6 md:p-12 mb-10 md:mb-12 text-center">
+      <div class="inline-block bg-zeetech/10 rounded-full px-4 py-1 text-zeetech text-xs md:text-sm font-semibold mb-3 md:mb-4">
+        <i class="fas fa-headset mr-2"></i> Get in Touch
+      </div>
+      <h1 class="text-3xl md:text-5xl font-extrabold text-gray-800 mb-3 md:mb-4 good-times">
+        Contact <span class="text-zeetech">Zeetech</span>
+      </h1>
+      <p class="text-gray-600 text-sm md:text-lg max-w-2xl mx-auto px-2">
+        Have a question or need technical assistance? We're here to help 24/7. Reach out to us anytime!
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 md:gap-10">
+      
+      <!-- Contact Info Cards -->
+      <div class="bg-white rounded-xl md:rounded-2xl shadow-lg overflow-hidden">
+        <div class="bg-gradient-to-r from-zeetech to-blue-700 px-5 py-3 md:px-6 md:py-4">
+          <h2 class="text-xl md:text-2xl font-bold text-white good-times">📞 Get In Touch</h2>
+          <p class="text-blue-100 text-xs md:text-sm">We'd love to hear from you</p>
+        </div>
+        <div class="p-5 md:p-6 space-y-4 md:space-y-5">
+          <div class="contact-card flex items-start gap-3 md:gap-4 p-2 md:p-3 rounded-xl hover:bg-gray-50 transition">
+            <div class="w-10 h-10 md:w-12 md:h-12 bg-zeetech/10 rounded-full flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-map-marker-alt text-zeetech text-base md:text-xl"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-800 good-times text-xs md:text-sm">Address</h3>
+              <p class="text-gray-600 text-xs md:text-sm">G-12 Ghazali Road, Islamabad</p>
+            </div>
+          </div>
+          
+          <div class="contact-card flex items-start gap-3 md:gap-4 p-2 md:p-3 rounded-xl hover:bg-gray-50 transition">
+            <div class="w-10 h-10 md:w-12 md:h-12 bg-zeetech/10 rounded-full flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-phone-alt text-zeetech text-base md:text-xl"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-800 good-times text-xs md:text-sm">Phone</h3>
+              <p class="text-gray-600 text-xs md:text-sm">+92 300 5518622</p>
+            </div>
+          </div>
+          
+          <div class="contact-card flex items-start gap-3 md:gap-4 p-2 md:p-3 rounded-xl hover:bg-gray-50 transition">
+            <div class="w-10 h-10 md:w-12 md:h-12 bg-zeetech/10 rounded-full flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-envelope text-zeetech text-base md:text-xl"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-800 good-times text-xs md:text-sm">Email</h3>
+              <p class="text-gray-600 text-xs md:text-sm">info.zeetech26@gmail.com</p>
+            </div>
+          </div>
+          
+          <div class="contact-card flex items-start gap-3 md:gap-4 p-2 md:p-3 rounded-xl hover:bg-gray-50 transition">
+            <div class="w-10 h-10 md:w-12 md:h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+              <i class="fab fa-whatsapp text-green-600 text-base md:text-xl"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-800 good-times text-xs md:text-sm">WhatsApp</h3>
+              <p class="text-gray-600 text-xs md:text-sm">+92 300 5518622</p>
+              <a href="https://wa.me/923005518622?text=Hello%20Zeetech" target="_blank" class="text-zeetech text-xs hover:underline">Chat Now →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Contact Form -->
+      <div class="bg-white rounded-xl md:rounded-2xl shadow-lg overflow-hidden">
+        <div class="bg-gradient-to-r from-zeetech to-blue-700 px-5 py-3 md:px-6 md:py-4">
+          <h2 class="text-xl md:text-2xl font-bold text-white good-times">✉️ Send a Message</h2>
+          <p class="text-blue-100 text-xs md:text-sm">We'll get back to you within 24 hours</p>
+        </div>
+        <div class="p-5 md:p-6">
+          <form id="contactForm" class="space-y-4">
+            <div>
+              <label class="block text-gray-700 text-xs md:text-sm font-semibold mb-1 md:mb-2">👤 Full Name *</label>
+              <input type="text" id="conName" placeholder="Enter your full name" class="w-full border border-gray-300 rounded-xl px-4 py-2.5 md:py-3 text-sm focus:outline-none focus:ring-2 focus:ring-zeetech focus:border-transparent transition" required>
+            </div>
+            <div>
+              <label class="block text-gray-700 text-xs md:text-sm font-semibold mb-1 md:mb-2">📞 Phone Number *</label>
+              <input type="tel" id="conPhone" placeholder="Enter your phone number" class="w-full border border-gray-300 rounded-xl px-4 py-2.5 md:py-3 text-sm focus:outline-none focus:ring-2 focus:ring-zeetech focus:border-transparent transition" required>
+            </div>
+            <div>
+              <label class="block text-gray-700 text-xs md:text-sm font-semibold mb-1 md:mb-2">✉️ Email Address</label>
+              <input type="email" id="conEmail" placeholder="Enter your email address" class="w-full border border-gray-300 rounded-xl px-4 py-2.5 md:py-3 text-sm focus:outline-none focus:ring-2 focus:ring-zeetech focus:border-transparent transition">
+            </div>
+            <div>
+              <label class="block text-gray-700 text-xs md:text-sm font-semibold mb-1 md:mb-2">💬 Your Message *</label>
+              <textarea rows="4" id="conMsg" placeholder="Tell us about your requirement or question..." class="w-full border border-gray-300 rounded-xl px-4 py-2.5 md:py-3 text-sm focus:outline-none focus:ring-2 focus:ring-zeetech focus:border-transparent transition" required></textarea>
+            </div>
+            <button type="submit" class="btn-zeetech text-white py-3 rounded-xl font-semibold w-full text-base md:text-lg transition shadow-md hover:shadow-lg">
+              <i class="fas fa-paper-plane mr-2"></i> Send Message
+            </button>
+          </form>
+          
+          <div class="mt-4 md:mt-5 text-center">
+            <p class="text-xs text-gray-400">Or reach us directly on <a href="https://wa.me/923005518622" target="_blank" class="text-green-600 font-semibold">WhatsApp</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Map Section -->
+    <div class="mt-10 md:mt-12 bg-white rounded-xl md:rounded-2xl shadow-lg overflow-hidden">
+      <div class="bg-gradient-to-r from-zeetech to-blue-700 px-5 py-2.5 md:px-6 md:py-3">
+        <h3 class="text-white font-semibold good-times text-sm md:text-lg"><i class="fas fa-map-marked-alt mr-2"></i> Our Location</h3>
+      </div>
+      <div class="p-1 md:p-2">
+        <iframe 
+          src="https://www.google.com/maps?q=33.6598056,72.9891944&z=15&output=embed" 
+          width="100%" 
+          height="250" 
+          style="border:0; border-radius: 12px;" 
+          allowfullscreen="" 
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER - HOME PAGE STYLE -->
+  <footer class="bg-gray-900 text-white mt-12">
+    <div class="container mx-auto px-4 py-10 md:py-12">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div class="space-y-3">
+          <div class="flex items-center space-x-3">
+            <img id="footerLogo" src="/static/zeetech-lago.jpeg" alt="Zeetech Logo" class="footer-logo-img">
+            <div>
+              <div class="font-bold text-lg md:text-xl tracking-wide good-times">ZEETECH</div>
+              <div class="text-xs text-gray-400">Technical Services</div>
+            </div>
+          </div>
+          <p class="text-gray-400 text-xs md:text-sm leading-relaxed">Professional home and commercial technical service provider committed to delivering reliable, efficient, and affordable solutions.</p>
+          <div class="flex space-x-3 pt-2">
+            <a href="https://www.facebook.com/share/1BS7AHHSx5/" target="_blank" class="social-icon w-8 h-8 md:w-9 md:h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#1877f2]"><i class="fab fa-facebook-f text-gray-400 hover:text-white text-xs md:text-sm"></i></a>
+            <a href="https://www.instagram.com/zeetech.26?igsh=YTQ3bDJoczl1cmZ0" target="_blank" class="social-icon w-8 h-8 md:w-9 md:h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gradient-to-tr hover:from-[#f77737] hover:to-[#e1306c]"><i class="fab fa-instagram text-gray-400 hover:text-white text-xs md:text-sm"></i></a>
+            <a href="https://www.tiktok.com/@zeetech26?_r=1&_t=ZS-95EIV49D8AT" target="_blank" class="social-icon w-8 h-8 md:w-9 md:h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-black"><i class="fab fa-tiktok text-gray-400 hover:text-white text-xs md:text-sm"></i></a>
+            <a href="https://wa.me/923005518622?text=Hello%20Zeetech" target="_blank" class="social-icon w-8 h-8 md:w-9 md:h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#25D366]"><i class="fab fa-whatsapp text-gray-400 hover:text-white text-xs md:text-sm"></i></a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-base md:text-lg font-semibold mb-4 relative inline-block good-times">Quick Links<span class="absolute -bottom-2 left-0 w-10 h-0.5 bg-zeetech rounded-full"></span></h3>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="footer-link text-gray-400 hover:text-zeetech text-xs md:text-sm"><i class="fas fa-chevron-right text-zeetech text-xs mr-2"></i> Home</a></li>
+            <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech text-xs md:text-sm"><i class="fas fa-chevron-right text-zeetech text-xs mr-2"></i> Services</a></li>
+            <li><a href="about.html" class="footer-link text-gray-400 hover:text-zeetech text-xs md:text-sm"><i class="fas fa-chevron-right text-zeetech text-xs mr-2"></i> About Us</a></li>
+            <li><a href="contact.html" class="footer-link text-gray-400 hover:text-zeetech text-xs md:text-sm"><i class="fas fa-chevron-right text-zeetech text-xs mr-2"></i> Contact Us</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-base md:text-lg font-semibold mb-4 relative inline-block good-times">Our Services<span class="absolute -bottom-2 left-0 w-10 h-0.5 bg-zeetech rounded-full"></span></h3>
+          <ul class="space-y-2">
+            <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech text-xs md:text-sm"><i class="fas fa-wind text-zeetech text-xs mr-2"></i> Air Conditioner</a></li>
+            <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech text-xs md:text-sm"><i class="fas fa-thermometer-half text-zeetech text-xs mr-2"></i> Refrigerator</a></li>
+            <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech text-xs md:text-sm"><i class="fas fa-solar-panel text-zeetech text-xs mr-2"></i> Solar Energy</a></li>
+            <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech text-xs md:text-sm"><i class="fas fa-battery-full text-zeetech text-xs mr-2"></i> Inverter Services</a></li>
+            <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech text-xs md:text-sm"><i class="fas fa-hammer text-zeetech text-xs mr-2"></i> Carpenter</a></li>
+            <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech text-xs md:text-sm"><i class="fas fa-bolt text-zeetech text-xs mr-2"></i> General Electrician</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-base md:text-lg font-semibold mb-4 relative inline-block good-times">Contact Info<span class="absolute -bottom-2 left-0 w-10 h-0.5 bg-zeetech rounded-full"></span></h3>
+          <ul class="space-y-3">
+            <li><a href="https://wa.me/923005518622?text=Hello%20Zeetech" target="_blank" class="flex items-center gap-3 text-gray-400 hover:text-[#25D366] transition group"><div class="w-7 h-7 md:w-8 md:h-8 bg-gray-800 rounded-full flex items-center justify-center group-hover:bg-[#25D366]"><i class="fab fa-whatsapp text-xs md:text-sm"></i></div><span class="text-xs md:text-sm">+92 300 5518622</span></a></li>
+            <li><a href="mailto:info.zeetech26@gmail.com?subject=Inquiry%20from%20Website" class="flex items-center gap-3 text-gray-400 hover:text-red-500 transition group"><div class="w-7 h-7 md:w-8 md:h-8 bg-gray-800 rounded-full flex items-center justify-center group-hover:bg-red-500"><i class="fas fa-envelope text-xs md:text-sm"></i></div><span class="text-xs md:text-sm">info.zeetech26@gmail.com</span></a></li>
+            <li><a href="tel:+923005518622" class="flex items-center gap-3 text-gray-400 hover:text-zeetech transition group"><div class="w-7 h-7 md:w-8 md:h-8 bg-gray-800 rounded-full flex items-center justify-center group-hover:bg-zeetech"><i class="fas fa-phone-alt text-xs md:text-sm"></i></div><span class="text-xs md:text-sm">+92 300 5518622</span></a></li>
+            <li class="flex items-center gap-3 text-gray-400"><div class="w-7 h-7 md:w-8 md:h-8 bg-gray-800 rounded-full flex items-center justify-center"><i class="fas fa-map-marker-alt text-xs md:text-sm text-zeetech"></i></div><span class="text-xs md:text-sm">G-12 Ghazali Road, Islamabad</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 my-6 md:my-8"></div>
+      <div class="flex flex-col md:flex-row justify-between items-center gap-3">
+        <div class="text-gray-500 text-[10px] md:text-xs">© 2025 Zeetech Technical Services. All rights reserved.</div>
+        <div class="flex gap-4 md:gap-6">
+          <a href="#" class="text-gray-500 hover:text-zeetech text-[10px] md:text-xs transition">Privacy Policy</a>
+          <a href="#" class="text-gray-500 hover:text-zeetech text-[10px] md:text-xs transition">Terms & Conditions</a>
+          <a href="#" class="text-gray-500 hover:text-zeetech text-[10px] md:text-xs transition">Support</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // Location Button
+      const locationBtn = document.getElementById('locationBtn');
+      if (locationBtn) locationBtn.addEventListener('click', () => window.open('https://www.google.com/maps?q=33.6598056,72.9891944&z=15', '_blank'));
+      
+      // Mobile menu toggle
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (mobileBtn && mobileMenu) {
+        mobileBtn.onclick = () => mobileMenu.classList.toggle('hidden');
+        document.querySelectorAll('#mobileMenu a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+      }
+      
+      // Logo images fix
+      const siteLogo = document.getElementById('siteLogo');
+      const footerLogo = document.getElementById('footerLogo');
+      if (siteLogo) siteLogo.src = "/static/zeetech-lago.jpeg";
+      if (footerLogo) footerLogo.src = "/static/zeetech-lago.jpeg";
+      
+      // 30-Day Countdown Timer
+      function setThirtyDayTimer() {
+        const target = new Date();
+        target.setDate(target.getDate() + 30);
+        target.setHours(23, 59, 59, 999);
+        function update() {
+          const diff = target - new Date();
+          if (diff <= 0) {
+            ['days','hours','minutes','seconds'].forEach(id => document.getElementById(id).innerText = '00');
+            return;
+          }
+          document.getElementById('days').innerText = String(Math.floor(diff/(86400000))).padStart(2,'0');
+          document.getElementById('hours').innerText = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+          document.getElementById('minutes').innerText = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+          document.getElementById('seconds').innerText = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+        }
+        update();
+        setInterval(update, 1000);
+      }
+      setThirtyDayTimer();
+      
+      // Contact Form Handler
+      const contactForm = document.getElementById('contactForm');
+      if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          
+          const name = document.getElementById('conName').value.trim();
+          const phone = document.getElementById('conPhone').value.trim();
+          const email = document.getElementById('conEmail').value.trim();
+          const msg = document.getElementById('conMsg').value.trim();
+          
+          if(!name) return alert('❌ Please enter your full name');
+          if(!phone) return alert('❌ Please enter your phone number');
+          if(!msg) return alert('❌ Please enter your message');
+          if(phone.length < 9) return alert('❌ Please enter a valid phone number');
+          
+          const messageLines = [
+            "📩 *ZEETECH CONTACT INQUIRY* 📩",
+            "",
+            `👤 *Name:* ${name}`,
+            `📞 *Phone:* ${phone}`,
+            email ? `✉️ *Email:* ${email}` : null,
+            `💬 *Message:* ${msg}`,
+            "",
+            "— Sent from Zeetech Website Contact Form"
+          ].filter(line => line !== null);
+          
+          const whatsappMsg = messageLines.join('%0A');
+          window.open(`https://wa.me/923005518622?text=${encodeURIComponent(whatsappMsg)}`, '_blank');
+          
+          alert('✅ Message sent successfully!\n\nWe will contact you shortly on WhatsApp.');
+          contactForm.reset();
+        });
+      }
+      
+      // Feedback Widget
+      const mainBtn = document.getElementById('feedbackMainBtn');
+      const panel = document.getElementById('feedbackPanel');
+      const closePanelBtn = document.getElementById('closeFeedbackPanel');
+      const submitBtn = document.getElementById('submitFeedbackBtn');
+      const feedbackTextarea = document.getElementById('feedbackTextMsg');
+      
+      if(mainBtn && panel) {
+        mainBtn.addEventListener('click', (e) => { e.stopPropagation(); panel.classList.toggle('active'); });
+        closePanelBtn?.addEventListener('click', () => panel.classList.remove('active'));
+        document.addEventListener('click', (e) => { if(!panel.contains(e.target) && !mainBtn.contains(e.target)) panel.classList.remove('active'); });
+        panel.addEventListener('click', (e) => e.stopPropagation());
+      }
+      
+      function getSelectedRating() {
+        const radios = document.querySelectorAll('input[name="fb_rating"]');
+        for(let r of radios) if(r.checked) return r.value;
+        return null;
+      }
+      
+      if(submitBtn) {
+        submitBtn.addEventListener('click', () => {
+          const rating = getSelectedRating();
+          const msg = feedbackTextarea.value.trim();
+          if(!rating && !msg) { alert('❌ Please provide a rating OR feedback message.'); return; }
+          let waMsg = '';
+          if(rating) waMsg += `⭐ Rating: ${rating}/5`;
+          if(msg) { if(waMsg) waMsg += '\n'; waMsg += `💬 Feedback: ${msg}`; }
+          window.open(`https://wa.me/923005518622?text=${encodeURIComponent(waMsg)}`, '_blank');
+          document.querySelectorAll('input[name="fb_rating"]').forEach(r => r.checked = false);
+          feedbackTextarea.value = '';
+          panel.classList.remove('active');
+          alert('✅ Thank you for your valuable feedback!');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

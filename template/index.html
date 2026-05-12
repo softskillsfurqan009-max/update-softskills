@@ -5,22 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Zeetech | Home - Powering Comfort, Repairing Trust</title>
   
-  <!-- FAVICON - Simple external file -->
-  <!-- FAVICON - Properly sized and optimized -->
-<link rel="icon" type="image/png" sizes="64x64" href="/static/zpic.jpeg">
-<link rel="icon" type="image/png" sizes="32x32" href="/static/zpic.jpeg">
-<link rel="icon" type="image/png" sizes="16x16" href="/static/zpic.jpeg">
-<link rel="shortcut icon" href="/static/zpic.jpeg">
-<link rel="apple-touch-icon" sizes="180x180" href="/static/zpic.jpeg">
-<!-- FAVICON - Base64 Sharp & Clear -->
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" sizes="64x64" href="/static/zpic.jpeg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/zpic.jpeg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/static/zpic.jpeg">
+  <link rel="shortcut icon" href="/static/zpic.jpeg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/static/zpic.jpeg">
+  
+  <!-- GOOGLE FONTS -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   
+  <!-- EXTERNAL LIBRARIES -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   
   <style>
+    /* ======================================== */
+    /* 1. CUSTOM FONT FACE (GOOD TIMES RG)      */
+    /* ======================================== */
     @font-face {
       font-family: 'Good Times Rg';
       src: url('fonts/Good Times Rg.otf') format('opentype'),
@@ -30,12 +34,16 @@
       font-display: swap;
     }
     
+    /* ======================================== */
+    /* 2. RESET & GLOBAL STYLES                 */
+    /* ======================================== */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
     
+    /* Font Family Assignments */
     .good-times, h1, h2, h3, .zeetech-brand, .nav-link {
       font-family: 'Good Times Rg', 'Poppins', 'Segoe UI', sans-serif;
       letter-spacing: 1px;
@@ -45,12 +53,16 @@
       font-family: 'Poppins', sans-serif;
     }
     
+    /* Theme Colors */
     .bg-zeetech { background-color: #0c5ca8; }
     .text-zeetech { color: #0c5ca8; }
     .border-zeetech { border-color: #0c5ca8; }
     .btn-zeetech { background-color: #0c5ca8; transition: all 0.2s ease; }
     .btn-zeetech:hover { background-color: #094a86; transform: translateY(-2px); }
     
+    /* ======================================== */
+    /* 3. FLOATING BUTTONS (WhatsApp & Location) */
+    /* ======================================== */
     .whatsapp-float { 
       position: fixed; bottom: 20px; right: 16px; z-index: 999; 
       background-color: #25D366; 
@@ -91,11 +103,12 @@
       line-height: 1;
     }
     @media (min-width: 640px) {
-      .whatsapp-float i, .location-float i {
-        font-size: 32px;
-      }
+      .whatsapp-float i, .location-float i { font-size: 32px; }
     }
     
+    /* ======================================== */
+    /* 4. LOGO STYLES                           */
+    /* ======================================== */
     .logo-img {
       width: 52px;
       height: 52px;
@@ -130,12 +143,18 @@
       }
     }
     
+    /* ======================================== */
+    /* 5. NAVIGATION ACTIVE STATE               */
+    /* ======================================== */
     .active-nav { 
       border-bottom: 2px solid #0c5ca8; 
       color: #0c5ca8; 
       font-weight: 600; 
     }
     
+    /* ======================================== */
+    /* 6. SLIDER / SWIPER STYLES                */
+    /* ======================================== */
     .slider-container {
       width: 100%;
       overflow: hidden;
@@ -152,6 +171,9 @@
       display: block;
     }
     
+    /* ======================================== */
+    /* 7. FEEDBACK WIDGET STYLES                */
+    /* ======================================== */
     .feedback-widget { 
       position: fixed; 
       bottom: 20px; 
@@ -177,6 +199,7 @@
       transform: scale(1.05);
       background-color: #094a86;
     }
+    
     .feedback-icon-circle {
       background-color: rgba(255,255,255,0.2);
       border-radius: 50%;
@@ -196,6 +219,7 @@
       font-size: 20px;
       color: white;
     }
+    
     .feedback-label-text {
       color: white;
       font-weight: 600;
@@ -210,6 +234,7 @@
       line-height: 1.2;
     }
     
+    /* Feedback Panel */
     .feedback-panel {
       position: absolute;
       bottom: 70px;
@@ -247,6 +272,7 @@
       gap: 8px;
     }
     
+    /* Star Rating */
     .star-rating {
       display: flex;
       flex-direction: row-reverse;
@@ -277,6 +303,7 @@
       background-color: #075e54;
       transform: translateY(-2px);
     }
+    
     .close-panel-link {
       font-size: 0.7rem;
       color: #94a3b8;
@@ -284,13 +311,22 @@
     }
     .close-panel-link:hover { color: #0c5ca8; }
     
+    /* ======================================== */
+    /* 8. VALUE CARDS (Mission/Vision Cards)    */
+    /* ======================================== */
     .value-card { transition: all 0.3s ease; }
     .value-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); }
     
+    /* ======================================== */
+    /* 9. SOCIAL ICONS & FOOTER LINKS           */
+    /* ======================================== */
     .social-icon { transition: all 0.3s ease; }
     .social-icon:hover { transform: translateY(-3px); }
     .footer-link { transition: all 0.3s ease; display: inline-flex; align-items: center; }
-
+    
+    /* ======================================== */
+    /* 10. OFFER TIMER BANNER STYLES            */
+    /* ======================================== */
     .offer-timer-section {
       background: linear-gradient(135deg, #fef9e6 0%, #fff4e0 100%);
       border-radius: 20px;
@@ -352,6 +388,9 @@
 </head>
 <body class="bg-gray-50 overflow-x-hidden">
 
+  <!-- ======================================== -->
+  <!-- FLOATING BUTTONS (Location & WhatsApp)   -->
+  <!-- ======================================== -->
   <div class="location-float" id="locationBtn">
     <i class="fas fa-map-marker-alt text-white"></i>
   </div>
@@ -360,6 +399,9 @@
     <i class="fab fa-whatsapp text-white"></i>
   </a>
 
+  <!-- ======================================== -->
+  <!-- FEEDBACK WIDGET                          -->
+  <!-- ======================================== -->
   <div class="feedback-widget" id="zeetechFeedbackWidget">
     <div class="feedback-main-btn" id="feedbackMainBtn">
       <div class="feedback-icon-circle">
@@ -398,6 +440,9 @@
     </div>
   </div>
 
+  <!-- ======================================== -->
+  <!-- HEADER / NAVIGATION                      -->
+  <!-- ======================================== -->
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="container mx-auto px-4 md:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between">
       <a href="index.html" class="flex items-center space-x-2 md:space-x-3 group">
@@ -423,6 +468,9 @@
     </div>
   </header>
 
+  <!-- ======================================== -->
+  <!-- OFFER TIMER BANNER                       -->
+  <!-- ======================================== -->
   <div class="offer-timer-section">
     <div class="offer-container flex flex-wrap items-center justify-between">
       <div class="flex items-center gap-3 flex-wrap">
@@ -449,8 +497,12 @@
     </div>
   </div>
 
+  <!-- ======================================== -->
+  <!-- MAIN CONTENT                             -->
+  <!-- ======================================== -->
   <main class="min-h-screen py-4 md:py-6 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
     
+    <!-- Slider Section -->
     <div class="slider-container mb-8 md:mb-12 shadow-lg">
       <div class="swiper">
         <div class="swiper-wrapper">
@@ -464,6 +516,7 @@
       </div>
     </div>
 
+    <!-- Hero Section -->
     <div class="bg-gradient-to-r from-blue-50 to-white rounded-2xl md:rounded-3xl p-5 md:p-8 lg:p-10 shadow-sm mb-10 md:mb-12">
       <div class="max-w-3xl">
         <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-800 good-times">ZEETECH <span class="text-zeetech">Technical Services</span></h1>
@@ -475,6 +528,7 @@
       </div>
     </div>
 
+    <!-- Value Cards Section (Reliability, Quality, Satisfaction) -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 mt-6 md:mt-8">
       <div class="bg-white p-5 md:p-6 rounded-2xl shadow-sm text-center border-l-4 border-zeetech value-card">
         <i class="fas fa-handshake text-3xl md:text-4xl text-zeetech mb-3"></i>
@@ -493,6 +547,7 @@
       </div>
     </div>
 
+    <!-- Mission & Vision Section -->
     <div class="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 bg-gray-50 p-5 md:p-8 rounded-2xl">
       <div>
         <i class="fas fa-bullseye text-2xl md:text-3xl text-zeetech mb-2"></i>
@@ -507,9 +562,14 @@
     </div>
   </main>
 
+  <!-- ======================================== -->
+  <!-- FOOTER                                   -->
+  <!-- ======================================== -->
   <footer class="bg-gray-900 text-white mt-12 md:mt-16">
     <div class="container mx-auto px-4 md:px-6 lg:px-8 py-8 md:py-12">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        
+        <!-- Brand Column -->
         <div class="space-y-3">
           <div class="flex items-center space-x-3">
             <img id="footerLogo" src="/static/zeetech-lago.jpeg" alt="Zeetech Logo" class="footer-logo-img">
@@ -527,7 +587,9 @@
           </div>
         </div>
         
-        <div><h3 class="text-base md:text-lg font-semibold mb-4 relative inline-block good-times">Quick Links<span class="absolute -bottom-2 left-0 w-10 h-0.5 bg-zeetech rounded-full"></span></h3>
+        <!-- Quick Links Column -->
+        <div>
+          <h3 class="text-base md:text-lg font-semibold mb-4 relative inline-block good-times">Quick Links<span class="absolute -bottom-2 left-0 w-10 h-0.5 bg-zeetech rounded-full"></span></h3>
           <ul class="space-y-2">
             <li><a href="index.html" class="footer-link text-gray-400 hover:text-zeetech text-xs md:text-sm"><i class="fas fa-chevron-right text-zeetech text-xs mr-2"></i> Home</a></li>
             <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech text-xs md:text-sm"><i class="fas fa-chevron-right text-zeetech text-xs mr-2"></i> Services</a></li>
@@ -536,7 +598,9 @@
           </ul>
         </div>
         
-        <div><h3 class="text-base md:text-lg font-semibold mb-4 relative inline-block good-times">Our Services<span class="absolute -bottom-2 left-0 w-10 h-0.5 bg-zeetech rounded-full"></span></h3>
+        <!-- Our Services Column -->
+        <div>
+          <h3 class="text-base md:text-lg font-semibold mb-4 relative inline-block good-times">Our Services<span class="absolute -bottom-2 left-0 w-10 h-0.5 bg-zeetech rounded-full"></span></h3>
           <ul class="space-y-2">
             <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech text-xs md:text-sm"><i class="fas fa-wind text-zeetech text-xs mr-2"></i> Air Conditioner</a></li>
             <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech text-xs md:text-sm"><i class="fas fa-thermometer-half text-zeetech text-xs mr-2"></i> Refrigerator</a></li>
@@ -547,7 +611,9 @@
           </ul>
         </div>
         
-        <div><h3 class="text-base md:text-lg font-semibold mb-4 relative inline-block good-times">Contact Info<span class="absolute -bottom-2 left-0 w-10 h-0.5 bg-zeetech rounded-full"></span></h3>
+        <!-- Contact Info Column -->
+        <div>
+          <h3 class="text-base md:text-lg font-semibold mb-4 relative inline-block good-times">Contact Info<span class="absolute -bottom-2 left-0 w-10 h-0.5 bg-zeetech rounded-full"></span></h3>
           <ul class="space-y-3">
             <li><a href="https://wa.me/923005518622?text=Hello%20Zeetech" target="_blank" class="flex items-center gap-3 text-gray-400 hover:text-[#25D366]"><div class="w-7 h-7 md:w-8 md:h-8 bg-gray-800 rounded-full flex items-center justify-center"><i class="fab fa-whatsapp text-xs md:text-sm"></i></div><span class="text-xs md:text-sm">+92 300 5518622</span></a></li>
             <li><a href="mailto:info.zeetech26@gmail.com" class="flex items-center gap-3 text-gray-400 hover:text-red-500"><div class="w-7 h-7 md:w-8 md:h-8 bg-gray-800 rounded-full flex items-center justify-center"><i class="fas fa-envelope text-xs md:text-sm"></i></div><span class="text-xs md:text-sm">info.zeetech26@gmail.com</span></a></li>
@@ -557,21 +623,39 @@
         </div>
       </div>
       <div class="border-t border-gray-800 my-6 md:my-8"></div>
-      <div class="flex flex-col md:flex-row justify-between items-center gap-3"><div class="text-gray-500 text-[10px] md:text-xs">© 2025 Zeetech Technical Services. All rights reserved.</div><div class="flex gap-4 md:gap-6"><a href="#" class="text-gray-500 hover:text-zeetech text-[10px] md:text-xs">Privacy Policy</a><a href="#" class="text-gray-500 hover:text-zeetech text-[10px] md:text-xs">Terms & Conditions</a><a href="#" class="text-gray-500 hover:text-zeetech text-[10px] md:text-xs">Support</a></div></div>
+      <div class="flex flex-col md:flex-row justify-between items-center gap-3">
+        <div class="text-gray-500 text-[10px] md:text-xs">© 2025 Zeetech Technical Services. All rights reserved.</div>
+        <div class="flex gap-4 md:gap-6">
+          <a href="#" class="text-gray-500 hover:text-zeetech text-[10px] md:text-xs">Privacy Policy</a>
+          <a href="#" class="text-gray-500 hover:text-zeetech text-[10px] md:text-xs">Terms & Conditions</a>
+          <a href="#" class="text-gray-500 hover:text-zeetech text-[10px] md:text-xs">Support</a>
+        </div>
+      </div>
     </div>
   </footer>
 
+  <!-- ======================================== -->
+  <!-- JAVASCRIPT                               -->
+  <!-- ======================================== -->
   <script>
     (function() {
-      // Original location - G-12 Ghazali Road, Islamabad
+      // Location Button - Google Maps
       document.getElementById('locationBtn')?.addEventListener('click', () => window.open('https://www.google.com/maps?q=33.6598056,72.9891944&z=15', '_blank'));
       
-      new Swiper('.swiper', { loop: true, autoplay: { delay: 3500, disableOnInteraction: false }, pagination: { el: '.swiper-pagination', clickable: true }, speed: 800 });
+      // Initialize Swiper Slider
+      new Swiper('.swiper', { 
+        loop: true, 
+        autoplay: { delay: 3500, disableOnInteraction: false }, 
+        pagination: { el: '.swiper-pagination', clickable: true }, 
+        speed: 800 
+      });
       
+      // Mobile Menu Toggle
       const mobileBtn = document.getElementById('mobileMenuBtn'), mobileMenu = document.getElementById('mobileMenu');
       if(mobileBtn) mobileBtn.onclick = () => mobileMenu.classList.toggle('hidden');
       document.querySelectorAll('#mobileMenu a').forEach(l => l.addEventListener('click', () => mobileMenu.classList.add('hidden')));
       
+      // Feedback Widget Functionality
       const mainBtn = document.getElementById('feedbackMainBtn');
       const panel = document.getElementById('feedbackPanel');
       const closePanelBtn = document.getElementById('closeFeedbackPanel');
@@ -620,6 +704,7 @@
         });
       }
 
+      // 30-Day Timer for Offer Banner
       function setThirtyDayTimer() {
         const now = new Date();
         const targetDate = new Date(now.getTime());

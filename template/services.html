@@ -13,18 +13,25 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
+    /* ======================================== */
+    /* 1. CUSTOM FONT FACE (GOOD TIMES RG)      */
+    /* ======================================== */
     @font-face {
       font-family: 'Good Times Rg';
       src: url('fonts/Good Times Rg.otf') format('opentype'),
            url('fonts/good times rg.ttf') format('truetype');
       font-weight: normal;
       font-style: normal;
+      font-display: swap;
+    }
+    
+    /* ======================================== */
+    /* 2. RESET & GLOBAL STYLES                 */
+    /* ======================================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
     
     :root {
@@ -60,7 +67,9 @@
       padding: 0 clamp(1rem, 4vw, 3rem);
     }
     
-    /* Floating buttons */
+    /* ======================================== */
+    /* 3. FLOATING BUTTONS (WhatsApp & Location) */
+    /* ======================================== */
     .whatsapp-float, .location-float {
       position: fixed;
       z-index: 999;
@@ -97,24 +106,63 @@
       transform: scale(1.08);
     }
     
-    /* Logo */
-    .logo-img, .footer-logo-img {
-      width: clamp(2.5rem, 8vw, 4rem);
-      height: clamp(2.5rem, 8vw, 4rem);
+    /* ======================================== */
+    /* 4. LOGO STYLES (EXACTLY LIKE HOME PAGE)  */
+    /* ======================================== */
+    .logo-img {
+      width: 52px;
+      height: 52px;
       object-fit: contain;
-      border-radius: 0.75rem;
+      border-radius: 12px;
       background-color: var(--primary-color);
-      padding: clamp(0.25rem, 1vw, 0.5rem);
+      padding: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    @media (min-width: 768px) {
+      .logo-img { 
+        width: 60px; 
+        height: 60px; 
+        padding: 8px;
+        border-radius: 14px;
+      }
     }
     
+    .footer-logo-img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      border-radius: 12px;
+      background-color: var(--primary-color);
+      padding: 6px;
+    }
+    @media (min-width: 768px) {
+      .footer-logo-img { 
+        width: 52px; 
+        height: 52px; 
+        padding: 8px;
+      }
+    }
+    
+    /* ======================================== */
+    /* 5. NAVIGATION (EXACTLY LIKE HOME PAGE)   */
+    /* ======================================== */
     .navbar-padding {
-      padding-top: clamp(0.5rem, 2vw, 0.8rem);
-      padding-bottom: clamp(0.5rem, 2vw, 0.8rem);
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+    }
+    @media (min-width: 768px) {
+      .navbar-padding {
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+      }
     }
     
     .nav-link {
-      font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+      font-size: 0.9rem;
       transition: color 0.2s;
+    }
+    @media (min-width: 768px) {
+      .nav-link { font-size: 0.95rem; }
     }
     
     .active-nav {
@@ -123,11 +171,79 @@
       font-weight: 600;
     }
     
-    /* Flip Card */
+    /* ======================================== */
+    /* 6. OFFER TIMER BANNER (EXACTLY LIKE HOME PAGE) */
+    /* ======================================== */
+    .offer-timer-section {
+      background: linear-gradient(135deg, #fef9e6 0%, #fff4e0 100%);
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      margin: 20px auto 30px auto;
+      max-width: 1280px;
+      padding: 0 16px;
+    }
+    .offer-container {
+      background: linear-gradient(95deg, #0c5ca8 0%, #0e6bbd 100%);
+      border-radius: 24px;
+      padding: 18px 24px;
+      box-shadow: 0 12px 20px -8px rgba(12,92,168,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .offer-badge {
+      background-color: rgba(255,255,255,0.2);
+      backdrop-filter: blur(4px);
+      border-radius: 60px;
+      padding: 6px 16px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+    }
+    .discount-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1;
+      text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+    }
+    .timer-block {
+      background: #ffffff;
+      border-radius: 16px;
+      min-width: 70px;
+      text-align: center;
+      padding: 10px 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .timer-number {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #0c5ca8;
+      font-family: 'Poppins', monospace;
+      line-height: 1;
+    }
+    .timer-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #4a5568;
+      letter-spacing: 0.5px;
+    }
+    @media (max-width: 640px) {
+      .offer-container { padding: 16px; flex-direction: column; text-align: center; gap: 12px; }
+      .timer-block { min-width: 60px; padding: 6px 4px; }
+      .timer-number { font-size: 1.3rem; }
+      .discount-number { font-size: 1.7rem; }
+    }
+    
+    /* ======================================== */
+    /* 7. FLIP CARD STYLES                      */
+    /* ======================================== */
     .flip-card {
       background-color: transparent;
       width: 100%;
-      height: clamp(30rem, 75vh, 42rem);
+      height: clamp(28rem, 70vh, 38rem);
       perspective: 1500px;
       cursor: pointer;
     }
@@ -170,10 +286,9 @@
       padding: clamp(0.8rem, 2vw, 1.2rem);
     }
     
-    /* IMAGE CONTAINER */
     .front-img-wrapper {
       width: 100%;
-      height: clamp(18rem, 45vh, 26rem);
+      height: clamp(16rem, 40vh, 22rem);
       background: linear-gradient(135deg, #f8fafc 0%, #eef2f6 100%);
       display: flex;
       align-items: center;
@@ -306,72 +421,9 @@
       box-shadow: 0 0.25rem 0.5rem rgba(12,92,168,0.3);
     }
     
-    /* Timer Banner */
-    .offer-timer-section {
-      max-width: 1400px;
-      margin: 0 auto 1.5rem auto;
-      padding: 0 clamp(0.8rem, 3vw, 2rem);
-    }
-    
-    .offer-container {
-      background: linear-gradient(95deg, var(--primary-color) 0%, #0e6bbd 100%);
-      border-radius: clamp(1rem, 3vw, 2rem);
-      padding: clamp(0.8rem, 2vw, 1.5rem) clamp(1rem, 3vw, 2rem);
-      box-shadow: 0 0.75rem 1.5rem -0.5rem rgba(12,92,168,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: clamp(0.8rem, 2vw, 1.2rem);
-    }
-    
-    .offer-badge {
-      background: rgba(255,255,255,0.2);
-      backdrop-filter: blur(4px);
-      border-radius: 60px;
-      padding: clamp(0.2rem, 1vw, 0.4rem) clamp(0.6rem, 2vw, 1rem);
-      font-weight: 700;
-      font-size: clamp(0.65rem, 2vw, 0.8rem);
-    }
-    
-    .discount-number {
-      font-size: clamp(1.2rem, 5vw, 2rem);
-      font-weight: 800;
-      text-shadow: 0.125rem 0.125rem 0 rgba(0,0,0,0.1);
-    }
-    
-    .offer-text-sm {
-      font-size: clamp(0.65rem, 2vw, 0.8rem);
-      font-weight: 500;
-    }
-    
-    .timer-block {
-      background: white;
-      border-radius: clamp(0.5rem, 2vw, 0.75rem);
-      min-width: clamp(2.5rem, 8vw, 4rem);
-      text-align: center;
-      padding: clamp(0.2rem, 1vw, 0.4rem) clamp(0.2rem, 1vw, 0.3rem);
-    }
-    
-    .timer-number {
-      font-size: clamp(1rem, 4vw, 1.5rem);
-      font-weight: 800;
-      color: var(--primary-color);
-    }
-    
-    .timer-label {
-      font-size: clamp(0.45rem, 1.5vw, 0.55rem);
-      font-weight: 600;
-      color: #4a5568;
-      text-transform: uppercase;
-    }
-    
-    .offer-ends-text {
-      font-size: clamp(0.6rem, 2vw, 0.75rem);
-      font-weight: 500;
-    }
-    
-    /* Section styles */
+    /* ======================================== */
+    /* 8. SECTION STYLES                        */
+    /* ======================================== */
     .section-badge {
       display: inline-block;
       background: rgba(12,92,168,0.1);
@@ -397,7 +449,20 @@
       margin: 0 auto;
     }
     
-    /* Modal */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+      gap: clamp(1rem, 3vw, 1.8rem);
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e6f0fa 100%);
+      padding: clamp(2rem, 8vw, 4rem) 0;
+    }
+    
+    /* ======================================== */
+    /* 9. MODAL STYLES                          */
+    /* ======================================== */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -468,7 +533,9 @@
       padding: clamp(1rem, 4vw, 1.8rem);
     }
     
-    /* Form */
+    /* ======================================== */
+    /* 10. FORM STYLES                          */
+    /* ======================================== */
     .form-group {
       margin-bottom: clamp(0.8rem, 3vw, 1.2rem);
     }
@@ -538,80 +605,84 @@
       font-size: clamp(0.7rem, 2vw, 0.85rem);
     }
     
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
-      gap: clamp(1rem, 3vw, 1.8rem);
-    }
-    
-    .gradient-bg {
-      background: linear-gradient(135deg, #f0f9ff 0%, #e6f0fa 100%);
-      padding: clamp(2rem, 8vw, 4rem) 0;
-    }
-    
-    /* Feedback Widget */
+    /* ======================================== */
+    /* 11. FEEDBACK WIDGET (EXACTLY LIKE HOME PAGE) */
+    /* ======================================== */
     .feedback-widget {
       position: fixed;
-      bottom: clamp(0.8rem, 3vw, 1.5rem);
-      left: clamp(0.8rem, 3vw, 1.5rem);
+      bottom: 20px;
+      left: 16px;
       z-index: 999;
+    }
+    @media (min-width: 640px) {
+      .feedback-widget { bottom: 28px; left: 28px; }
     }
     
     .feedback-main-btn {
       display: flex;
       align-items: center;
-      gap: clamp(0.3rem, 1.5vw, 0.6rem);
+      gap: 8px;
       background-color: var(--primary-color);
       border-radius: 60px;
-      padding: clamp(0.3rem, 1.5vw, 0.6rem) clamp(0.8rem, 2.5vw, 1.2rem) clamp(0.3rem, 1.5vw, 0.6rem) clamp(0.5rem, 2vw, 0.9rem);
+      padding: 8px 16px 8px 12px;
       cursor: pointer;
-      box-shadow: 0 0.5rem 1.25rem rgba(12,92,168,0.35);
+      box-shadow: 0 8px 20px rgba(12,92,168,0.35);
       transition: all 0.3s ease;
+    }
+    .feedback-main-btn:hover {
+      transform: scale(1.05);
+      background-color: var(--primary-dark);
     }
     
     .feedback-icon-circle {
-      background: rgba(255,255,255,0.2);
+      background-color: rgba(255,255,255,0.2);
       border-radius: 50%;
-      width: clamp(1.8rem, 6vw, 2.2rem);
-      height: clamp(1.8rem, 6vw, 2.2rem);
+      width: 38px;
+      height: 38px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    
+    @media (min-width: 640px) {
+      .feedback-icon-circle { width: 42px; height: 42px; }
+    }
     .feedback-icon-circle i {
-      font-size: clamp(0.8rem, 3vw, 1rem);
+      font-size: 20px;
       color: white;
     }
     
     .feedback-label-text {
       color: white;
       font-weight: 600;
-      font-size: clamp(0.6rem, 2vw, 0.75rem);
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
     }
-    
     .feedback-label-text small {
-      font-size: clamp(0.5rem, 1.5vw, 0.6rem);
+      font-size: 0.65rem;
       font-weight: 400;
       opacity: 0.9;
       display: block;
+      line-height: 1.2;
     }
     
     .feedback-panel {
       position: absolute;
-      bottom: 110%;
+      bottom: 70px;
       left: 0;
-      width: min(85vw, 320px);
+      width: calc(100vw - 32px);
+      max-width: 360px;
       background: white;
-      border-radius: 1.25rem;
-      box-shadow: 0 1.5rem 2.8rem -0.75rem rgba(0,0,0,0.35);
+      border-radius: 24px;
+      box-shadow: 0 25px 45px -12px rgba(0,0,0,0.35);
       overflow: hidden;
-      transition: all 0.3s;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
       transform: translateY(20px);
       opacity: 0;
       visibility: hidden;
     }
-    
+    @media (min-width: 480px) {
+      .feedback-panel { width: 360px; bottom: 75px; }
+    }
     .feedback-panel.active {
       transform: translateY(0);
       opacity: 1;
@@ -620,77 +691,112 @@
     
     .panel-header {
       background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-      padding: clamp(0.6rem, 2vw, 0.9rem) clamp(0.8rem, 2.5vw, 1.2rem);
+      padding: 16px 20px;
       color: white;
+    }
+    .panel-header h3 {
+      font-weight: 700;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
     
     .star-rating {
       display: flex;
       flex-direction: row-reverse;
       justify-content: center;
-      gap: 0.5rem;
-      margin: 0.5rem 0;
+      gap: 10px;
+      margin: 8px 0;
     }
-    
     .star-rating input { display: none; }
     .star-rating label {
-      font-size: clamp(1.2rem, 5vw, 1.8rem);
+      font-size: 30px;
       color: #ddd;
       cursor: pointer;
+      transition: all 0.2s;
     }
     .star-rating input:checked ~ label,
     .star-rating label:hover,
-    .star-rating label:hover ~ label { color: #ffc107; }
+    .star-rating label:hover ~ label {
+      color: #ffc107;
+      transform: scale(1.05);
+    }
     
     .feedback-whatsapp-btn {
       background-color: #25D366;
       transition: all 0.2s;
       font-weight: 600;
-      padding: clamp(0.5rem, 1.5vw, 0.7rem);
-      font-size: clamp(0.7rem, 2vw, 0.85rem);
     }
+    .feedback-whatsapp-btn:hover {
+      background-color: #075e54;
+      transform: translateY(-2px);
+    }
+    .close-panel-link {
+      font-size: 0.7rem;
+      color: #94a3b8;
+      cursor: pointer;
+    }
+    .close-panel-link:hover { color: var(--primary-color); }
     
+    /* ======================================== */
+    /* 12. SOCIAL ICONS & FOOTER (EXACTLY LIKE HOME PAGE) */
+    /* ======================================== */
     .social-icon {
       transition: all 0.3s ease;
-      width: clamp(1.8rem, 6vw, 2.2rem);
-      height: clamp(1.8rem, 6vw, 2.2rem);
+      width: 32px;
+      height: 32px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       background: #1f2937;
       border-radius: 50%;
     }
-    
+    @media (min-width: 640px) {
+      .social-icon { width: 36px; height: 36px; }
+    }
     .social-icon:hover {
       transform: translateY(-3px);
     }
     
     footer a, .footer-link {
       transition: all 0.2s ease;
-      font-size: clamp(0.65rem, 2vw, 0.75rem);
+      font-size: 0.75rem;
+    }
+    @media (min-width: 640px) {
+      footer a, .footer-link { font-size: 0.8rem; }
     }
     
     .navbar-spacer {
-      margin-bottom: clamp(0.8rem, 3vw, 1.5rem);
+      margin-bottom: 1rem;
+    }
+    @media (min-width: 768px) {
+      .navbar-spacer { margin-bottom: 1.5rem; }
     }
   </style>
 </head>
 <body>
 
+  <!-- ======================================== -->
+  <!-- FLOATING BUTTONS (Location & WhatsApp)   -->
+  <!-- ======================================== -->
   <div class="location-float" id="locationBtn"><i class="fas fa-map-marker-alt text-white"></i></div>
   <a href="https://wa.me/923005518622?text=Hello%20Zeetech" target="_blank" class="whatsapp-float"><i class="fab fa-whatsapp text-white"></i></a>
 
-  <!-- Feedback Widget -->
-  <div class="feedback-widget">
+  <!-- ======================================== -->
+  <!-- FEEDBACK WIDGET (EXACTLY LIKE HOME PAGE) -->
+  <!-- ======================================== -->
+  <div class="feedback-widget" id="zeetechFeedbackWidget">
     <div class="feedback-main-btn" id="feedbackMainBtn">
       <div class="feedback-icon-circle"><i class="fas fa-comment-dots"></i></div>
       <div class="feedback-label-text">Feedback <small>rate & suggest</small></div>
     </div>
     <div class="feedback-panel" id="feedbackPanel">
-      <div class="panel-header"><h3 class="text-sm font-bold"><i class="fas fa-star-half-alt"></i> Share Your Experience</h3></div>
-      <div class="p-4">
-        <div class="mb-3 text-center">
-          <div class="star-rating">
+      <div class="panel-header"><h3><i class="fas fa-star-half-alt"></i> Share Your Experience</h3><p class="text-xs opacity-85">Your opinion helps us improve Zeetech</p></div>
+      <div class="p-5" style="padding: 18px;">
+        <div class="mb-4 text-center">
+          <label class="block text-gray-700 text-sm font-semibold mb-1">Rating</label>
+          <div class="star-rating" id="starRatingGroup">
             <input type="radio" id="star5_fb" name="fb_rating" value="5"><label for="star5_fb" class="fas fa-star"></label>
             <input type="radio" id="star4_fb" name="fb_rating" value="4"><label for="star4_fb" class="fas fa-star"></label>
             <input type="radio" id="star3_fb" name="fb_rating" value="3"><label for="star3_fb" class="fas fa-star"></label>
@@ -698,52 +804,59 @@
             <input type="radio" id="star1_fb" name="fb_rating" value="1"><label for="star1_fb" class="fas fa-star"></label>
           </div>
         </div>
-        <textarea id="feedbackTextMsg" rows="2" placeholder="Write your feedback..." class="w-full border rounded-xl px-3 py-2 text-sm focus:ring-2 focus:ring-[#0c5ca8]"></textarea>
-        <button id="submitFeedbackBtn" class="feedback-whatsapp-btn w-full text-white rounded-xl font-semibold mt-3"><i class="fab fa-whatsapp mr-2"></i> Send Feedback</button>
-        <div class="mt-2 text-center"><span id="closeFeedbackPanel" class="close-panel-link" style="font-size:0.65rem; color:#94a3b8; cursor:pointer;"><i class="fas fa-times-circle"></i> Close</span></div>
+        <div class="mb-4"><textarea id="feedbackTextMsg" rows="3" placeholder="Write your feedback..." class="w-full border border-gray-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#0c5ca8]"></textarea></div>
+        <button id="submitFeedbackBtn" class="feedback-whatsapp-btn w-full text-white py-3 rounded-xl text-sm font-semibold flex items-center justify-center gap-2"><i class="fab fa-whatsapp"></i> Send Feedback</button>
+        <div class="mt-3 text-center"><span id="closeFeedbackPanel" class="close-panel-link"><i class="fas fa-times-circle"></i> Close</span></div>
       </div>
     </div>
   </div>
 
-  <!-- Header -->
+  <!-- ======================================== -->
+  <!-- HEADER / NAVIGATION (EXACTLY LIKE HOME PAGE) -->
+  <!-- ======================================== -->
   <header class="bg-white shadow-md sticky top-0 z-50">
-    <div class="container-custom navbar-padding flex flex-wrap items-center justify-between">
-      <a href="index.html" class="flex items-center space-x-2">
-        <img id="siteLogo" src="static/zeetech-lago.jpeg" alt="Zeetech Logo" class="logo-img">
-        <div><span class="font-black text-lg md:text-xl text-gray-800 good-times">ZEETECH</span><div class="text-[10px] text-gray-500 -mt-1">Technical Services</div></div>
+    <div class="container mx-auto px-4 md:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-2 md:space-x-3 group">
+        <img id="siteLogo" src="/static/zeetech-lago.jpeg" alt="Zeetech Logo" class="logo-img transition-transform group-hover:scale-105">
+        <div class="flex flex-col leading-tight">
+          <span class="font-black text-lg md:text-xl tracking-wide text-gray-800 good-times">ZEETECH</span>
+          <span class="text-[10px] md:text-[11px] text-gray-500 -mt-1">Technical Services</span>
+        </div>
       </a>
-      <nav class="hidden md:flex space-x-6 text-gray-700">
-        <a href="index.html" class="nav-link hover:text-[#0c5ca8] good-times">Home</a>
-        <a href="services.html" class="nav-link hover:text-[#0c5ca8] active-nav good-times">Services</a>
-        <a href="about.html" class="nav-link hover:text-[#0c5ca8] good-times">About Us</a>
-        <a href="contact.html" class="nav-link hover:text-[#0c5ca8] good-times">Contact</a>
+      <nav class="hidden md:flex space-x-6 lg:space-x-8 text-gray-700 font-medium">
+        <a href="index.html" class="nav-link hover:text-zeetech transition good-times">Home</a>
+        <a href="services.html" class="nav-link hover:text-zeetech transition active-nav good-times">Services</a>
+        <a href="about.html" class="nav-link hover:text-zeetech transition good-times">About Us</a>
+        <a href="contact.html" class="nav-link hover:text-zeetech transition good-times">Contact</a>
       </nav>
-      <button id="mobileMenuBtn" class="md:hidden text-gray-600 text-2xl"><i class="fas fa-bars"></i></button>
+      <button id="mobileMenuBtn" class="md:hidden text-gray-600 text-2xl focus:outline-none"><i class="fas fa-bars"></i></button>
     </div>
-    <div id="mobileMenu" class="hidden md:hidden bg-white border-t px-5 py-3 flex flex-col space-y-3">
-      <a href="index.html" class="py-2 hover:text-[#0c5ca8] good-times">Home</a>
-      <a href="services.html" class="py-2 text-[#0c5ca8] font-semibold good-times">Services</a>
-      <a href="about.html" class="py-2 hover:text-[#0c5ca8] good-times">About Us</a>
-      <a href="contact.html" class="py-2 hover:text-[#0c5ca8] good-times">Contact</a>
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t px-5 py-3 flex flex-col space-y-3 shadow-lg">
+      <a href="index.html" class="py-2 hover:text-zeetech font-medium good-times">Home</a>
+      <a href="services.html" class="py-2 text-zeetech font-semibold good-times">Services</a>
+      <a href="about.html" class="py-2 hover:text-zeetech good-times">About Us</a>
+      <a href="contact.html" class="py-2 hover:text-zeetech good-times">Contact</a>
     </div>
   </header>
 
   <div class="navbar-spacer"></div>
 
-  <!-- Timer Banner -->
+  <!-- ======================================== -->
+  <!-- OFFER TIMER BANNER (EXACTLY LIKE HOME PAGE) -->
+  <!-- ======================================== -->
   <div class="offer-timer-section">
     <div class="offer-container">
       <div class="flex items-center gap-3 flex-wrap">
-        <div class="offer-badge text-white"><i class="fas fa-fire mr-1"></i> LIMITED OFFER</div>
+        <div class="offer-badge text-white"><i class="fas fa-fire text-white mr-1"></i> LIMITED OFFER</div>
         <div class="flex items-baseline gap-2">
           <span class="discount-number text-white font-extrabold">30% OFF</span>
-          <span class="offer-text-sm text-white">on any service</span>
+          <span class="text-white text-sm font-medium">on any service</span>
         </div>
-        <div class="text-white text-[0.65rem] bg-black/20 px-3 py-1 rounded-full"><i class="fas fa-tools mr-1"></i> AC · Fridge · Solar · Electrical · Carpenter</div>
+        <div class="text-white text-xs bg-black/20 px-3 py-1 rounded-full"><i class="fas fa-tools mr-1"></i> AC · Fridge · Solar · Electrical · Carpenter</div>
       </div>
-      <div class="flex items-center gap-2 md:gap-3">
-        <span class="offer-ends-text text-white"><i class="far fa-clock mr-1"></i> Offer ends in:</span>
-        <div class="flex gap-2">
+      <div class="flex items-center gap-2 md:gap-3 mt-2 sm:mt-0">
+        <span class="text-white text-xs font-semibold tracking-wide uppercase"><i class="far fa-clock mr-1"></i> Offer ends in:</span>
+        <div id="countdownTimer" class="flex gap-2">
           <div class="timer-block"><div class="timer-number" id="days">00</div><div class="timer-label">Days</div></div>
           <div class="timer-block"><div class="timer-number" id="hours">00</div><div class="timer-label">Hrs</div></div>
           <div class="timer-block"><div class="timer-number" id="minutes">00</div><div class="timer-label">Mins</div></div>
@@ -753,6 +866,9 @@
     </div>
   </div>
 
+  <!-- ======================================== -->
+  <!-- MAIN CONTENT (SERVICES)                  -->
+  <!-- ======================================== -->
   <main>
     <div class="gradient-bg">
       <div class="container-custom text-center" data-aos="fade-up">
@@ -772,7 +888,9 @@
     </div>
   </main>
 
-  <!-- Feature Details Popup Modal -->
+  <!-- ======================================== -->
+  <!-- FEATURE DETAILS POPUP MODAL              -->
+  <!-- ======================================== -->
   <div id="featureModal" class="modal-overlay">
     <div class="modal-container" style="max-width: 450px;">
       <div class="modal-header">
@@ -788,7 +906,9 @@
     </div>
   </div>
 
-  <!-- Booking Modal - Web3Forms (No Backend Required) -->
+  <!-- ======================================== -->
+  <!-- BOOKING MODAL (Web3Forms)                -->
+  <!-- ======================================== -->
   <div id="bookingModal" class="modal-overlay">
     <div class="modal-container">
       <div class="modal-header">
@@ -797,19 +917,10 @@
       </div>
       <form id="bookingForm" class="modal-body" action="https://api.web3forms.com/submit" method="POST">
         <div id="formMessage"></div>
-        
-        <!-- Web3Forms Access Key -->
         <input type="hidden" name="access_key" value="4c4c9b02-6bd4-40c0-98eb-ef7946ccfa5a">
-        
-        <!-- Redirect after submit -->
         <input type="hidden" name="redirect" value="https://web3forms.com/success">
-        
-        <!-- Email subject -->
         <input type="hidden" name="subject" value="Zeetech - New Service Booking Request">
-        
-        <!-- From name -->
         <input type="hidden" name="from_name" value="Zeetech Website">
-        
         <input type="hidden" id="serviceName" name="service_name">
         
         <div class="form-group">
@@ -858,7 +969,6 @@
           <textarea id="extraMsg" name="message" rows="2" placeholder="Any special requirements..."></textarea>
         </div>
         
-        <!-- Honeypot spam protection -->
         <input type="checkbox" name="botcheck" style="display: none;">
         
         <button type="submit" id="submitBtn" class="btn-submit">
@@ -869,28 +979,80 @@
     </div>
   </div>
 
-  <!-- Footer -->
+  <!-- ======================================== -->
+  <!-- FOOTER (EXACTLY LIKE HOME PAGE)          -->
+  <!-- ======================================== -->
   <footer class="bg-gray-900 text-white mt-12">
-    <div class="container-custom py-8">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div><div class="flex items-center space-x-3"><img id="footerLogo" src="/static/zeetech-lago.jpeg" class="footer-logo-img"><div><div class="font-bold good-times text-base">ZEETECH</div><div class="text-[10px] text-gray-400">Technical Services</div></div></div><p class="text-gray-400 text-xs mt-2">Professional home and commercial technical service provider.</p><div class="flex space-x-2 mt-3"><a href="#" class="social-icon"><i class="fab fa-facebook-f text-gray-400 text-xs"></i></a><a href="#" class="social-icon"><i class="fab fa-instagram text-gray-400 text-xs"></i></a><a href="#" class="social-icon"><i class="fab fa-whatsapp text-gray-400 text-xs"></i></a></div></div>
-        <div><h3 class="font-semibold mb-3 good-times text-sm">Quick Links</h3><ul class="space-y-1"><li><a href="index.html" class="text-gray-400 hover:text-[#0c5ca8] text-xs">Home</a></li><li><a href="services.html" class="text-gray-400 hover:text-[#0c5ca8] text-xs">Services</a></li><li><a href="about.html" class="text-gray-400 hover:text-[#0c5ca8] text-xs">About Us</a></li><li><a href="contact.html" class="text-gray-400 hover:text-[#0c5ca8] text-xs">Contact</a></li></ul></div>
-        <div><h3 class="font-semibold mb-3 good-times text-sm">Our Services</h3><ul class="space-y-1"><li><a href="#" class="text-gray-400 hover:text-[#0c5ca8] text-xs">Air Conditioner</a></li><li><a href="#" class="text-gray-400 hover:text-[#0c5ca8] text-xs">Refrigerator</a></li><li><a href="#" class="text-gray-400 hover:text-[#0c5ca8] text-xs">Solar Energy</a></li><li><a href="#" class="text-gray-400 hover:text-[#0c5ca8] text-xs">Inverter Services</a></li></ul></div>
-        <div><h3 class="font-semibold mb-3 good-times text-sm">Contact Info</h3><ul class="space-y-2"><li><a href="https://wa.me/923005518622" class="flex items-center gap-2 text-gray-400 text-xs"><i class="fab fa-whatsapp text-green-500"></i> +92 300 5518622</a></li><li><a href="mailto:info.zeetech26@gmail.com" class="flex items-center gap-2 text-gray-400 text-xs"><i class="fas fa-envelope text-red-500"></i> info.zeetech26@gmail.com</a></li><li class="flex items-center gap-2 text-gray-400 text-xs"><i class="fas fa-map-marker-alt text-[#0c5ca8]"></i> G-12 Ghazali Road, Islamabad</li></ul></div>
+    <div class="container mx-auto px-4 md:px-6 lg:px-8 py-8 md:py-12">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div class="space-y-3">
+          <div class="flex items-center space-x-3">
+            <img id="footerLogo" src="/static/zeetech-lago.jpeg" alt="Zeetech Logo" class="footer-logo-img">
+            <div>
+              <div class="font-bold text-lg md:text-xl tracking-wide good-times">ZEETECH</div>
+              <div class="text-xs text-gray-400">Technical Services</div>
+            </div>
+          </div>
+          <p class="text-gray-400 text-xs md:text-sm leading-relaxed">Professional home and commercial technical service provider committed to delivering reliable, efficient, and affordable solutions.</p>
+          <div class="flex space-x-3 pt-2">
+            <a href="https://www.facebook.com/share/1BS7AHHSx5/" target="_blank" class="social-icon w-8 h-8 md:w-9 md:h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#1877f2]"><i class="fab fa-facebook-f text-gray-400 hover:text-white text-xs md:text-sm"></i></a>
+            <a href="https://www.instagram.com/zeetech.26?igsh=YTQ3bDJoczl1cmZ0" target="_blank" class="social-icon w-8 h-8 md:w-9 md:h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gradient-to-tr hover:from-[#f77737] hover:to-[#e1306c]"><i class="fab fa-instagram text-gray-400 hover:text-white text-xs md:text-sm"></i></a>
+            <a href="https://www.tiktok.com/@zeetech26?_r=1&_t=ZS-95EIV49D8AT" target="_blank" class="social-icon w-8 h-8 md:w-9 md:h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-black"><i class="fab fa-tiktok text-gray-400 hover:text-white text-xs md:text-sm"></i></a>
+            <a href="https://wa.me/923005518622?text=Hello%20Zeetech" target="_blank" class="social-icon w-8 h-8 md:w-9 md:h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#25D366]"><i class="fab fa-whatsapp text-gray-400 hover:text-white text-xs md:text-sm"></i></a>
+          </div>
+        </div>
+        
+        <div><h3 class="text-base md:text-lg font-semibold mb-4 relative inline-block good-times">Quick Links<span class="absolute -bottom-2 left-0 w-10 h-0.5 bg-zeetech rounded-full"></span></h3>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="footer-link text-gray-400 hover:text-zeetech"><i class="fas fa-chevron-right text-zeetech text-xs mr-2"></i> Home</a></li>
+            <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech"><i class="fas fa-chevron-right text-zeetech text-xs mr-2"></i> Services</a></li>
+            <li><a href="about.html" class="footer-link text-gray-400 hover:text-zeetech"><i class="fas fa-chevron-right text-zeetech text-xs mr-2"></i> About Us</a></li>
+            <li><a href="contact.html" class="footer-link text-gray-400 hover:text-zeetech"><i class="fas fa-chevron-right text-zeetech text-xs mr-2"></i> Contact Us</a></li>
+          </ul>
+        </div>
+        
+        <div><h3 class="text-base md:text-lg font-semibold mb-4 relative inline-block good-times">Our Services<span class="absolute -bottom-2 left-0 w-10 h-0.5 bg-zeetech rounded-full"></span></h3>
+          <ul class="space-y-2">
+            <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech"><i class="fas fa-wind text-zeetech text-xs mr-2"></i> Air Conditioner</a></li>
+            <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech"><i class="fas fa-thermometer-half text-zeetech text-xs mr-2"></i> Refrigerator</a></li>
+            <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech"><i class="fas fa-solar-panel text-zeetech text-xs mr-2"></i> Solar Energy</a></li>
+            <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech"><i class="fas fa-battery-full text-zeetech text-xs mr-2"></i> Inverter Services</a></li>
+            <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech"><i class="fas fa-hammer text-zeetech text-xs mr-2"></i> Carpenter</a></li>
+            <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech"><i class="fas fa-bolt text-zeetech text-xs mr-2"></i> General Electrician</a></li>
+          </ul>
+        </div>
+        
+        <div><h3 class="text-base md:text-lg font-semibold mb-4 relative inline-block good-times">Contact Info<span class="absolute -bottom-2 left-0 w-10 h-0.5 bg-zeetech rounded-full"></span></h3>
+          <ul class="space-y-3">
+            <li><a href="https://wa.me/923005518622?text=Hello%20Zeetech" target="_blank" class="flex items-center gap-3 text-gray-400 hover:text-[#25D366]"><div class="w-7 h-7 md:w-8 md:h-8 bg-gray-800 rounded-full flex items-center justify-center"><i class="fab fa-whatsapp text-xs md:text-sm"></i></div><span class="text-xs md:text-sm">+92 300 5518622</span></a></li>
+            <li><a href="mailto:info.zeetech26@gmail.com" class="flex items-center gap-3 text-gray-400 hover:text-red-500"><div class="w-7 h-7 md:w-8 md:h-8 bg-gray-800 rounded-full flex items-center justify-center"><i class="fas fa-envelope text-xs md:text-sm"></i></div><span class="text-xs md:text-sm">info.zeetech26@gmail.com</span></a></li>
+            <li><a href="tel:+923005518622" class="flex items-center gap-3 text-gray-400 hover:text-zeetech"><div class="w-7 h-7 md:w-8 md:h-8 bg-gray-800 rounded-full flex items-center justify-center"><i class="fas fa-phone-alt text-xs md:text-sm"></i></div><span class="text-xs md:text-sm">+92 300 5518622</span></a></li>
+            <li class="flex items-center gap-3 text-gray-400"><div class="w-7 h-7 md:w-8 md:h-8 bg-gray-800 rounded-full flex items-center justify-center"><i class="fas fa-map-marker-alt text-xs md:text-sm text-zeetech"></i></div><span class="text-xs md:text-sm">G-12 Ghazali Road, Islamabad</span></li>
+          </ul>
+        </div>
       </div>
-      <div class="border-t border-gray-800 my-5"></div>
-      <div class="text-center text-gray-500 text-[10px]">© 2025 Zeetech Technical Services. All rights reserved.</div>
+      <div class="border-t border-gray-800 my-6 md:my-8"></div>
+      <div class="flex flex-col md:flex-row justify-between items-center gap-3">
+        <div class="text-gray-500 text-[10px] md:text-xs">© 2025 Zeetech Technical Services. All rights reserved.</div>
+        <div class="flex gap-4 md:gap-6">
+          <a href="#" class="text-gray-500 hover:text-zeetech text-[10px] md:text-xs">Privacy Policy</a>
+          <a href="#" class="text-gray-500 hover:text-zeetech text-[10px] md:text-xs">Terms & Conditions</a>
+          <a href="#" class="text-gray-500 hover:text-zeetech text-[10px] md:text-xs">Support</a>
+        </div>
+      </div>
     </div>
   </footer>
 
   <script>
     (function() {
-      const locationBtn = document.getElementById('locationBtn');
-      if (locationBtn) locationBtn.addEventListener('click', () => window.open('https://www.google.com/maps?q=33.6598056,72.9891944&z=15', '_blank'));
+      // Location Button
+      document.getElementById('locationBtn')?.addEventListener('click', () => window.open('https://www.google.com/maps?q=33.6598056,72.9891944&z=15', '_blank'));
       
+      // Logo images
       document.getElementById('siteLogo').src = "/static/zeetech-lago.jpeg";
       document.getElementById('footerLogo').src = "/static/zeetech-lago.jpeg";
       
+      // Service Images
       const SERVICE_IMAGES = {
         "Air Conditioner": "/static/ac.jpeg",
         "Refrigerator": "/static/fridge.jpeg",
@@ -900,6 +1062,7 @@
         "General Electrician": "/static/general.jpeg"
       };
       
+      // Feature Details
       const FEATURE_DETAILS = {
         "Installation": "✅ Professional AC installation includes proper unit placement, bracket fitting, electrical connections, drainage setup, and testing. 1-month warranty.",
         "Repair Service": "🔧 Comprehensive AC repair covering compressor issues, fan motor problems, sensor failures, PCB board repairs. Same-day service.",
@@ -992,12 +1155,11 @@
       if (closeBookingBtn) closeBookingBtn.onclick = closeBookingModal;
       if (bookingModal) bookingModal.addEventListener('click', function(e) { if (e.target === bookingModal) closeBookingModal(); });
       
-      // Handle Web3Forms submit
+      // Web3Forms submit
       if (bookingForm) {
         bookingForm.addEventListener('submit', async (e) => {
           e.preventDefault();
           
-          // Validate fields
           const name = document.getElementById('name').value.trim();
           const phone = document.getElementById('phone').value.trim();
           const email = document.getElementById('email').value.trim();
@@ -1013,10 +1175,7 @@
           
           try {
             const formData = new FormData(bookingForm);
-            const response = await fetch('https://api.web3forms.com/submit', {
-              method: 'POST',
-              body: formData
-            });
+            const response = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
             const data = await response.json();
             
             if (data.success) {
@@ -1031,7 +1190,6 @@
               throw new Error(data.message || 'Failed to send');
             }
           } catch (error) {
-            console.error('Error:', error);
             showMessage('❌ Failed to send request. Please try again or contact us on WhatsApp.', 'error');
             submitBtn.disabled = false;
             submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Request via Email';
@@ -1043,9 +1201,7 @@
         if (formMessage) {
           formMessage.innerHTML = `<div class="${type === 'success' ? 'success-message' : 'error-message'}">${msg}</div>`;
           setTimeout(() => { if (formMessage.innerHTML) formMessage.innerHTML = ''; }, 5000);
-        } else {
-          alert(msg);
-        }
+        } else { alert(msg); }
       }
   
       function renderServices() {
@@ -1094,7 +1250,7 @@
         document.querySelectorAll('#mobileMenu a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
       }
       
-      // Feedback
+      // Feedback Widget
       const mainBtn = document.getElementById('feedbackMainBtn');
       const panelFB = document.getElementById('feedbackPanel');
       const closePanelBtn = document.getElementById('closeFeedbackPanel');
