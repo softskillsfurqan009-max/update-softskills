@@ -107,7 +107,7 @@
     }
     
     /* ======================================== */
-    /* 4. LOGO STYLES (EXACTLY LIKE HOME PAGE)  */
+    /* 4. LOGO STYLES                           */
     /* ======================================== */
     .logo-img {
       width: 52px;
@@ -144,22 +144,17 @@
     }
     
     /* ======================================== */
-    /* 5. NAVIGATION (EXACTLY LIKE HOME PAGE)   */
+    /* 5. NAVIGATION WITH DROPDOWN              */
     /* ======================================== */
     .navbar-padding {
       padding-top: 0.75rem;
       padding-bottom: 0.75rem;
     }
-    @media (min-width: 768px) {
-      .navbar-padding {
-        padding-top: 0.75rem;
-        padding-bottom: 0.75rem;
-      }
-    }
     
     .nav-link {
       font-size: 0.9rem;
       transition: color 0.2s;
+      position: relative;
     }
     @media (min-width: 768px) {
       .nav-link { font-size: 0.95rem; }
@@ -171,8 +166,108 @@
       font-weight: 600;
     }
     
+    /* Dropdown Menu Styles */
+    .dropdown {
+      position: relative;
+    }
+    
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      min-width: 220px;
+      box-shadow: 0 15px 30px -10px rgba(0,0,0,0.15);
+      border-radius: 12px;
+      padding: 0.5rem 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 100;
+      border: 1px solid #e5e7eb;
+    }
+    
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .dropdown-menu a {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.6rem 1.2rem;
+      color: #374151;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .dropdown-menu a i {
+      width: 1.3rem;
+      color: var(--primary-color);
+      font-size: 0.9rem;
+    }
+    
+    .dropdown-menu a:hover {
+      background-color: #f3f4f6;
+      color: var(--primary-color);
+      padding-left: 1.5rem;
+    }
+    
+    /* Mobile Dropdown */
+    .mobile-dropdown-menu {
+      display: none;
+      flex-direction: column;
+      padding-left: 1.5rem;
+      margin-top: 0.5rem;
+      border-left: 2px solid var(--primary-color);
+    }
+    
+    .mobile-dropdown-menu.show {
+      display: flex;
+    }
+    
+    .mobile-dropdown-menu a {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.5rem 0;
+      color: #4b5563;
+      font-size: 0.85rem;
+      text-decoration: none;
+    }
+    
+    .mobile-dropdown-menu a i {
+      width: 1.3rem;
+      color: var(--primary-color);
+    }
+    
+    .mobile-dropdown-menu a:hover {
+      color: var(--primary-color);
+    }
+    
+    .dropdown-toggle {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    
+    .dropdown-toggle i.fa-chevron-down {
+      font-size: 0.7rem;
+      transition: transform 0.3s;
+    }
+    
+    .dropdown:hover .dropdown-toggle i.fa-chevron-down {
+      transform: rotate(180deg);
+    }
+    
     /* ======================================== */
-    /* 6. OFFER TIMER BANNER (EXACTLY LIKE HOME PAGE) */
+    /* 6. OFFER TIMER BANNER                    */
     /* ======================================== */
     .offer-timer-section {
       background: linear-gradient(135deg, #fef9e6 0%, #fff4e0 100%);
@@ -243,7 +338,7 @@
     .flip-card {
       background-color: transparent;
       width: 100%;
-      height: clamp(28rem, 70vh, 38rem);
+      height: clamp(30rem, 75vh, 42rem);
       perspective: 1500px;
       cursor: pointer;
     }
@@ -347,26 +442,46 @@
       margin-bottom: 0.5rem;
     }
     
-    .book-now-btn {
-      background-color: var(--primary-color);
+    .button-group {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: auto;
+    }
+    
+    .book-now-btn, .view-more-btn {
       border-radius: 3rem;
-      padding: clamp(0.5rem, 1.5vw, 0.8rem) 0;
-      font-size: clamp(0.7rem, 2vw, 0.85rem);
+      padding: clamp(0.5rem, 1.5vw, 0.7rem) 0;
+      font-size: clamp(0.65rem, 1.8vw, 0.75rem);
       font-weight: 600;
-      color: white;
       transition: all 0.3s ease;
-      width: 100%;
+      width: 50%;
       border: none;
       cursor: pointer;
-      margin-top: auto;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
+      gap: 0.3rem;
+    }
+    
+    .book-now-btn {
+      background-color: var(--primary-color);
+      color: white;
     }
     
     .book-now-btn:hover {
       background-color: var(--primary-dark);
+      transform: translateY(-0.125rem);
+    }
+    
+    .view-more-btn {
+      background-color: transparent;
+      color: var(--primary-color);
+      border: 1px solid var(--primary-color);
+    }
+    
+    .view-more-btn:hover {
+      background-color: var(--primary-color);
+      color: white;
       transform: translateY(-0.125rem);
     }
     
@@ -472,7 +587,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: clamp(0.8rem, 3vw, 1.5rem);
+      padding: 0;
       opacity: 0;
       visibility: hidden;
       transition: all 0.3s ease;
@@ -481,6 +596,26 @@
     .modal-overlay.active {
       opacity: 1;
       visibility: visible;
+    }
+    
+    .service-detail-modal .modal-container,
+    .feature-modal .modal-container {
+      max-width: 95vw !important;
+      width: 95% !important;
+      max-height: 90vh !important;
+      border-radius: 28px !important;
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+      overflow-y: auto;
+    }
+    
+    @media (max-width: 768px) {
+      .service-detail-modal .modal-container,
+      .feature-modal .modal-container {
+        max-width: 98vw !important;
+        width: 98% !important;
+        max-height: 95vh !important;
+        border-radius: 20px !important;
+      }
     }
     
     .modal-container {
@@ -502,7 +637,7 @@
     
     .modal-header {
       background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-      padding: clamp(0.8rem, 3vw, 1.2rem) clamp(1rem, 4vw, 1.8rem);
+      padding: clamp(1rem, 2vw, 1.5rem) clamp(1.5rem, 4vw, 2.5rem);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -513,7 +648,7 @@
     }
     
     .modal-header h3 {
-      font-size: clamp(0.9rem, 3vw, 1.2rem);
+      font-size: clamp(1rem, 3vw, 1.5rem);
       margin: 0;
       display: flex;
       align-items: center;
@@ -524,18 +659,149 @@
       background: none;
       border: none;
       color: white;
-      font-size: clamp(1.2rem, 5vw, 2rem);
+      font-size: clamp(1.5rem, 5vw, 2rem);
       cursor: pointer;
       transition: opacity 0.2s;
     }
     
     .modal-body {
-      padding: clamp(1rem, 4vw, 1.8rem);
+      padding: clamp(1rem, 4vw, 2rem);
+      max-height: calc(90vh - 80px);
+      overflow-y: auto;
     }
     
-    /* ======================================== */
-    /* 10. FORM STYLES                          */
-    /* ======================================== */
+    /* Service Detail Content */
+    .service-detail-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .service-detail-image-section {
+      width: 100%;
+      text-align: center;
+    }
+    
+    .service-detail-img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: contain;
+      border-radius: 1rem;
+      background: linear-gradient(135deg, #f8fafc 0%, #eef2f6 100%);
+      padding: 1rem;
+    }
+    
+    @media (max-width: 640px) {
+      .service-detail-img {
+        max-height: 200px;
+        padding: 0.5rem;
+      }
+    }
+    
+    .service-detail-description {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #374151;
+      margin-bottom: 1rem;
+    }
+    
+    .price-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      padding: 0.5rem 1.2rem;
+      border-radius: 2rem;
+      font-weight: 700;
+      margin: 0.5rem 0 1rem 0;
+      font-size: 0.9rem;
+    }
+    
+    .detail-section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 1rem 0 0.8rem 0;
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .service-features-list {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.6rem;
+    }
+    
+    @media (max-width: 640px) {
+      .service-features-list {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .service-features-list li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #e5e7eb;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+    }
+    
+    .service-features-list li i {
+      color: var(--primary-color);
+      width: 1.3rem;
+      font-size: 0.9rem;
+    }
+    
+    .modal-footer-buttons,
+    .contact-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .modal-footer-buttons .book-now-btn,
+    .modal-footer-buttons .view-more-btn {
+      width: auto;
+      padding: 0.7rem 1.8rem;
+      font-size: 0.9rem;
+    }
+    
+    .whatsapp-link, .call-link {
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+    }
+    
+    .whatsapp-link {
+      background-color: #25D366;
+      color: white;
+    }
+    
+    .whatsapp-link:hover {
+      background-color: #075e54;
+      transform: translateY(-2px);
+    }
+    
+    .call-link {
+      background-color: #3b82f6;
+      color: white;
+    }
+    
+    .call-link:hover {
+      background-color: #2563eb;
+      transform: translateY(-2px);
+    }
+    
+    /* Form Styles */
     .form-group {
       margin-bottom: clamp(0.8rem, 3vw, 1.2rem);
     }
@@ -605,9 +871,7 @@
       font-size: clamp(0.7rem, 2vw, 0.85rem);
     }
     
-    /* ======================================== */
-    /* 11. FEEDBACK WIDGET (EXACTLY LIKE HOME PAGE) */
-    /* ======================================== */
+    /* Feedback Widget */
     .feedback-widget {
       position: fixed;
       bottom: 20px;
@@ -739,9 +1003,7 @@
     }
     .close-panel-link:hover { color: var(--primary-color); }
     
-    /* ======================================== */
-    /* 12. SOCIAL ICONS & FOOTER (EXACTLY LIKE HOME PAGE) */
-    /* ======================================== */
+    /* Social Icons & Footer */
     .social-icon {
       transition: all 0.3s ease;
       width: 32px;
@@ -778,13 +1040,13 @@
 <body>
 
   <!-- ======================================== -->
-  <!-- FLOATING BUTTONS (Location & WhatsApp)   -->
+  <!-- FLOATING BUTTONS                         -->
   <!-- ======================================== -->
   <div class="location-float" id="locationBtn"><i class="fas fa-map-marker-alt text-white"></i></div>
   <a href="https://wa.me/923005518622?text=Hello%20Zeetech" target="_blank" class="whatsapp-float"><i class="fab fa-whatsapp text-white"></i></a>
 
   <!-- ======================================== -->
-  <!-- FEEDBACK WIDGET (EXACTLY LIKE HOME PAGE) -->
+  <!-- FEEDBACK WIDGET                          -->
   <!-- ======================================== -->
   <div class="feedback-widget" id="zeetechFeedbackWidget">
     <div class="feedback-main-btn" id="feedbackMainBtn">
@@ -812,7 +1074,7 @@
   </div>
 
   <!-- ======================================== -->
-  <!-- HEADER / NAVIGATION (EXACTLY LIKE HOME PAGE) -->
+  <!-- HEADER WITH DROPDOWN NAVIGATION          -->
   <!-- ======================================== -->
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="container mx-auto px-4 md:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between">
@@ -825,15 +1087,48 @@
       </a>
       <nav class="hidden md:flex space-x-6 lg:space-x-8 text-gray-700 font-medium">
         <a href="index.html" class="nav-link hover:text-zeetech transition good-times">Home</a>
-        <a href="services.html" class="nav-link hover:text-zeetech transition active-nav good-times">Services</a>
+        
+        <!-- Services Dropdown Menu -->
+        <div class="dropdown">
+          <a href="javascript:void(0)" class="nav-link hover:text-zeetech transition good-times dropdown-toggle">
+            Services <i class="fas fa-chevron-down"></i>
+          </a>
+          <div class="dropdown-menu" id="servicesDropdown">
+            <a href="javascript:void(0)" onclick="openServiceDetailFromNav('Air Conditioner')"><i class="fas fa-wind"></i> Air Conditioner</a>
+            <a href="javascript:void(0)" onclick="openServiceDetailFromNav('Refrigerator')"><i class="fas fa-thermometer-half"></i> Refrigerator</a>
+            <a href="javascript:void(0)" onclick="openServiceDetailFromNav('Solar Energy')"><i class="fas fa-solar-panel"></i> Solar Energy</a>
+            <a href="javascript:void(0)" onclick="openServiceDetailFromNav('Inverter Services')"><i class="fas fa-battery-full"></i> Inverter Services</a>
+            <a href="javascript:void(0)" onclick="openServiceDetailFromNav('Carpenter')"><i class="fas fa-hammer"></i> Carpenter</a>
+            <a href="javascript:void(0)" onclick="openServiceDetailFromNav('General Electrician')"><i class="fas fa-bolt"></i> General Electrician</a>
+          </div>
+        </div>
+        
         <a href="about.html" class="nav-link hover:text-zeetech transition good-times">About Us</a>
         <a href="contact.html" class="nav-link hover:text-zeetech transition good-times">Contact</a>
       </nav>
       <button id="mobileMenuBtn" class="md:hidden text-gray-600 text-2xl focus:outline-none"><i class="fas fa-bars"></i></button>
     </div>
+    
+    <!-- Mobile Menu -->
     <div id="mobileMenu" class="hidden md:hidden bg-white border-t px-5 py-3 flex flex-col space-y-3 shadow-lg">
       <a href="index.html" class="py-2 hover:text-zeetech font-medium good-times">Home</a>
-      <a href="services.html" class="py-2 text-zeetech font-semibold good-times">Services</a>
+      
+      <!-- Mobile Services Dropdown Toggle -->
+      <div>
+        <div class="py-2 flex items-center justify-between cursor-pointer hover:text-zeetech good-times" id="mobileServicesToggle">
+          <span>Services</span>
+          <i class="fas fa-chevron-down text-xs transition-transform" id="mobileDropdownIcon"></i>
+        </div>
+        <div id="mobileServicesDropdown" class="mobile-dropdown-menu">
+          <a href="javascript:void(0)" onclick="openServiceDetailFromNav('Air Conditioner')"><i class="fas fa-wind"></i> Air Conditioner</a>
+          <a href="javascript:void(0)" onclick="openServiceDetailFromNav('Refrigerator')"><i class="fas fa-thermometer-half"></i> Refrigerator</a>
+          <a href="javascript:void(0)" onclick="openServiceDetailFromNav('Solar Energy')"><i class="fas fa-solar-panel"></i> Solar Energy</a>
+          <a href="javascript:void(0)" onclick="openServiceDetailFromNav('Inverter Services')"><i class="fas fa-battery-full"></i> Inverter Services</a>
+          <a href="javascript:void(0)" onclick="openServiceDetailFromNav('Carpenter')"><i class="fas fa-hammer"></i> Carpenter</a>
+          <a href="javascript:void(0)" onclick="openServiceDetailFromNav('General Electrician')"><i class="fas fa-bolt"></i> General Electrician</a>
+        </div>
+      </div>
+      
       <a href="about.html" class="py-2 hover:text-zeetech good-times">About Us</a>
       <a href="contact.html" class="py-2 hover:text-zeetech good-times">Contact</a>
     </div>
@@ -842,7 +1137,7 @@
   <div class="navbar-spacer"></div>
 
   <!-- ======================================== -->
-  <!-- OFFER TIMER BANNER (EXACTLY LIKE HOME PAGE) -->
+  <!-- OFFER TIMER BANNER                       -->
   <!-- ======================================== -->
   <div class="offer-timer-section">
     <div class="offer-container">
@@ -867,7 +1162,7 @@
   </div>
 
   <!-- ======================================== -->
-  <!-- MAIN CONTENT (SERVICES)                  -->
+  <!-- MAIN CONTENT                            -->
   <!-- ======================================== -->
   <main>
     <div class="gradient-bg">
@@ -889,10 +1184,10 @@
   </main>
 
   <!-- ======================================== -->
-  <!-- FEATURE DETAILS POPUP MODAL              -->
+  <!-- MODALS                                   -->
   <!-- ======================================== -->
-  <div id="featureModal" class="modal-overlay">
-    <div class="modal-container" style="max-width: 450px;">
+  <div id="featureModal" class="modal-overlay feature-modal">
+    <div class="modal-container">
       <div class="modal-header">
         <h3><i class="fas fa-info-circle"></i> <span id="featureTitle">Feature Details</span></h3>
         <button class="modal-close" id="closeFeatureModalBtn">&times;</button>
@@ -906,9 +1201,37 @@
     </div>
   </div>
 
-  <!-- ======================================== -->
-  <!-- BOOKING MODAL (Web3Forms)                -->
-  <!-- ======================================== -->
+  <div id="serviceDetailModal" class="modal-overlay service-detail-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3><i class="fas fa-info-circle"></i> <span id="serviceDetailTitle">Service Details</span></h3>
+        <button class="modal-close" id="closeServiceDetailBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="service-detail-content">
+          <div class="service-detail-image-section">
+            <img id="serviceDetailImg" src="" alt="Service Image" class="service-detail-img">
+          </div>
+          <div class="service-detail-info">
+            <p id="serviceDetailDescription" class="service-detail-description"></p>
+            <div class="price-badge" id="serviceDetailPrice">Starting from PKR 1,500</div>
+            <div class="detail-section-title"><i class="fas fa-list-check"></i> Key Features & Benefits</div>
+            <ul id="serviceDetailFeatures" class="service-features-list"></ul>
+            <div class="detail-section-title"><i class="fas fa-headset"></i> Need Help?</div>
+            <div class="contact-buttons">
+              <a href="https://wa.me/923005518622" target="_blank" class="whatsapp-link"><i class="fab fa-whatsapp"></i> WhatsApp Now</a>
+              <a href="tel:+923005518622" class="call-link"><i class="fas fa-phone-alt"></i> Call Now</a>
+            </div>
+            <div class="modal-footer-buttons">
+              <button id="serviceDetailBookBtn" class="book-now-btn">📅 Book Now →</button>
+              <button id="closeServiceDetailModalBtn" class="view-more-btn">✖️ Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="bookingModal" class="modal-overlay">
     <div class="modal-container">
       <div class="modal-header">
@@ -980,10 +1303,10 @@
   </div>
 
   <!-- ======================================== -->
-  <!-- FOOTER (EXACTLY LIKE HOME PAGE)          -->
+  <!-- FOOTER                                   -->
   <!-- ======================================== -->
   <footer class="bg-gray-900 text-white mt-12">
-    <div class="container mx-auto px-4 md:px-6 lg:px-8 py-8 md:py-12">
+    <div class="container mx-auto px-4 py-8 md:py-12">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
         <div class="space-y-3">
           <div class="flex items-center space-x-3">
@@ -1005,7 +1328,7 @@
         <div><h3 class="text-base md:text-lg font-semibold mb-4 relative inline-block good-times">Quick Links<span class="absolute -bottom-2 left-0 w-10 h-0.5 bg-zeetech rounded-full"></span></h3>
           <ul class="space-y-2">
             <li><a href="index.html" class="footer-link text-gray-400 hover:text-zeetech"><i class="fas fa-chevron-right text-zeetech text-xs mr-2"></i> Home</a></li>
-            <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech"><i class="fas fa-chevron-right text-zeetech text-xs mr-2"></i> Services</a></li>
+            <li><a href="#services" class="footer-link text-gray-400 hover:text-zeetech"><i class="fas fa-chevron-right text-zeetech text-xs mr-2"></i> Services</a></li>
             <li><a href="about.html" class="footer-link text-gray-400 hover:text-zeetech"><i class="fas fa-chevron-right text-zeetech text-xs mr-2"></i> About Us</a></li>
             <li><a href="contact.html" class="footer-link text-gray-400 hover:text-zeetech"><i class="fas fa-chevron-right text-zeetech text-xs mr-2"></i> Contact Us</a></li>
           </ul>
@@ -1013,12 +1336,12 @@
         
         <div><h3 class="text-base md:text-lg font-semibold mb-4 relative inline-block good-times">Our Services<span class="absolute -bottom-2 left-0 w-10 h-0.5 bg-zeetech rounded-full"></span></h3>
           <ul class="space-y-2">
-            <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech"><i class="fas fa-wind text-zeetech text-xs mr-2"></i> Air Conditioner</a></li>
-            <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech"><i class="fas fa-thermometer-half text-zeetech text-xs mr-2"></i> Refrigerator</a></li>
-            <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech"><i class="fas fa-solar-panel text-zeetech text-xs mr-2"></i> Solar Energy</a></li>
-            <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech"><i class="fas fa-battery-full text-zeetech text-xs mr-2"></i> Inverter Services</a></li>
-            <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech"><i class="fas fa-hammer text-zeetech text-xs mr-2"></i> Carpenter</a></li>
-            <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech"><i class="fas fa-bolt text-zeetech text-xs mr-2"></i> General Electrician</a></li>
+            <li><a href="javascript:void(0)" onclick="openServiceDetailFromNav('Air Conditioner')" class="footer-link text-gray-400 hover:text-zeetech"><i class="fas fa-wind text-zeetech text-xs mr-2"></i> Air Conditioner</a></li>
+            <li><a href="javascript:void(0)" onclick="openServiceDetailFromNav('Refrigerator')" class="footer-link text-gray-400 hover:text-zeetech"><i class="fas fa-thermometer-half text-zeetech text-xs mr-2"></i> Refrigerator</a></li>
+            <li><a href="javascript:void(0)" onclick="openServiceDetailFromNav('Solar Energy')" class="footer-link text-gray-400 hover:text-zeetech"><i class="fas fa-solar-panel text-zeetech text-xs mr-2"></i> Solar Energy</a></li>
+            <li><a href="javascript:void(0)" onclick="openServiceDetailFromNav('Inverter Services')" class="footer-link text-gray-400 hover:text-zeetech"><i class="fas fa-battery-full text-zeetech text-xs mr-2"></i> Inverter Services</a></li>
+            <li><a href="javascript:void(0)" onclick="openServiceDetailFromNav('Carpenter')" class="footer-link text-gray-400 hover:text-zeetech"><i class="fas fa-hammer text-zeetech text-xs mr-2"></i> Carpenter</a></li>
+            <li><a href="javascript:void(0)" onclick="openServiceDetailFromNav('General Electrician')" class="footer-link text-gray-400 hover:text-zeetech"><i class="fas fa-bolt text-zeetech text-xs mr-2"></i> General Electrician</a></li>
           </ul>
         </div>
         
@@ -1062,7 +1385,36 @@
         "General Electrician": "/static/general.jpeg"
       };
       
-      // Feature Details
+      // Service Prices
+      const SERVICE_PRICES = {
+        "Air Conditioner": "Starting from PKR 2,500",
+        "Refrigerator": "Starting from PKR 1,800",
+        "Solar Energy": "Starting from PKR 15,000",
+        "Inverter Services": "Starting from PKR 2,000",
+        "Carpenter": "Starting from PKR 1,500",
+        "General Electrician": "Starting from PKR 1,200"
+      };
+      
+      // Service Detailed Descriptions
+      const SERVICE_DETAILS = {
+        "Air Conditioner": "We provide complete AC solutions including professional installation, repair services, gas filling, and regular maintenance. Our certified technicians work with all major brands like Gree, Dawlance, Haier, LG, and Samsung. We offer same-day service and 30-day warranty on all repairs. Our team is available 24/7 for emergency AC repairs across Islamabad and Rawalpindi.",
+        "Refrigerator": "Expert fridge repair services covering cooling issues, gas refilling, compressor repair, door seal replacement, thermostat fix, and deep cleaning. We support all brands including Dawlance, Haier, Kenwood, LG, and Samsung. Our technicians diagnose problems quickly and provide lasting solutions with 30-day warranty on repairs.",
+        "Solar Energy": "Complete solar solutions including panel installation, inverter setup, battery configuration, regular maintenance, panel cleaning, and net metering support. Reduce your electricity bills by up to 70% with our professional solar services. We provide 5-year warranty on installations and work with top brands like Inverex, Huawei, GoodWe, and Longi.",
+        "Inverter Services": "Professional inverter services including installation, repair, battery check and replacement, charging issue fix, and regular maintenance. We support all brands like Homage, UPS, Huawei, and local manufacturers. Our technicians ensure your inverter runs efficiently during power outages.",
+        "Carpenter": "Expert carpentry services including furniture repair, custom woodwork, assembly service, polishing, cabinet making, and door/window fitting. Quality craftsmanship with attention to detail. We work with all types of wood and provide finishing that matches your home decor.",
+        "General Electrician": "Complete electrical solutions including wiring installation, troubleshooting, home maintenance, quick fixes, panel upgrades, and fan/light fitting. Licensed professionals with safety guarantee. We handle residential and commercial electrical projects of all sizes."
+      };
+      
+      // Service Features Lists
+      const SERVICE_FEATURES = {
+        "Air Conditioner": ["Professional Installation", "Repair Service", "Gas Filling", "Regular Maintenance", "All Brands Support", "24/7 Emergency Service", "1-Month Warranty", "Same-Day Service", "Free Inspection", "Certified Technicians"],
+        "Refrigerator": ["Cooling Issue Fix", "Gas Refilling", "Compressor Repair", "Door Seal Replacement", "Thermostat Fix", "Deep Cleaning", "30-Day Warranty", "All Brands Support", "Quick Service", "Affordable Pricing"],
+        "Solar Energy": ["Panel Installation", "Inverter Setup", "Battery Bank Configuration", "Regular Maintenance", "Panel Cleaning", "Net Metering Support", "5-Year Warranty", "Energy Saving", "Government Approved", "Free Consultation"],
+        "Inverter Services": ["New Installation", "Repair Service", "Battery Check & Replacement", "Charging Issue Fix", "Regular Maintenance", "All Brands Support", "Quick Response", "Quality Parts", "Affordable Rates", "Warranty Support"],
+        "Carpenter": ["Furniture Repair", "Custom Woodwork", "Assembly Service", "Polishing & Finishing", "Cabinet Making", "Door & Window Fitting", "Quality Material", "Expert Craftsmanship", "On-Time Delivery", "Competitive Prices"],
+        "General Electrician": ["Wiring Installation", "Troubleshooting", "Home Maintenance", "Quick Fixes", "Panel Upgrades", "Fan & Light Fitting", "Safety Certified", "Emergency Service", "Quality Material", "Warranty Support"]
+      };
+      
       const FEATURE_DETAILS = {
         "Installation": "✅ Professional AC installation includes proper unit placement, bracket fitting, electrical connections, drainage setup, and testing. 1-month warranty.",
         "Repair Service": "🔧 Comprehensive AC repair covering compressor issues, fan motor problems, sensor failures, PCB board repairs. Same-day service.",
@@ -1110,6 +1462,11 @@
       AOS.init({ duration: 600, once: true });
       let currentlyFlippedCard = null;
       
+      // Global function to open service detail from nav/footer
+      window.openServiceDetailFromNav = function(serviceName) {
+        openServiceDetail(serviceName);
+      };
+      
       // Feature Modal
       const featureModal = document.getElementById('featureModal');
       const closeFeatureBtn = document.getElementById('closeFeatureModalBtn');
@@ -1131,6 +1488,43 @@
       if (closeFeatureBtn) closeFeatureBtn.onclick = closeFeatureModal;
       if (featureGotItBtn) featureGotItBtn.onclick = closeFeatureModal;
       if (featureModal) featureModal.addEventListener('click', function(e) { if (e.target === featureModal) closeFeatureModal(); });
+      
+      // Service Detail Modal
+      const serviceDetailModal = document.getElementById('serviceDetailModal');
+      const closeServiceDetailBtn = document.getElementById('closeServiceDetailBtn');
+      const closeServiceDetailModalBtn = document.getElementById('closeServiceDetailModalBtn');
+      
+      function openServiceDetail(serviceName) {
+        document.getElementById('serviceDetailTitle').innerHTML = `<i class="fas fa-cog"></i> ${serviceName} - Complete Details`;
+        document.getElementById('serviceDetailImg').src = SERVICE_IMAGES[serviceName];
+        document.getElementById('serviceDetailDescription').innerText = SERVICE_DETAILS[serviceName];
+        document.getElementById('serviceDetailPrice').innerHTML = `💰 ${SERVICE_PRICES[serviceName]} <span style="font-size: 0.7rem; opacity: 0.8;"> + 30% OFF limited time</span>`;
+        
+        const featuresList = document.getElementById('serviceDetailFeatures');
+        featuresList.innerHTML = '';
+        SERVICE_FEATURES[serviceName].forEach(feature => {
+          const li = document.createElement('li');
+          li.innerHTML = `<i class="fas fa-check-circle"></i> ${feature}`;
+          featuresList.appendChild(li);
+        });
+        
+        document.getElementById('serviceDetailBookBtn').onclick = () => {
+          closeServiceDetail();
+          openBookingModal(serviceName);
+        };
+        
+        serviceDetailModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+      
+      function closeServiceDetail() {
+        serviceDetailModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+      
+      if (closeServiceDetailBtn) closeServiceDetailBtn.onclick = closeServiceDetail;
+      if (closeServiceDetailModalBtn) closeServiceDetailModalBtn.onclick = closeServiceDetail;
+      if (serviceDetailModal) serviceDetailModal.addEventListener('click', function(e) { if (e.target === serviceDetailModal) closeServiceDetail(); });
       
       // Booking Modal
       const bookingModal = document.getElementById('bookingModal');
@@ -1217,7 +1611,10 @@
                 <div class="front-content">
                   <div class="service-icon"><i class="${s.icon}"></i></div>
                   <h3 class="front-title text-gray-800 good-times">${s.name}</h3>
-                  <button class="book-now-btn booking-trigger" data-sname="${s.name}"><i class="fas fa-calendar-alt mr-2"></i> Book Now</button>
+                  <div class="button-group">
+                    <button class="book-now-btn booking-trigger" data-sname="${s.name}"><i class="fas fa-calendar-alt mr-1"></i> Book Now</button>
+                    <button class="view-more-btn view-more-trigger" data-sname="${s.name}"><i class="fas fa-info-circle mr-1"></i> View More</button>
+                  </div>
                 </div>
               </div>
               <div class="flip-card-back">
@@ -1225,7 +1622,10 @@
                   <div class="flex items-center gap-2 mb-3"><div class="back-icon"><i class="${s.icon}"></i></div><h3 class="back-title text-gray-800 good-times">${s.name}</h3></div>
                   <p class="back-description">${s.description}</p>
                   <div class="flex flex-wrap gap-1.5 mb-3">${s.features.map(f => `<span class="feature-tag" onclick="event.stopPropagation(); showFeatureDetail('${f}');">📌 ${f}</span>`).join('')}</div>
-                  <button class="book-now-btn booking-trigger" data-sname="${s.name}"><i class="fas fa-calendar-alt mr-2"></i> Book Now</button>
+                  <div class="button-group mt-auto">
+                    <button class="book-now-btn booking-trigger" data-sname="${s.name}"><i class="fas fa-calendar-alt mr-1"></i> Book Now</button>
+                    <button class="view-more-btn view-more-trigger" data-sname="${s.name}"><i class="fas fa-info-circle mr-1"></i> View More</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1234,21 +1634,46 @@
         
         document.querySelectorAll('.flip-card').forEach(card => {
           card.addEventListener('click', function(e) {
-            if (e.target.closest('.booking-trigger') || e.target.closest('.feature-tag')) return;
+            if (e.target.closest('.booking-trigger') || e.target.closest('.feature-tag') || e.target.closest('.view-more-trigger')) return;
             if (currentlyFlippedCard === this) { this.classList.remove('flipped'); currentlyFlippedCard = null; }
             else { if (currentlyFlippedCard) currentlyFlippedCard.classList.remove('flipped'); this.classList.add('flipped'); currentlyFlippedCard = this; }
           });
         });
+        
         document.querySelectorAll('.booking-trigger').forEach(btn => btn.addEventListener('click', (e) => { e.stopPropagation(); openBookingModal(btn.dataset.sname); if (currentlyFlippedCard) { currentlyFlippedCard.classList.remove('flipped'); currentlyFlippedCard = null; } }));
+        
+        document.querySelectorAll('.view-more-trigger').forEach(btn => btn.addEventListener('click', (e) => { e.stopPropagation(); openServiceDetail(btn.dataset.sname); if (currentlyFlippedCard) { currentlyFlippedCard.classList.remove('flipped'); currentlyFlippedCard = null; } }));
       }
   
-      // Mobile menu
+      // Mobile menu with dropdown toggle
       const mobileBtn = document.getElementById('mobileMenuBtn');
       const mobileMenu = document.getElementById('mobileMenu');
       if (mobileBtn && mobileMenu) {
         mobileBtn.onclick = () => mobileMenu.classList.toggle('hidden');
-        document.querySelectorAll('#mobileMenu a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+        document.querySelectorAll('#mobileMenu a:not(#mobileServicesToggle)').forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
       }
+      
+      // Mobile services dropdown toggle
+      const mobileServicesToggle = document.getElementById('mobileServicesToggle');
+      const mobileServicesDropdown = document.getElementById('mobileServicesDropdown');
+      const mobileDropdownIcon = document.getElementById('mobileDropdownIcon');
+      
+      if (mobileServicesToggle && mobileServicesDropdown) {
+        mobileServicesToggle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          mobileServicesDropdown.classList.toggle('show');
+          if (mobileDropdownIcon) {
+            mobileDropdownIcon.style.transform = mobileServicesDropdown.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+          }
+        });
+      }
+      
+      // Close mobile menu when clicking on dropdown items
+      document.querySelectorAll('#mobileServicesDropdown a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (mobileMenu) mobileMenu.classList.add('hidden');
+        });
+      });
       
       // Feedback Widget
       const mainBtn = document.getElementById('feedbackMainBtn');

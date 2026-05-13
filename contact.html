@@ -15,6 +15,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   
   <style>
+    /* ======================================== */
+    /* 1. CUSTOM FONT FACE (GOOD TIMES RG)      */
+    /* ======================================== */
     @font-face {
       font-family: 'Good Times Rg';
       src: url('fonts/Good Times Rg.otf') format('opentype'),
@@ -22,6 +25,15 @@
       font-weight: normal;
       font-style: normal;
       font-display: swap;
+    }
+    
+    /* ======================================== */
+    /* 2. RESET & GLOBAL STYLES                 */
+    /* ======================================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
     
     .good-times, h1, h2, h3, .zeetech-brand, .nav-link {
@@ -39,7 +51,9 @@
     .btn-zeetech { background-color: #0c5ca8; transition: all 0.3s ease; }
     .btn-zeetech:hover { background-color: #094a86; transform: translateY(-2px); }
     
-    /* Floating WhatsApp + Location */
+    /* ======================================== */
+    /* 3. FLOATING BUTTONS (WhatsApp & Location) */
+    /* ======================================== */
     .whatsapp-float { 
       position: fixed; bottom: 20px; right: 16px; z-index: 999; 
       background-color: #25D366; 
@@ -80,12 +94,12 @@
       line-height: 1;
     }
     @media (min-width: 640px) {
-      .whatsapp-float i, .location-float i {
-        font-size: 32px;
-      }
+      .whatsapp-float i, .location-float i { font-size: 32px; }
     }
     
-    /* Logo - HOME PAGE STYLE */
+    /* ======================================== */
+    /* 4. LOGO STYLES                           */
+    /* ======================================== */
     .logo-img {
       width: 52px;
       height: 52px;
@@ -120,7 +134,9 @@
       }
     }
     
-    /* Navigation - HOME PAGE STYLE */
+    /* ======================================== */
+    /* 5. NAVIGATION WITH CLICK DROPDOWN        */
+    /* ======================================== */
     .navbar-padding {
       padding-top: 0.75rem;
       padding-bottom: 0.75rem;
@@ -140,7 +156,133 @@
       font-weight: 600;
     }
     
-    /* Timer offer banner - HOME PAGE STYLE */
+    /* Dropdown Menu Styles - CLICK BASED */
+    .dropdown {
+      position: relative;
+    }
+    
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      min-width: 220px;
+      box-shadow: 0 15px 30px -10px rgba(0,0,0,0.15);
+      border-radius: 12px;
+      padding: 0.5rem 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 100;
+      border: 1px solid #e5e7eb;
+    }
+    
+    .dropdown-menu.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .dropdown-menu a {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.6rem 1.2rem;
+      color: #374151;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+    }
+    
+    .dropdown-menu a i {
+      width: 1.3rem;
+      color: #0c5ca8;
+      font-size: 0.9rem;
+    }
+    
+    .dropdown-menu a:hover {
+      background-color: #f3f4f6;
+      color: #0c5ca8;
+      padding-left: 1.5rem;
+    }
+    
+    .dropdown-toggle-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      cursor: pointer;
+    }
+    
+    .dropdown-toggle {
+      cursor: pointer;
+    }
+    
+    .dropdown-icon {
+      font-size: 0.7rem;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+    
+    .dropdown-icon.rotated {
+      transform: rotate(180deg);
+    }
+    
+    /* Mobile Dropdown - CLICK BASED */
+    .mobile-dropdown-menu {
+      display: none;
+      flex-direction: column;
+      padding-left: 1.5rem;
+      margin-top: 0.5rem;
+      border-left: 2px solid #0c5ca8;
+    }
+    
+    .mobile-dropdown-menu.show {
+      display: flex;
+    }
+    
+    .mobile-dropdown-menu a {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.5rem 0;
+      color: #4b5563;
+      font-size: 0.85rem;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    
+    .mobile-dropdown-menu a i {
+      width: 1.3rem;
+      color: #0c5ca8;
+    }
+    
+    .mobile-dropdown-menu a:hover {
+      color: #0c5ca8;
+    }
+    
+    .mobile-services-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+    
+    /* Navbar spacer */
+    .navbar-spacer {
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: 640px) {
+      .navbar-spacer {
+        margin-bottom: 1rem;
+      }
+    }
+    
+    /* ======================================== */
+    /* 6. OFFER TIMER BANNER (HOME PAGE STYLE)   */
+    /* ======================================== */
     .offer-timer-section {
       background: linear-gradient(135deg, #fef9e6 0%, #fff4e0 100%);
       border-radius: 20px;
@@ -204,23 +346,17 @@
       .discount-number { font-size: 1.7rem; }
     }
     
-    /* Navbar spacer */
-    .navbar-spacer {
-      margin-bottom: 1.5rem;
-    }
-    @media (max-width: 640px) {
-      .navbar-spacer {
-        margin-bottom: 1rem;
-      }
-    }
-    
-    /* CONTACT PAGE ORIGINAL STYLES */
+    /* ======================================== */
+    /* 7. CONTACT PAGE ORIGINAL STYLES          */
+    /* ======================================== */
     .gradient-bg { background: linear-gradient(135deg, #f0f9ff 0%, #e6f0fa 100%); }
     
     .contact-card { transition: all 0.3s ease; }
     .contact-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px -10px rgba(12,92,168,0.2); }
     
-    /* FEEDBACK WIDGET - HOME PAGE STYLE */
+    /* ======================================== */
+    /* 8. FEEDBACK WIDGET (HOME PAGE STYLE)      */
+    /* ======================================== */
     .feedback-widget { 
       position: fixed; bottom: 20px; left: 16px; z-index: 999; 
     }
@@ -307,6 +443,9 @@
     .close-panel-link { font-size: 0.7rem; color: #94a3b8; cursor: pointer; }
     .close-panel-link:hover { color: #0c5ca8; }
     
+    /* ======================================== */
+    /* 9. SOCIAL ICONS & FOOTER LINKS           */
+    /* ======================================== */
     .social-icon { transition: all 0.3s ease; }
     .social-icon:hover { transform: translateY(-3px); }
     .footer-link { transition: all 0.3s ease; display: inline-flex; align-items: center; }
@@ -322,11 +461,324 @@
     @media (max-width: 640px) {
       .contact-card { padding: 8px; }
     }
+    
+    /* ======================================== */
+    /* 10. SERVICE DETAIL MODAL STYLES          */
+    /* ======================================== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .service-detail-modal .modal-container {
+      max-width: 95vw !important;
+      width: 95% !important;
+      max-height: 90vh !important;
+      border-radius: 28px !important;
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+      overflow-y: auto;
+    }
+    
+    @media (max-width: 768px) {
+      .service-detail-modal .modal-container {
+        max-width: 98vw !important;
+        width: 98% !important;
+        max-height: 95vh !important;
+        border-radius: 20px !important;
+      }
+    }
+    
+    .modal-container {
+      background: white;
+      max-width: min(90vw, 550px);
+      width: 100%;
+      border-radius: clamp(1rem, 4vw, 2rem);
+      overflow: hidden;
+      transform: scale(0.9) translateY(30px);
+      transition: transform 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
+      box-shadow: 0 1.5rem 2.5rem rgba(0,0,0,0.4);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    
+    .modal-overlay.active .modal-container {
+      transform: scale(1) translateY(0);
+    }
+    
+    .modal-header {
+      background: linear-gradient(135deg, #0c5ca8, #0a4a82);
+      padding: clamp(1rem, 2vw, 1.5rem) clamp(1.5rem, 4vw, 2.5rem);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    
+    .modal-header h3 {
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .modal-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    
+    .modal-body {
+      padding: clamp(1rem, 4vw, 2rem);
+      max-height: calc(90vh - 80px);
+      overflow-y: auto;
+    }
+    
+    .service-detail-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .service-detail-image-section {
+      width: 100%;
+      text-align: center;
+    }
+    
+    .service-detail-img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: contain;
+      border-radius: 1rem;
+      background: linear-gradient(135deg, #f8fafc 0%, #eef2f6 100%);
+      padding: 1rem;
+    }
+    
+    @media (max-width: 640px) {
+      .service-detail-img {
+        max-height: 200px;
+        padding: 0.5rem;
+      }
+    }
+    
+    .service-detail-description {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #374151;
+      margin-bottom: 1rem;
+    }
+    
+    .price-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      padding: 0.5rem 1.2rem;
+      border-radius: 2rem;
+      font-weight: 700;
+      margin: 0.5rem 0 1rem 0;
+      font-size: 0.9rem;
+    }
+    
+    .detail-section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 1rem 0 0.8rem 0;
+      color: #0c5ca8;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .service-features-list {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.6rem;
+    }
+    
+    @media (max-width: 640px) {
+      .service-features-list {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .service-features-list li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #e5e7eb;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+    }
+    
+    .service-features-list li i {
+      color: #0c5ca8;
+      width: 1.3rem;
+      font-size: 0.9rem;
+    }
+    
+    .modal-footer-buttons,
+    .contact-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .modal-footer-buttons .book-now-btn,
+    .modal-footer-buttons .view-more-btn {
+      width: auto;
+      padding: 0.7rem 1.8rem;
+      font-size: 0.9rem;
+    }
+    
+    .whatsapp-link, .call-link {
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+    }
+    
+    .whatsapp-link {
+      background-color: #25D366;
+      color: white;
+    }
+    
+    .whatsapp-link:hover {
+      background-color: #075e54;
+      transform: translateY(-2px);
+    }
+    
+    .call-link {
+      background-color: #3b82f6;
+      color: white;
+    }
+    
+    .call-link:hover {
+      background-color: #2563eb;
+      transform: translateY(-2px);
+    }
+    
+    .book-now-btn {
+      background-color: #0c5ca8;
+      color: white;
+      border-radius: 3rem;
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .book-now-btn:hover {
+      background-color: #094a86;
+      transform: translateY(-2px);
+    }
+    
+    /* Form styles for booking modal */
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      font-size: 0.85rem;
+      color: #374151;
+    }
+    
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%;
+      border: 1px solid #d1d5db;
+      border-radius: 0.75rem;
+      padding: 0.6rem 0.8rem;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      outline: none;
+      border-color: #0c5ca8;
+      box-shadow: 0 0 0 2px rgba(12,92,168,0.2);
+    }
+    
+    .btn-submit {
+      background: linear-gradient(135deg, #0c5ca8, #094a86);
+      color: white;
+      padding: 0.8rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+    }
+    
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      opacity: 0.9;
+    }
+    
+    .success-message {
+      background: #10b981;
+      color: white;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    
+    .error-message {
+      background: #ef4444;
+      color: white;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
   </style>
 </head>
-<body class="bg-gray-50 overflow-x-hidden">
+<body>
 
-  <!-- Floating Buttons -->
+  <!-- ======================================== -->
+  <!-- FLOATING BUTTONS                         -->
+  <!-- ======================================== -->
   <div class="location-float" id="locationBtn">
     <i class="fas fa-map-marker-alt text-white"></i>
   </div>
@@ -335,22 +787,17 @@
     <i class="fab fa-whatsapp text-white"></i>
   </a>
 
-  <!-- FEEDBACK WIDGET -->
+  <!-- ======================================== -->
+  <!-- FEEDBACK WIDGET                          -->
+  <!-- ======================================== -->
   <div class="feedback-widget" id="zeetechFeedbackWidget">
     <div class="feedback-main-btn" id="feedbackMainBtn">
-      <div class="feedback-icon-circle">
-        <i class="fas fa-comment-dots"></i>
-      </div>
-      <div class="feedback-label-text">
-        Feedback <small>rate & suggest</small>
-      </div>
+      <div class="feedback-icon-circle"><i class="fas fa-comment-dots"></i></div>
+      <div class="feedback-label-text">Feedback <small>rate & suggest</small></div>
     </div>
     <div class="feedback-panel" id="feedbackPanel">
-      <div class="panel-header">
-        <h3><i class="fas fa-star-half-alt"></i> Share Your Experience</h3>
-        <p class="text-xs opacity-85">Your opinion helps us improve Zeetech</p>
-      </div>
-      <div class="p-5" style="padding: 18px;">
+      <div class="panel-header"><h3><i class="fas fa-star-half-alt"></i> Share Your Experience</h3><p class="text-xs opacity-85">Your opinion helps us improve Zeetech</p></div>
+      <div class="p-5" style="padding:18px;">
         <div class="mb-4 text-center">
           <label class="block text-gray-700 text-sm font-semibold mb-1">Rating</label>
           <div class="star-rating" id="starRatingGroup">
@@ -361,20 +808,16 @@
             <input type="radio" id="star1_fb" name="fb_rating" value="1"><label for="star1_fb" class="fas fa-star"></label>
           </div>
         </div>
-        <div class="mb-4">
-          <textarea id="feedbackTextMsg" rows="3" placeholder="Write your feedback..." class="w-full border border-gray-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#0c5ca8]" style="width: 100%; resize: vertical;"></textarea>
-        </div>
-        <button id="submitFeedbackBtn" class="feedback-whatsapp-btn w-full text-white py-3 rounded-xl text-sm font-semibold flex items-center justify-center gap-2">
-          <i class="fab fa-whatsapp"></i> Send Feedback
-        </button>
-        <div class="mt-3 text-center">
-          <span id="closeFeedbackPanel" class="close-panel-link"><i class="fas fa-times-circle"></i> Close</span>
-        </div>
+        <div class="mb-4"><textarea id="feedbackTextMsg" rows="3" placeholder="Write your feedback..." class="w-full border border-gray-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#0c5ca8]"></textarea></div>
+        <button id="submitFeedbackBtn" class="feedback-whatsapp-btn w-full text-white py-3 rounded-xl text-sm font-semibold flex items-center justify-center gap-2"><i class="fab fa-whatsapp"></i> Send Feedback</button>
+        <div class="mt-3 text-center"><span id="closeFeedbackPanel" class="close-panel-link"><i class="fas fa-times-circle"></i> Close</span></div>
       </div>
     </div>
   </div>
 
-  <!-- HEADER - HOME PAGE STYLE -->
+  <!-- ======================================== -->
+  <!-- HEADER WITH CLICK DROPDOWN               -->
+  <!-- ======================================== -->
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="container mx-auto px-4 md:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between">
       <a href="index.html" class="flex items-center space-x-2 md:space-x-3 group">
@@ -386,32 +829,67 @@
       </a>
       <nav class="hidden md:flex space-x-6 lg:space-x-8 text-gray-700 font-medium">
         <a href="index.html" class="nav-link hover:text-zeetech transition good-times">Home</a>
-        <a href="services.html" class="nav-link hover:text-zeetech transition good-times">Services</a>
+        
+        <!-- Services Dropdown - CLICK BASED -->
+        <div class="dropdown">
+          <div class="dropdown-toggle-wrapper">
+            <a href="services.html" class="nav-link hover:text-zeetech transition good-times dropdown-toggle">Services</a>
+            <i class="fas fa-chevron-down dropdown-icon" id="desktopDropdownIcon"></i>
+          </div>
+          <div class="dropdown-menu" id="desktopDropdownMenu">
+            <a onclick="openServiceModal('Air Conditioner')"><i class="fas fa-wind"></i> Air Conditioner</a>
+            <a onclick="openServiceModal('Refrigerator')"><i class="fas fa-thermometer-half"></i> Refrigerator</a>
+            <a onclick="openServiceModal('Solar Energy')"><i class="fas fa-solar-panel"></i> Solar Energy</a>
+            <a onclick="openServiceModal('Inverter Services')"><i class="fas fa-battery-full"></i> Inverter Services</a>
+            <a onclick="openServiceModal('Carpenter')"><i class="fas fa-hammer"></i> Carpenter</a>
+            <a onclick="openServiceModal('General Electrician')"><i class="fas fa-bolt"></i> General Electrician</a>
+          </div>
+        </div>
+        
         <a href="about.html" class="nav-link hover:text-zeetech transition good-times">About Us</a>
         <a href="contact.html" class="nav-link hover:text-zeetech transition active-nav good-times">Contact</a>
       </nav>
       <button id="mobileMenuBtn" class="md:hidden text-gray-600 text-2xl focus:outline-none"><i class="fas fa-bars"></i></button>
     </div>
+    
+    <!-- Mobile Menu -->
     <div id="mobileMenu" class="hidden md:hidden bg-white border-t px-5 py-3 flex flex-col space-y-3 shadow-lg">
       <a href="index.html" class="py-2 hover:text-zeetech font-medium good-times">Home</a>
-      <a href="services.html" class="py-2 hover:text-zeetech good-times">Services</a>
+      
+      <!-- Mobile Services Dropdown - CLICK BASED -->
+      <div>
+        <div class="py-2 flex items-center justify-between cursor-pointer hover:text-zeetech good-times mobile-services-header" id="mobileServicesHeader">
+          <a href="services.html" class="hover:text-zeetech">Services</a>
+          <i class="fas fa-chevron-down text-xs transition-transform" id="mobileDropdownIcon"></i>
+        </div>
+        <div id="mobileServicesDropdown" class="mobile-dropdown-menu">
+          <a onclick="openServiceModal('Air Conditioner')"><i class="fas fa-wind"></i> Air Conditioner</a>
+          <a onclick="openServiceModal('Refrigerator')"><i class="fas fa-thermometer-half"></i> Refrigerator</a>
+          <a onclick="openServiceModal('Solar Energy')"><i class="fas fa-solar-panel"></i> Solar Energy</a>
+          <a onclick="openServiceModal('Inverter Services')"><i class="fas fa-battery-full"></i> Inverter Services</a>
+          <a onclick="openServiceModal('Carpenter')"><i class="fas fa-hammer"></i> Carpenter</a>
+          <a onclick="openServiceModal('General Electrician')"><i class="fas fa-bolt"></i> General Electrician</a>
+        </div>
+      </div>
+      
       <a href="about.html" class="py-2 hover:text-zeetech good-times">About Us</a>
       <a href="contact.html" class="py-2 text-zeetech font-semibold good-times">Contact</a>
     </div>
   </header>
 
-  <!-- NAVBAR SPACER -->
+  <!-- ======================================== -->
+  <!-- NAVBAR SPACER                            -->
+  <!-- ======================================== -->
   <div class="navbar-spacer"></div>
 
-  <!-- OFFER TIMER BANNER - HOME PAGE STYLE -->
+  <!-- ======================================== -->
+  <!-- OFFER TIMER BANNER                       -->
+  <!-- ======================================== -->
   <div class="offer-timer-section">
     <div class="offer-container">
       <div class="flex items-center gap-3 flex-wrap">
         <div class="offer-badge text-white"><i class="fas fa-fire text-white mr-1"></i> LIMITED OFFER</div>
-        <div class="flex items-baseline gap-2">
-          <span class="discount-number text-white font-extrabold">30% OFF</span>
-          <span class="text-white text-sm font-medium">on any service</span>
-        </div>
+        <div class="flex items-baseline gap-2"><span class="discount-number text-white font-extrabold">30% OFF</span><span class="text-white text-sm font-medium">on any service</span></div>
         <div class="text-white text-xs bg-black/20 px-3 py-1 rounded-full"><i class="fas fa-tools mr-1"></i> AC · Fridge · Solar · Electrical · Carpenter</div>
       </div>
       <div class="flex items-center gap-2 md:gap-3">
@@ -426,7 +904,9 @@
     </div>
   </div>
 
-  <!-- MAIN CONTENT - ORIGINAL CONTACT PAGE CONTENT -->
+  <!-- ======================================== -->
+  <!-- MAIN CONTENT (ORIGINAL CONTACT PAGE)     -->
+  <!-- ======================================== -->
   <main class="container mx-auto px-4 py-8 md:py-10 max-w-6xl">
     
     <div class="gradient-bg rounded-2xl md:rounded-3xl p-6 md:p-12 mb-10 md:mb-12 text-center">
@@ -547,7 +1027,116 @@
     </div>
   </main>
 
-  <!-- FOOTER - HOME PAGE STYLE -->
+  <!-- ======================================== -->
+  <!-- SERVICE DETAIL MODAL                     -->
+  <!-- ======================================== -->
+  <div id="serviceDetailModal" class="modal-overlay service-detail-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3><i class="fas fa-info-circle"></i> <span id="serviceDetailTitle">Service Details</span></h3>
+        <button class="modal-close" id="closeServiceDetailBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="service-detail-content">
+          <div class="service-detail-image-section">
+            <img id="serviceDetailImg" src="" alt="Service Image" class="service-detail-img">
+          </div>
+          <div class="service-detail-info">
+            <p id="serviceDetailDescription" class="service-detail-description"></p>
+            <div class="price-badge" id="serviceDetailPrice">Starting from PKR 1,500</div>
+            <div class="detail-section-title"><i class="fas fa-list-check"></i> Key Features & Benefits</div>
+            <ul id="serviceDetailFeatures" class="service-features-list"></ul>
+            <div class="detail-section-title"><i class="fas fa-headset"></i> Need Help?</div>
+            <div class="contact-buttons">
+              <a href="https://wa.me/923005518622" target="_blank" class="whatsapp-link"><i class="fab fa-whatsapp"></i> WhatsApp Now</a>
+              <a href="tel:+923005518622" class="call-link"><i class="fas fa-phone-alt"></i> Call Now</a>
+            </div>
+            <div class="modal-footer-buttons">
+              <button id="serviceDetailBookBtn" class="book-now-btn">📅 Book Now →</button>
+              <button id="closeServiceDetailModalBtn" class="book-now-btn" style="background:#6b7280;">✖️ Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================== -->
+  <!-- BOOKING MODAL (Web3Forms)                -->
+  <!-- ======================================== -->
+  <div id="bookingModal" class="modal-overlay">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3><i class="fas fa-envelope"></i> Book Your Service</h3>
+        <button class="modal-close" id="closeBookingModalBtn">&times;</button>
+      </div>
+      <form id="bookingForm" class="modal-body" action="https://api.web3forms.com/submit" method="POST">
+        <div id="formMessage"></div>
+        <input type="hidden" name="access_key" value="4c4c9b02-6bd4-40c0-98eb-ef7946ccfa5a">
+        <input type="hidden" name="redirect" value="https://web3forms.com/success">
+        <input type="hidden" name="subject" value="Zeetech - New Service Booking Request">
+        <input type="hidden" name="from_name" value="Zeetech Website">
+        <input type="hidden" id="serviceName" name="service_name">
+        
+        <div class="form-group">
+          <label><i class="fas fa-wrench mr-1"></i> Service Required *</label>
+          <div id="selectedServiceDisplay" class="bg-gray-100 text-[#0c5ca8] font-semibold px-4 py-2 rounded-lg text-sm border border-gray-200"></div>
+        </div>
+        
+        <div class="form-group">
+          <label><i class="fas fa-user mr-1"></i> Full Name *</label>
+          <input type="text" id="name" name="name" required placeholder="Enter your full name">
+        </div>
+        
+        <div class="form-group">
+          <label><i class="fas fa-phone mr-1"></i> Phone Number *</label>
+          <input type="tel" id="phone" name="phone" required placeholder="e.g., 0300 1234567">
+        </div>
+        
+        <div class="form-group">
+          <label><i class="fas fa-envelope mr-1"></i> Email Address *</label>
+          <input type="email" id="email" name="email" required placeholder="your@email.com">
+        </div>
+        
+        <div class="form-group">
+          <label><i class="fas fa-map-marker-alt mr-1"></i> Address / Location *</label>
+          <textarea id="address" name="address" rows="2" required placeholder="Street, area, landmark, city"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label><i class="fas fa-calendar-alt mr-1"></i> Preferred Date</label>
+          <input type="date" id="preferredDate" name="preferred_date">
+        </div>
+        
+        <div class="form-group">
+          <label><i class="fas fa-clock mr-1"></i> Preferred Time</label>
+          <select id="preferredTime" name="preferred_time">
+            <option value="">Select time slot</option>
+            <option value="Morning (9am - 12pm)">Morning (9am - 12pm)</option>
+            <option value="Afternoon (12pm - 3pm)">Afternoon (12pm - 3pm)</option>
+            <option value="Evening (3pm - 6pm)">Evening (3pm - 6pm)</option>
+            <option value="Any time">Any time</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label><i class="fas fa-comment mr-1"></i> Additional Message</label>
+          <textarea id="extraMsg" name="message" rows="2" placeholder="Any special requirements..."></textarea>
+        </div>
+        
+        <input type="checkbox" name="botcheck" style="display: none;">
+        
+        <button type="submit" id="submitBtn" class="btn-submit">
+          <i class="fas fa-paper-plane"></i> Send Request via Email
+        </button>
+        <p class="text-xs text-gray-400 text-center mt-3">We'll receive your request instantly on email.</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ======================================== -->
+  <!-- FOOTER (HOME PAGE STYLE)                 -->
+  <!-- ======================================== -->
   <footer class="bg-gray-900 text-white mt-12">
     <div class="container mx-auto px-4 py-10 md:py-12">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
@@ -581,12 +1170,12 @@
         <div>
           <h3 class="text-base md:text-lg font-semibold mb-4 relative inline-block good-times">Our Services<span class="absolute -bottom-2 left-0 w-10 h-0.5 bg-zeetech rounded-full"></span></h3>
           <ul class="space-y-2">
-            <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech text-xs md:text-sm"><i class="fas fa-wind text-zeetech text-xs mr-2"></i> Air Conditioner</a></li>
-            <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech text-xs md:text-sm"><i class="fas fa-thermometer-half text-zeetech text-xs mr-2"></i> Refrigerator</a></li>
-            <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech text-xs md:text-sm"><i class="fas fa-solar-panel text-zeetech text-xs mr-2"></i> Solar Energy</a></li>
-            <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech text-xs md:text-sm"><i class="fas fa-battery-full text-zeetech text-xs mr-2"></i> Inverter Services</a></li>
-            <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech text-xs md:text-sm"><i class="fas fa-hammer text-zeetech text-xs mr-2"></i> Carpenter</a></li>
-            <li><a href="services.html" class="footer-link text-gray-400 hover:text-zeetech text-xs md:text-sm"><i class="fas fa-bolt text-zeetech text-xs mr-2"></i> General Electrician</a></li>
+            <li><a onclick="openServiceModal('Air Conditioner')" class="footer-link text-gray-400 hover:text-zeetech text-xs md:text-sm cursor-pointer"><i class="fas fa-wind text-zeetech text-xs mr-2"></i> Air Conditioner</a></li>
+            <li><a onclick="openServiceModal('Refrigerator')" class="footer-link text-gray-400 hover:text-zeetech text-xs md:text-sm cursor-pointer"><i class="fas fa-thermometer-half text-zeetech text-xs mr-2"></i> Refrigerator</a></li>
+            <li><a onclick="openServiceModal('Solar Energy')" class="footer-link text-gray-400 hover:text-zeetech text-xs md:text-sm cursor-pointer"><i class="fas fa-solar-panel text-zeetech text-xs mr-2"></i> Solar Energy</a></li>
+            <li><a onclick="openServiceModal('Inverter Services')" class="footer-link text-gray-400 hover:text-zeetech text-xs md:text-sm cursor-pointer"><i class="fas fa-battery-full text-zeetech text-xs mr-2"></i> Inverter Services</a></li>
+            <li><a onclick="openServiceModal('Carpenter')" class="footer-link text-gray-400 hover:text-zeetech text-xs md:text-sm cursor-pointer"><i class="fas fa-hammer text-zeetech text-xs mr-2"></i> Carpenter</a></li>
+            <li><a onclick="openServiceModal('General Electrician')" class="footer-link text-gray-400 hover:text-zeetech text-xs md:text-sm cursor-pointer"><i class="fas fa-bolt text-zeetech text-xs mr-2"></i> General Electrician</a></li>
           </ul>
         </div>
         
@@ -618,25 +1207,225 @@
       const locationBtn = document.getElementById('locationBtn');
       if (locationBtn) locationBtn.addEventListener('click', () => window.open('https://www.google.com/maps?q=33.6598056,72.9891944&z=15', '_blank'));
       
-      // Mobile menu toggle
-      const mobileBtn = document.getElementById('mobileMenuBtn');
-      const mobileMenu = document.getElementById('mobileMenu');
-      if (mobileBtn && mobileMenu) {
-        mobileBtn.onclick = () => mobileMenu.classList.toggle('hidden');
-        document.querySelectorAll('#mobileMenu a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
-      }
-      
       // Logo images fix
       const siteLogo = document.getElementById('siteLogo');
       const footerLogo = document.getElementById('footerLogo');
       if (siteLogo) siteLogo.src = "/static/zeetech-lago.jpeg";
       if (footerLogo) footerLogo.src = "/static/zeetech-lago.jpeg";
       
+      // Service Data for Modal
+      const SERVICE_IMAGES = {
+        "Air Conditioner": "/static/ac.jpeg",
+        "Refrigerator": "/static/fridge.jpeg",
+        "Solar Energy": "/static/solor-pic.png",
+        "Inverter Services": "/static/invertor.jpeg",
+        "Carpenter": "/static/carpenter.jpeg",
+        "General Electrician": "/static/general.jpeg"
+      };
+      
+      const SERVICE_PRICES = {
+        "Air Conditioner": "Starting from PKR 2,500",
+        "Refrigerator": "Starting from PKR 1,800",
+        "Solar Energy": "Starting from PKR 15,000",
+        "Inverter Services": "Starting from PKR 2,000",
+        "Carpenter": "Starting from PKR 1,500",
+        "General Electrician": "Starting from PKR 1,200"
+      };
+      
+      const SERVICE_DETAILS = {
+        "Air Conditioner": "We provide complete AC solutions including professional installation, repair services, gas filling, and regular maintenance. Our certified technicians work with all major brands like Gree, Dawlance, Haier, LG, and Samsung. We offer same-day service and 30-day warranty on all repairs. Our team is available 24/7 for emergency AC repairs across Islamabad and Rawalpindi.",
+        "Refrigerator": "Expert fridge repair services covering cooling issues, gas refilling, compressor repair, door seal replacement, thermostat fix, and deep cleaning. We support all brands including Dawlance, Haier, Kenwood, LG, and Samsung. Our technicians diagnose problems quickly and provide lasting solutions with 30-day warranty on repairs.",
+        "Solar Energy": "Complete solar solutions including panel installation, inverter setup, battery configuration, regular maintenance, panel cleaning, and net metering support. Reduce your electricity bills by up to 70% with our professional solar services. We provide 5-year warranty on installations and work with top brands like Inverex, Huawei, GoodWe, and Longi.",
+        "Inverter Services": "Professional inverter services including installation, repair, battery check and replacement, charging issue fix, and regular maintenance. We support all brands like Homage, UPS, Huawei, and local manufacturers. Our technicians ensure your inverter runs efficiently during power outages.",
+        "Carpenter": "Expert carpentry services including furniture repair, custom woodwork, assembly service, polishing, cabinet making, and door/window fitting. Quality craftsmanship with attention to detail. We work with all types of wood and provide finishing that matches your home decor.",
+        "General Electrician": "Complete electrical solutions including wiring installation, troubleshooting, home maintenance, quick fixes, panel upgrades, and fan/light fitting. Licensed professionals with safety guarantee. We handle residential and commercial electrical projects of all sizes."
+      };
+      
+      const SERVICE_FEATURES = {
+        "Air Conditioner": ["Professional Installation", "Repair Service", "Gas Filling", "Regular Maintenance", "All Brands Support", "24/7 Emergency Service", "1-Month Warranty", "Same-Day Service", "Free Inspection", "Certified Technicians"],
+        "Refrigerator": ["Cooling Issue Fix", "Gas Refilling", "Compressor Repair", "Door Seal Replacement", "Thermostat Fix", "Deep Cleaning", "30-Day Warranty", "All Brands Support", "Quick Service", "Affordable Pricing"],
+        "Solar Energy": ["Panel Installation", "Inverter Setup", "Battery Bank Configuration", "Regular Maintenance", "Panel Cleaning", "Net Metering Support", "5-Year Warranty", "Energy Saving", "Government Approved", "Free Consultation"],
+        "Inverter Services": ["New Installation", "Repair Service", "Battery Check & Replacement", "Charging Issue Fix", "Regular Maintenance", "All Brands Support", "Quick Response", "Quality Parts", "Affordable Rates", "Warranty Support"],
+        "Carpenter": ["Furniture Repair", "Custom Woodwork", "Assembly Service", "Polishing & Finishing", "Cabinet Making", "Door & Window Fitting", "Quality Material", "Expert Craftsmanship", "On-Time Delivery", "Competitive Prices"],
+        "General Electrician": ["Wiring Installation", "Troubleshooting", "Home Maintenance", "Quick Fixes", "Panel Upgrades", "Fan & Light Fitting", "Safety Certified", "Emergency Service", "Quality Material", "Warranty Support"]
+      };
+      
+      // Desktop Dropdown - CLICK BASED
+      const desktopDropdownIcon = document.getElementById('desktopDropdownIcon');
+      const desktopDropdownMenu = document.getElementById('desktopDropdownMenu');
+      
+      if (desktopDropdownIcon && desktopDropdownMenu) {
+        desktopDropdownIcon.addEventListener('click', (e) => {
+          e.stopPropagation();
+          desktopDropdownMenu.classList.toggle('show');
+          desktopDropdownIcon.classList.toggle('rotated');
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+          if (!desktopDropdownIcon.contains(e.target) && !desktopDropdownMenu.contains(e.target)) {
+            desktopDropdownMenu.classList.remove('show');
+            desktopDropdownIcon.classList.remove('rotated');
+          }
+        });
+        
+        // Close dropdown when clicking on any menu item
+        desktopDropdownMenu.querySelectorAll('a').forEach(item => {
+          item.addEventListener('click', () => {
+            desktopDropdownMenu.classList.remove('show');
+            desktopDropdownIcon.classList.remove('rotated');
+          });
+        });
+      }
+      
+      // Mobile Dropdown - CLICK BASED
+      const mobileServicesHeader = document.getElementById('mobileServicesHeader');
+      const mobileServicesDropdown = document.getElementById('mobileServicesDropdown');
+      const mobileDropdownIcon = document.getElementById('mobileDropdownIcon');
+      
+      if (mobileServicesHeader && mobileServicesDropdown) {
+        mobileServicesHeader.addEventListener('click', (e) => {
+          e.stopPropagation();
+          mobileServicesDropdown.classList.toggle('show');
+          if (mobileDropdownIcon) {
+            mobileDropdownIcon.style.transform = mobileServicesDropdown.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+          }
+        });
+        
+        // Close dropdown when clicking on menu items
+        mobileServicesDropdown.querySelectorAll('a').forEach(item => {
+          item.addEventListener('click', () => {
+            mobileServicesDropdown.classList.remove('show');
+            if (mobileDropdownIcon) {
+              mobileDropdownIcon.style.transform = 'rotate(0deg)';
+            }
+          });
+        });
+      }
+      
+      // Service Detail Modal
+      const serviceDetailModal = document.getElementById('serviceDetailModal');
+      const closeServiceDetailBtn = document.getElementById('closeServiceDetailBtn');
+      const closeServiceDetailModalBtn = document.getElementById('closeServiceDetailModalBtn');
+      
+      window.openServiceModal = function(serviceName) {
+        document.getElementById('serviceDetailTitle').innerHTML = `<i class="fas fa-cog"></i> ${serviceName} - Complete Details`;
+        document.getElementById('serviceDetailImg').src = SERVICE_IMAGES[serviceName];
+        document.getElementById('serviceDetailDescription').innerText = SERVICE_DETAILS[serviceName];
+        document.getElementById('serviceDetailPrice').innerHTML = `💰 ${SERVICE_PRICES[serviceName]} <span style="font-size:0.7rem; opacity:0.8;"> + 30% OFF limited time</span>`;
+        
+        const featuresList = document.getElementById('serviceDetailFeatures');
+        featuresList.innerHTML = '';
+        SERVICE_FEATURES[serviceName].forEach(feature => {
+          const li = document.createElement('li');
+          li.innerHTML = `<i class="fas fa-check-circle"></i> ${feature}`;
+          featuresList.appendChild(li);
+        });
+        
+        document.getElementById('serviceDetailBookBtn').onclick = () => {
+          closeServiceDetailModalFunc();
+          openBookingModal(serviceName);
+        };
+        
+        serviceDetailModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      };
+      
+      function closeServiceDetailModalFunc() {
+        serviceDetailModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+      
+      if (closeServiceDetailBtn) closeServiceDetailBtn.onclick = closeServiceDetailModalFunc;
+      if (closeServiceDetailModalBtn) closeServiceDetailModalBtn.onclick = closeServiceDetailModalFunc;
+      if (serviceDetailModal) serviceDetailModal.addEventListener('click', function(e) { if (e.target === serviceDetailModal) closeServiceDetailModalFunc(); });
+      
+      // Booking Modal
+      const bookingModal = document.getElementById('bookingModal');
+      const closeBookingBtn = document.getElementById('closeBookingModalBtn');
+      const bookingForm = document.getElementById('bookingForm');
+      const submitBtn = document.getElementById('submitBtn');
+      const formMessage = document.getElementById('formMessage');
+      
+      function openBookingModal(service) {
+        document.getElementById('serviceName').value = service;
+        document.getElementById('selectedServiceDisplay').innerHTML = `<i class="fas fa-wrench mr-2"></i>${service}`;
+        bookingModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        if (formMessage) formMessage.innerHTML = '';
+      }
+      
+      function closeBookingModalFunc() {
+        bookingModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+      
+      if (closeBookingBtn) closeBookingBtn.onclick = closeBookingModalFunc;
+      if (bookingModal) bookingModal.addEventListener('click', function(e) { if (e.target === bookingModal) closeBookingModalFunc(); });
+      
+      if (bookingForm) {
+        bookingForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          
+          const name = document.getElementById('name').value.trim();
+          const phone = document.getElementById('phone').value.trim();
+          const email = document.getElementById('email').value.trim();
+          const address = document.getElementById('address').value.trim();
+          
+          if (!name) { showMessage('❌ Please enter your full name', 'error'); return; }
+          if (!phone) { showMessage('❌ Please enter your phone number', 'error'); return; }
+          if (!email) { showMessage('❌ Please enter your email address', 'error'); return; }
+          if (!address) { showMessage('❌ Please enter your address', 'error'); return; }
+          
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+          
+          try {
+            const formData = new FormData(bookingForm);
+            const response = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
+            const data = await response.json();
+            
+            if (data.success) {
+              showMessage('✅ Booking request sent successfully! We will contact you shortly.', 'success');
+              bookingForm.reset();
+              setTimeout(() => {
+                closeBookingModalFunc();
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Request via Email';
+              }, 2000);
+            } else {
+              throw new Error(data.message || 'Failed to send');
+            }
+          } catch (error) {
+            showMessage('❌ Failed to send request. Please try again or contact us on WhatsApp.', 'error');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Request via Email';
+          }
+        });
+      }
+      
+      function showMessage(msg, type) {
+        if (formMessage) {
+          formMessage.innerHTML = `<div class="${type === 'success' ? 'success-message' : 'error-message'}">${msg}</div>`;
+          setTimeout(() => { if (formMessage.innerHTML) formMessage.innerHTML = ''; }, 5000);
+        } else { alert(msg); }
+      }
+      
+      // Mobile menu toggle
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (mobileBtn && mobileMenu) {
+        mobileBtn.onclick = () => mobileMenu.classList.toggle('hidden');
+        document.querySelectorAll('#mobileMenu a:not(#mobileServicesHeader)').forEach(link => {
+          link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+      }
+      
       // 30-Day Countdown Timer
       function setThirtyDayTimer() {
         const target = new Date();
         target.setDate(target.getDate() + 30);
-        target.setHours(23, 59, 59, 999);
+        target.setHours(23,59,59,999);
         function update() {
           const diff = target - new Date();
           if (diff <= 0) {
@@ -692,7 +1481,7 @@
       const mainBtn = document.getElementById('feedbackMainBtn');
       const panel = document.getElementById('feedbackPanel');
       const closePanelBtn = document.getElementById('closeFeedbackPanel');
-      const submitBtn = document.getElementById('submitFeedbackBtn');
+      const submitBtnFB = document.getElementById('submitFeedbackBtn');
       const feedbackTextarea = document.getElementById('feedbackTextMsg');
       
       if(mainBtn && panel) {
@@ -708,8 +1497,8 @@
         return null;
       }
       
-      if(submitBtn) {
-        submitBtn.addEventListener('click', () => {
+      if(submitBtnFB) {
+        submitBtnFB.addEventListener('click', () => {
           const rating = getSelectedRating();
           const msg = feedbackTextarea.value.trim();
           if(!rating && !msg) { alert('❌ Please provide a rating OR feedback message.'); return; }
