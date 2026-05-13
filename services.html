@@ -37,6 +37,7 @@
     :root {
       --primary-color: #0c5ca8;
       --primary-dark: #094a86;
+      --primary-light: #e8f0fe;
     }
     
     html {
@@ -394,10 +395,6 @@
       box-shadow: 0 0.5rem 1rem -0.5rem rgba(12,92,168,0.3);
     }
     
-    .front-img-wrapper::after {
-      display: none;
-    }
-    
     .front-img {
       width: 100%;
       height: 100%;
@@ -576,21 +573,20 @@
     }
     
     /* ======================================== */
-    /* 9. MODAL STYLES                          */
+    /* 9. MODERN SERVICE DETAIL MODAL - UPDATED */
     /* ======================================== */
     .modal-overlay {
       position: fixed;
       inset: 0;
       background: rgba(0,0,0,0.85);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(12px);
       z-index: 10000;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0;
       opacity: 0;
       visibility: hidden;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     }
     
     .modal-overlay.active {
@@ -598,36 +594,35 @@
       visibility: visible;
     }
     
-    .service-detail-modal .modal-container,
-    .feature-modal .modal-container {
-      max-width: 95vw !important;
-      width: 95% !important;
-      max-height: 90vh !important;
-      border-radius: 28px !important;
-      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-      overflow-y: auto;
+    .service-detail-modal .modal-container {
+      max-width: 92vw !important;
+      width: 92% !important;
+      max-height: 88vh !important;
+      border-radius: 36px !important;
+      background: #ffffff;
+      overflow: hidden;
+      box-shadow: 0 40px 70px -20px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.2);
     }
     
     @media (max-width: 768px) {
-      .service-detail-modal .modal-container,
-      .feature-modal .modal-container {
-        max-width: 98vw !important;
-        width: 98% !important;
-        max-height: 95vh !important;
-        border-radius: 20px !important;
+      .service-detail-modal .modal-container {
+        max-width: 96vw !important;
+        width: 96% !important;
+        border-radius: 28px !important;
       }
     }
     
     .modal-container {
       background: white;
-      max-width: min(90vw, 550px);
+      max-width: min(90vw, 680px);
       width: 100%;
-      border-radius: clamp(1rem, 4vw, 2rem);
+      border-radius: 36px;
       overflow: hidden;
-      transform: scale(0.9) translateY(30px);
-      transition: transform 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
-      box-shadow: 0 1.5rem 2.5rem rgba(0,0,0,0.4);
-      max-height: 90vh;
+      transform: scale(0.96) translateY(20px);
+      transition: transform 0.4s cubic-bezier(0.2, 0.95, 0.4, 1.1);
+      box-shadow: 0 35px 60px rgba(0,0,0,0.35);
+      max-height: 88vh;
       overflow-y: auto;
     }
     
@@ -637,7 +632,7 @@
     
     .modal-header {
       background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-      padding: clamp(1rem, 2vw, 1.5rem) clamp(1.5rem, 4vw, 2.5rem);
+      padding: 1.3rem 1.8rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -648,82 +643,133 @@
     }
     
     .modal-header h3 {
-      font-size: clamp(1rem, 3vw, 1.5rem);
+      font-size: 1.35rem;
       margin: 0;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 10px;
+      font-weight: 700;
     }
     
     .modal-close {
-      background: none;
+      background: rgba(255,255,255,0.2);
       border: none;
       color: white;
-      font-size: clamp(1.5rem, 5vw, 2rem);
+      font-size: 1.4rem;
       cursor: pointer;
-      transition: opacity 0.2s;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s;
+    }
+    
+    .modal-close:hover {
+      background: rgba(255,255,255,0.35);
+      transform: rotate(90deg);
     }
     
     .modal-body {
-      padding: clamp(1rem, 4vw, 2rem);
-      max-height: calc(90vh - 80px);
+      padding: 1.8rem;
+      max-height: calc(88vh - 75px);
       overflow-y: auto;
     }
     
-    /* Service Detail Content */
+    /* ===== LARGER IMAGE SECTION ===== */
     .service-detail-content {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1.2rem;
     }
     
     .service-detail-image-section {
       width: 100%;
       text-align: center;
+      background: linear-gradient(135deg, #f1f5f9, #eef2ff);
+      border-radius: 28px;
+      padding: 1.8rem;
+      margin-bottom: 0.2rem;
+      border: 1px solid rgba(12,92,168,0.1);
     }
     
     .service-detail-img {
       width: 100%;
-      max-height: 300px;
+      max-height: 400px;
+      min-height: 280px;
       object-fit: contain;
-      border-radius: 1rem;
-      background: linear-gradient(135deg, #f8fafc 0%, #eef2f6 100%);
-      padding: 1rem;
+      border-radius: 24px;
+      transition: transform 0.3s ease;
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.1));
+    }
+    
+    .service-detail-img:hover {
+      transform: scale(1.02);
     }
     
     @media (max-width: 640px) {
+      .service-detail-image-section {
+        padding: 1rem;
+        border-radius: 20px;
+      }
       .service-detail-img {
-        max-height: 200px;
-        padding: 0.5rem;
+        max-height: 280px;
+        min-height: 200px;
       }
     }
     
     .service-detail-description {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: #374151;
-      margin-bottom: 1rem;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: #1e293b;
+      margin-bottom: 0.5rem;
+      background: #f8fafc;
+      padding: 1.2rem 1.3rem;
+      border-radius: 24px;
+      border-left: 5px solid var(--primary-color);
+      font-weight: 500;
     }
     
     .price-badge {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       background: linear-gradient(135deg, #10b981, #059669);
       color: white;
-      padding: 0.5rem 1.2rem;
-      border-radius: 2rem;
-      font-weight: 700;
-      margin: 0.5rem 0 1rem 0;
-      font-size: 0.9rem;
+      padding: 0.7rem 1.6rem;
+      border-radius: 60px;
+      font-weight: 800;
+      font-size: 1rem;
+      margin: 0.6rem 0 0.8rem 0;
+      box-shadow: 0 8px 18px rgba(16,185,129,0.3);
+    }
+    
+    .price-badge i {
+      font-size: 1rem;
     }
     
     .detail-section-title {
       font-size: 1.1rem;
-      font-weight: 700;
-      margin: 1rem 0 0.8rem 0;
+      font-weight: 800;
+      margin: 1.1rem 0 0.7rem 0;
       color: var(--primary-color);
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 10px;
+      letter-spacing: -0.2px;
+    }
+    
+    .detail-section-title i {
+      font-size: 1.2rem;
+      background: var(--primary-color);
+      color: white;
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
     }
     
     .service-features-list {
@@ -731,7 +777,7 @@
       padding: 0;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 0.6rem;
+      gap: 0.7rem;
     }
     
     @media (max-width: 640px) {
@@ -741,134 +787,147 @@
     }
     
     .service-features-list li {
-      padding: 0.5rem 0;
-      border-bottom: 1px solid #e5e7eb;
+      padding: 0.65rem 0.9rem;
+      background: #f8fafc;
+      border-radius: 18px;
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 12px;
       font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.25s;
+      border: 1px solid #eef2ff;
+    }
+    
+    .service-features-list li:hover {
+      background: #eef2ff;
+      transform: translateX(6px);
+      border-color: var(--primary-color);
     }
     
     .service-features-list li i {
       color: var(--primary-color);
-      width: 1.3rem;
-      font-size: 0.9rem;
+      width: 1.4rem;
+      font-size: 1rem;
     }
     
-    .modal-footer-buttons,
     .contact-buttons {
       display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
+      gap: 1.2rem;
       flex-wrap: wrap;
-    }
-    
-    .modal-footer-buttons .book-now-btn,
-    .modal-footer-buttons .view-more-btn {
-      width: auto;
-      padding: 0.7rem 1.8rem;
-      font-size: 0.9rem;
+      margin: 1rem 0 1.2rem;
     }
     
     .whatsapp-link, .call-link {
-      padding: 0.5rem 1rem;
-      border-radius: 2rem;
+      padding: 0.7rem 1.3rem;
+      border-radius: 60px;
       text-decoration: none;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      transition: all 0.2s;
+      gap: 10px;
+      font-weight: 600;
+      transition: all 0.25s;
     }
     
     .whatsapp-link {
       background-color: #25D366;
       color: white;
+      box-shadow: 0 4px 12px rgba(37,211,102,0.3);
     }
     
     .whatsapp-link:hover {
       background-color: #075e54;
-      transform: translateY(-2px);
+      transform: translateY(-3px);
     }
     
     .call-link {
       background-color: #3b82f6;
       color: white;
+      box-shadow: 0 4px 12px rgba(59,130,246,0.3);
     }
     
     .call-link:hover {
       background-color: #2563eb;
+      transform: translateY(-3px);
+    }
+    
+    .modal-footer-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 0.8rem;
+    }
+    
+    .book-now-btn.modal-book {
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 60px;
+      padding: 0.8rem 1.8rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: auto;
+    }
+    
+    .book-now-btn.modal-book:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 22px rgba(12,92,168,0.35);
+    }
+    
+    .view-more-btn.modal-close-btn {
+      background-color: #6b7280;
+      color: white;
+      border: none;
+      width: auto;
+      padding: 0.8rem 1.8rem;
+      border-radius: 60px;
+    }
+    
+    .view-more-btn.modal-close-btn:hover {
+      background-color: #4b5563;
       transform: translateY(-2px);
     }
     
-    /* Form Styles */
-    .form-group {
-      margin-bottom: clamp(0.8rem, 3vw, 1.2rem);
+    /* Feature Modal */
+    .feature-modal .modal-container {
+      max-width: 480px !important;
+      width: 90% !important;
     }
     
-    .form-group label {
-      display: block;
+    .feature-modal .modal-header {
+      padding: 1rem 1.5rem;
+    }
+    
+    .feature-modal .modal-header h3 {
+      font-size: 1.2rem;
+    }
+    
+    #featureDescription {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    
+    .btn-zeetech {
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.7rem 1.8rem;
+      border-radius: 40px;
       font-weight: 600;
-      margin-bottom: 0.3rem;
-      font-size: clamp(0.75rem, 2.5vw, 0.85rem);
-      color: #374151;
-    }
-    
-    .form-group input, .form-group textarea, .form-group select {
-      width: 100%;
-      border: 1px solid #d1d5db;
-      border-radius: 0.75rem;
-      padding: clamp(0.5rem, 2vw, 0.7rem) clamp(0.6rem, 2vw, 0.9rem);
-      font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+      cursor: pointer;
       transition: all 0.2s;
     }
     
-    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-      outline: none;
-      border-color: var(--primary-color);
-      box-shadow: 0 0 0 2px rgba(12,92,168,0.2);
-    }
-    
-    .btn-submit {
-      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-      color: white;
-      padding: clamp(0.6rem, 2vw, 0.9rem);
-      border-radius: 2rem;
-      font-weight: 600;
-      width: 100%;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      font-size: clamp(0.8rem, 2.5vw, 0.9rem);
-    }
-    
-    .btn-submit:hover {
-      transform: translateY(-0.125rem);
-      opacity: 0.9;
-    }
-    
-    .success-message {
-      background: #10b981;
-      color: white;
-      padding: 0.75rem;
-      border-radius: 0.5rem;
-      margin-bottom: 1rem;
-      text-align: center;
-      font-size: clamp(0.7rem, 2vw, 0.85rem);
-    }
-    
-    .error-message {
-      background: #ef4444;
-      color: white;
-      padding: 0.75rem;
-      border-radius: 0.5rem;
-      margin-bottom: 1rem;
-      text-align: center;
-      font-size: clamp(0.7rem, 2vw, 0.85rem);
+    .btn-zeetech:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
     }
     
     /* Feedback Widget */
@@ -1034,6 +1093,74 @@
     }
     @media (min-width: 768px) {
       .navbar-spacer { margin-bottom: 1.5rem; }
+    }
+    
+    /* Form Styles */
+    .form-group {
+      margin-bottom: clamp(0.8rem, 3vw, 1.2rem);
+    }
+    
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      font-size: clamp(0.75rem, 2.5vw, 0.85rem);
+      color: #374151;
+    }
+    
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%;
+      border: 1px solid #d1d5db;
+      border-radius: 0.75rem;
+      padding: clamp(0.5rem, 2vw, 0.7rem) clamp(0.6rem, 2vw, 0.9rem);
+      font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+      transition: all 0.2s;
+    }
+    
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 2px rgba(12,92,168,0.2);
+    }
+    
+    .btn-submit {
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      color: white;
+      padding: clamp(0.6rem, 2vw, 0.9rem);
+      border-radius: 2rem;
+      font-weight: 600;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+    }
+    
+    .btn-submit:hover {
+      transform: translateY(-0.125rem);
+      opacity: 0.9;
+    }
+    
+    .success-message {
+      background: #10b981;
+      color: white;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    
+    .error-message {
+      background: #ef4444;
+      color: white;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
     }
   </style>
 </head>
@@ -1204,7 +1331,7 @@
   <div id="serviceDetailModal" class="modal-overlay service-detail-modal">
     <div class="modal-container">
       <div class="modal-header">
-        <h3><i class="fas fa-info-circle"></i> <span id="serviceDetailTitle">Service Details</span></h3>
+        <h3><i class="fas fa-cog"></i> <span id="serviceDetailTitle">Service Details</span></h3>
         <button class="modal-close" id="closeServiceDetailBtn">&times;</button>
       </div>
       <div class="modal-body">
@@ -1214,7 +1341,7 @@
           </div>
           <div class="service-detail-info">
             <p id="serviceDetailDescription" class="service-detail-description"></p>
-            <div class="price-badge" id="serviceDetailPrice">Starting from PKR 1,500</div>
+            <div class="price-badge" id="serviceDetailPrice">💰 Starting from PKR 1,500 <i class="fas fa-tag"></i></div>
             <div class="detail-section-title"><i class="fas fa-list-check"></i> Key Features & Benefits</div>
             <ul id="serviceDetailFeatures" class="service-features-list"></ul>
             <div class="detail-section-title"><i class="fas fa-headset"></i> Need Help?</div>
@@ -1223,8 +1350,8 @@
               <a href="tel:+923005518622" class="call-link"><i class="fas fa-phone-alt"></i> Call Now</a>
             </div>
             <div class="modal-footer-buttons">
-              <button id="serviceDetailBookBtn" class="book-now-btn">📅 Book Now →</button>
-              <button id="closeServiceDetailModalBtn" class="view-more-btn">✖️ Close</button>
+              <button id="serviceDetailBookBtn" class="book-now-btn modal-book">📅 Book Now →</button>
+              <button id="closeServiceDetailModalBtn" class="view-more-btn modal-close-btn">✖️ Close</button>
             </div>
           </div>
         </div>
@@ -1431,7 +1558,6 @@
         "Panel Installation": "☀️ Complete solar panel installation including roof mounting, structural assessment. 5-year warranty.",
         "Inverter Setup": "🔋 Professional solar inverter installation for on-grid, off-grid, and hybrid inverters.",
         "Battery Bank Configuration": "🔋🔋 Expert battery bank setup for optimal storage.",
-        "Maintenance": "🛡️ Regular solar system maintenance including panel cleaning, inverter checks.",
         "Panel Cleaning": "🧽 Professional solar panel cleaning. Increases efficiency by 15-25%.",
         "Net Metering Support": "📊 Complete net metering assistance including documentation, IESCO coordination.",
         "Battery Check & Replacement": "🔋 Expert battery health check, load testing, terminal cleaning.",
@@ -1498,7 +1624,7 @@
         document.getElementById('serviceDetailTitle').innerHTML = `<i class="fas fa-cog"></i> ${serviceName} - Complete Details`;
         document.getElementById('serviceDetailImg').src = SERVICE_IMAGES[serviceName];
         document.getElementById('serviceDetailDescription').innerText = SERVICE_DETAILS[serviceName];
-        document.getElementById('serviceDetailPrice').innerHTML = `💰 ${SERVICE_PRICES[serviceName]} <span style="font-size: 0.7rem; opacity: 0.8;"> + 30% OFF limited time</span>`;
+        document.getElementById('serviceDetailPrice').innerHTML = `💰 ${SERVICE_PRICES[serviceName]} <span style="font-size: 0.75rem; opacity: 0.9;"> + 30% OFF limited time</span> <i class="fas fa-tag"></i>`;
         
         const featuresList = document.getElementById('serviceDetailFeatures');
         featuresList.innerHTML = '';
