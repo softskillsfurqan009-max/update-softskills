@@ -84,23 +84,91 @@
     @media (min-width: 640px) { .location-float { bottom: 108px; right: 28px; width: 60px; height: 60px; } }
     .location-float:hover { transform: scale(1.08); background-color: #094a86; }
     
-    .whatsapp-float i, .location-float i { font-size: 28px; line-height: 1; }
-    @media (min-width: 640px) { .whatsapp-float i, .location-float i { font-size: 32px; } }
-    
-    /* ======================================== */
-    /* 4. LOGO STYLES                           */
-    /* ======================================== */
-    .logo-img {
-      width: 52px; height: 52px; object-fit: contain; border-radius: 12px;
-      background-color: #0c5ca8; padding: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    /* Review Floating Button - Left Side */
+    .review-float {
+      position: fixed; bottom: 20px; left: 16px; z-index: 999;
+      background-color: #0c5ca8; border-radius: 50%; width: 56px; height: 56px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25); transition: transform 0.2s; cursor: pointer;
     }
-    @media (min-width: 768px) { .logo-img { width: 60px; height: 60px; padding: 8px; border-radius: 14px; } }
+    @media (min-width: 640px) { 
+      .review-float { bottom: 28px; left: 28px; width: 60px; height: 60px; }
+    }
+    .review-float:hover { transform: scale(1.08); background-color: #094a86; }
+    .review-float i { font-size: 28px; line-height: 1; color: white; }
+    @media (min-width: 640px) { .review-float i { font-size: 32px; } }
+    
+    /* Feedback Widget - Left Side */
+    .feedback-widget { 
+      position: fixed; bottom: 92px; left: 16px; z-index: 999; 
+    }
+    @media (min-width: 640px) {
+      .feedback-widget { bottom: 108px; left: 28px; }
+    }
+    .feedback-main-btn {
+      display: flex; align-items: center; gap: 8px; background-color: #0c5ca8;
+      border-radius: 60px; padding: 8px 16px 8px 12px; cursor: pointer;
+      box-shadow: 0 8px 20px rgba(12,92,168,0.35); transition: all 0.3s ease;
+    }
+    .feedback-main-btn:hover { transform: scale(1.05); background-color: #094a86; }
+    .feedback-icon-circle { background-color: rgba(255,255,255,0.2); border-radius: 50%; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; }
+    @media (min-width: 640px) { .feedback-icon-circle { width: 42px; height: 42px; } }
+    .feedback-icon-circle i { font-size: 20px; color: white; }
+    .feedback-label-text { color: white; font-weight: 600; font-size: 0.85rem; letter-spacing: 0.5px; }
+    .feedback-label-text small { font-size: 0.65rem; font-weight: 400; opacity: 0.9; display: block; line-height: 1.2; }
+    
+    .feedback-panel {
+      position: absolute; bottom: 70px; left: 0; width: calc(100vw - 32px); max-width: 360px;
+      background: white; border-radius: 24px; box-shadow: 0 25px 45px -12px rgba(0,0,0,0.35);
+      overflow: hidden; transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      transform: translateY(20px); opacity: 0; visibility: hidden;
+    }
+    @media (min-width: 480px) { .feedback-panel { width: 360px; bottom: 75px; } }
+    .feedback-panel.active { transform: translateY(0); opacity: 1; visibility: visible; }
+    .panel-header { background: linear-gradient(135deg, #0c5ca8, #0a4a82); padding: 16px 20px; color: white; }
+    .star-rating { display: flex; flex-direction: row-reverse; justify-content: center; gap: 10px; margin: 8px 0; }
+    .star-rating input { display: none; }
+    .star-rating label { font-size: 30px; color: #ddd; cursor: pointer; transition: all 0.2s; }
+    .star-rating input:checked ~ label, .star-rating label:hover, .star-rating label:hover ~ label { color: #ffc107; transform: scale(1.05); }
+    .feedback-whatsapp-btn { background-color: #25D366; transition: all 0.2s; font-weight: 600; }
+    .feedback-whatsapp-btn:hover { background-color: #075e54; transform: translateY(-2px); }
+    .close-panel-link { font-size: 0.7rem; color: #94a3b8; cursor: pointer; }
+    .close-panel-link:hover { color: #0c5ca8; }
+    
+    /* Logo Styles - Original Size */
+    .logo-img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      border-radius: 12px;
+      background-color: #0c5ca8;
+      padding: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    @media (min-width: 768px) {
+      .logo-img { 
+        width: 60px; 
+        height: 60px; 
+        padding: 8px;
+        border-radius: 14px;
+      }
+    }
     
     .footer-logo-img {
-      width: 48px; height: 48px; object-fit: contain; border-radius: 12px;
-      background-color: #0c5ca8; padding: 6px;
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      border-radius: 12px;
+      background-color: #0c5ca8;
+      padding: 6px;
     }
-    @media (min-width: 768px) { .footer-logo-img { width: 52px; height: 52px; padding: 8px; } }
+    @media (min-width: 768px) {
+      .footer-logo-img { 
+        width: 52px; 
+        height: 52px; 
+        padding: 8px;
+      }
+    }
     
     /* ======================================== */
     /* 5. NAVIGATION                            */
@@ -148,39 +216,6 @@
     .slider-container { width: 100%; overflow: hidden; border-radius: 1rem; cursor: pointer; }
     @media (min-width: 768px) { .slider-container { border-radius: 1.5rem; } }
     .swiper-slide img { width: 100%; height: auto; max-height: 500px; object-fit: cover; display: block; }
-    
-    /* Feedback Widget */
-    .feedback-widget { position: fixed; bottom: 20px; left: 16px; z-index: 999; }
-    @media (min-width: 640px) { .feedback-widget { bottom: 28px; left: 28px; } }
-    .feedback-main-btn {
-      display: flex; align-items: center; gap: 8px; background-color: #0c5ca8;
-      border-radius: 60px; padding: 8px 16px 8px 12px; cursor: pointer;
-      box-shadow: 0 8px 20px rgba(12,92,168,0.35); transition: all 0.3s ease;
-    }
-    .feedback-main-btn:hover { transform: scale(1.05); background-color: #094a86; }
-    .feedback-icon-circle { background-color: rgba(255,255,255,0.2); border-radius: 50%; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; }
-    @media (min-width: 640px) { .feedback-icon-circle { width: 42px; height: 42px; } }
-    .feedback-icon-circle i { font-size: 20px; color: white; }
-    .feedback-label-text { color: white; font-weight: 600; font-size: 0.85rem; letter-spacing: 0.5px; }
-    .feedback-label-text small { font-size: 0.65rem; font-weight: 400; opacity: 0.9; display: block; line-height: 1.2; }
-    
-    .feedback-panel {
-      position: absolute; bottom: 70px; left: 0; width: calc(100vw - 32px); max-width: 360px;
-      background: white; border-radius: 24px; box-shadow: 0 25px 45px -12px rgba(0,0,0,0.35);
-      overflow: hidden; transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-      transform: translateY(20px); opacity: 0; visibility: hidden;
-    }
-    @media (min-width: 480px) { .feedback-panel { width: 360px; bottom: 75px; } }
-    .feedback-panel.active { transform: translateY(0); opacity: 1; visibility: visible; }
-    .panel-header { background: linear-gradient(135deg, #0c5ca8, #0a4a82); padding: 16px 20px; color: white; }
-    .star-rating { display: flex; flex-direction: row-reverse; justify-content: center; gap: 10px; margin: 8px 0; }
-    .star-rating input { display: none; }
-    .star-rating label { font-size: 30px; color: #ddd; cursor: pointer; transition: all 0.2s; }
-    .star-rating input:checked ~ label, .star-rating label:hover, .star-rating label:hover ~ label { color: #ffc107; transform: scale(1.05); }
-    .feedback-whatsapp-btn { background-color: #25D366; transition: all 0.2s; font-weight: 600; }
-    .feedback-whatsapp-btn:hover { background-color: #075e54; transform: translateY(-2px); }
-    .close-panel-link { font-size: 0.7rem; color: #94a3b8; cursor: pointer; }
-    .close-panel-link:hover { color: #0c5ca8; }
     
     /* Modern 3D Service Cards */
     .service-card-modern {
@@ -326,6 +361,15 @@
     .social-icon:hover { transform: translateY(-3px); }
     .footer-link { transition: all 0.3s ease; display: inline-flex; align-items: center; }
     
+    /* Review Form Modal */
+    .review-modal .modal-container { max-width: 550px !important; width: 90% !important; }
+    .rating-input { display: flex; flex-direction: row-reverse; justify-content: center; gap: 10px; margin: 0.5rem 0 1rem; }
+    .rating-input input { display: none; }
+    .rating-input label { font-size: 35px; color: #ddd; cursor: pointer; transition: all 0.2s; }
+    .rating-input input:checked ~ label,
+    .rating-input label:hover,
+    .rating-input label:hover ~ label { color: #ffc107; transform: scale(1.05); }
+    
     /* Modal Styles */
     .modal-overlay {
       position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(12px);
@@ -333,15 +377,25 @@
       opacity: 0; visibility: hidden; transition: all 0.4s ease;
     }
     .modal-overlay.active { opacity: 1; visibility: visible; }
-    .service-detail-modal .modal-container { max-width: 95vw !important; width: 95% !important; max-height: 90vh !important; border-radius: 32px !important; background: linear-gradient(145deg, #ffffff 0%, #f8fafd 100%); overflow: hidden; box-shadow: 0 35px 60px -15px rgba(0,0,0,0.4); }
-    @media (max-width: 768px) { .service-detail-modal .modal-container { max-width: 98vw !important; width: 98% !important; border-radius: 24px !important; } }
-    .modal-container { background: white; max-width: min(90vw, 650px); width: 100%; border-radius: 32px; overflow: hidden; transform: scale(0.95) translateY(20px); transition: all 0.4s cubic-bezier(0.2, 0.95, 0.4, 1.1); box-shadow: 0 35px 60px rgba(0,0,0,0.3); max-height: 90vh; overflow-y: auto; }
+    .service-detail-modal .modal-container, .review-modal .modal-container {
+      max-width: 95vw !important; width: 95% !important; max-height: 90vh !important;
+      border-radius: 32px !important; background: linear-gradient(145deg, #ffffff 0%, #f8fafd 100%);
+      overflow: hidden; box-shadow: 0 35px 60px -15px rgba(0,0,0,0.4);
+    }
+    @media (max-width: 768px) { .service-detail-modal .modal-container, .review-modal .modal-container { max-width: 98vw !important; width: 98% !important; border-radius: 24px !important; } }
+    .modal-container {
+      background: white; max-width: min(90vw, 650px); width: 100%;
+      border-radius: 32px; overflow: hidden; transform: scale(0.95) translateY(20px);
+      transition: all 0.4s cubic-bezier(0.2, 0.95, 0.4, 1.1);
+      box-shadow: 0 35px 60px rgba(0,0,0,0.3); max-height: 90vh; overflow-y: auto;
+    }
     .modal-overlay.active .modal-container { transform: scale(1) translateY(0); }
     .modal-header { background: linear-gradient(135deg, #0c5ca8, #0a4a82); padding: 1.2rem 1.8rem; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 10; }
     .modal-header h3 { font-size: 1.3rem; margin: 0; display: flex; align-items: center; gap: 10px; }
     .modal-close { background: rgba(255,255,255,0.2); border: none; color: white; font-size: 1.5rem; cursor: pointer; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
     .modal-close:hover { background: rgba(255,255,255,0.35); transform: rotate(90deg); }
     .modal-body { padding: 1.8rem; max-height: calc(90vh - 80px); overflow-y: auto; }
+    
     .service-detail-content { display: flex; flex-direction: column; gap: 1.5rem; }
     .service-detail-image-section { width: 100%; text-align: center; background: linear-gradient(135deg, #eef2f6, #f9fafb); border-radius: 24px; padding: 1.5rem; }
     .service-detail-img { width: 100%; max-height: 380px; min-height: 280px; object-fit: contain; border-radius: 20px; transition: transform 0.3s ease; }
@@ -364,28 +418,43 @@
     .book-now-btn { background-color: #0c5ca8; color: white; border-radius: 40px; padding: 0.7rem 1.5rem; font-size: 0.9rem; font-weight: 600; transition: all 0.3s ease; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
     .book-now-btn:hover { background-color: #094a86; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(12,92,168,0.3); }
     .form-group { margin-bottom: 1rem; }
-    .form-group label { display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 0.3rem; }
+    .form-group label { display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 0.3rem; color: #374151; }
     .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 0.7rem; border: 1px solid #e2e8f0; border-radius: 14px; font-size: 0.85rem; transition: 0.2s; }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: #0c5ca8; box-shadow: 0 0 0 3px rgba(12,92,168,0.1); }
     .btn-submit { background: #0c5ca8; color: white; width: 100%; padding: 0.8rem; border: none; border-radius: 40px; font-weight: 600; cursor: pointer; transition: 0.2s; }
     .btn-submit:hover { background: #094a86; transform: translateY(-2px); }
     
-    .section-spacing {
-      margin-bottom: 3rem;
+    .section-spacing { margin-bottom: 3rem; }
+    @media (min-width: 768px) { .section-spacing { margin-bottom: 4rem; } }
+    
+    .loader {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #f3f3f3;
+      border-top: 2px solid #0c5ca8;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
     }
-    @media (min-width: 768px) {
-      .section-spacing {
-        margin-bottom: 4rem;
-      }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
   </style>
 </head>
 <body>
 
   <!-- FLOATING BUTTONS -->
+  <!-- Right Side -->
   <div class="location-float" id="locationBtn"><i class="fas fa-map-marker-alt text-white"></i></div>
   <a href="https://wa.me/923005518622?text=Hello%20Zeetech%2C%20I%20need%20assistance" target="_blank" class="whatsapp-float"><i class="fab fa-whatsapp text-white"></i></a>
 
-  <!-- FEEDBACK WIDGET -->
+  <!-- Left Side - Write Review Button (Floating) -->
+  <div class="review-float" id="openReviewFloatingBtn">
+    <i class="fas fa-pen-alt"></i>
+  </div>
+
+  <!-- Left Side - Feedback Widget -->
   <div class="feedback-widget" id="zeetechFeedbackWidget">
     <div class="feedback-main-btn" id="feedbackMainBtn">
       <div class="feedback-icon-circle"><i class="fas fa-comment-dots"></i></div>
@@ -439,29 +508,91 @@
     <!-- Slider -->
     <div class="slider-container mb-8 md:mb-12 shadow-lg" id="sliderContainer"><div class="swiper" id="mainSwiper"><div class="swiper-wrapper"><div class="swiper-slide"><img src="/static/electrical-banner.png" alt="Electrical Services"></div><div class="swiper-slide"><img src="/static/solar-banner.png" alt="Solar Solutions"></div><div class="swiper-slide"><img src="/static/penter-banner.png" alt="Carpenter Services"></div><div class="swiper-slide"><img src="/static/fridge-banner.png" alt="Fridge Repair"></div><div class="swiper-slide"><img src="/static/ac-banner (1).png" alt="AC Services"></div></div><div class="swiper-pagination"></div></div></div>
 
-    <!-- Hero Section with Gradient CTA -->
+    <!-- Hero Section -->
     <div class="bg-gradient-to-r from-blue-50 to-white rounded-2xl md:rounded-3xl p-5 md:p-8 lg:p-10 shadow-sm mb-12 md:mb-16"><div class="max-w-3xl"><h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-800 good-times">ZEETECH <span class="text-zeetech">Technical Services</span></h1><p class="text-gray-600 text-sm sm:text-base md:text-lg mt-3 md:mt-4">Reliable, efficient & affordable home & commercial technical solutions — Installation, Maintenance, Repair under one trusted brand.</p><div class="flex flex-wrap gap-3 md:gap-4 mt-5 md:mt-8"><a href="services.html" class="btn-gradient text-white px-5 py-2.5 md:px-6 md:py-3 rounded-xl font-semibold shadow-md transition text-sm md:text-base">Explore Services →</a><a href="contact.html" class="border-2 border-zeetech text-zeetech px-5 py-2.5 md:px-6 md:py-3 rounded-xl font-semibold hover:bg-zeetech hover:text-white transition text-sm md:text-base">Contact Us</a></div></div></div>
 
-    <!-- ======================================== -->
-    <!-- SERVICES SECTION (6 CARDS) - MOVED UP    -->
-    <!-- ======================================== -->
+    <!-- SERVICES SECTION (6 CARDS) -->
     <div class="section-spacing"><div class="text-center mb-8 md:mb-10"><h2 class="text-2xl md:text-3xl font-bold text-gray-800 good-times inline-block border-b-4 border-zeetech pb-2">Our Services</h2><p class="text-gray-500 text-sm md:text-base mt-3">Professional solutions for your home and business</p></div><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"><div class="service-card-modern" onclick="openServiceModal('Air Conditioner')"><div class="service-icon-modern"><i class="fas fa-wind"></i></div><h3 class="service-title good-times">AC Services</h3><p class="service-desc">Installation, repair, gas filling & maintenance</p><span class="service-price">Starting from PKR 2,500</span></div><div class="service-card-modern" onclick="openServiceModal('Refrigerator')"><div class="service-icon-modern"><i class="fas fa-thermometer-half"></i></div><h3 class="service-title good-times">Fridge Repair</h3><p class="service-desc">Cooling issues, gas filling, compressor repair</p><span class="service-price">Starting from PKR 1,800</span></div><div class="service-card-modern" onclick="openServiceModal('Solar Energy')"><div class="service-icon-modern"><i class="fas fa-solar-panel"></i></div><h3 class="service-title good-times">Solar Energy</h3><p class="service-desc">Panel installation, inverter setup, net metering</p><span class="service-price">Starting from PKR 15,000</span></div><div class="service-card-modern" onclick="openServiceModal('Inverter Services')"><div class="service-icon-modern"><i class="fas fa-battery-full"></i></div><h3 class="service-title good-times">Inverter Services</h3><p class="service-desc">Installation, repair, battery replacement</p><span class="service-price">Starting from PKR 2,000</span></div><div class="service-card-modern" onclick="openServiceModal('Carpenter')"><div class="service-icon-modern"><i class="fas fa-hammer"></i></div><h3 class="service-title good-times">Carpenter</h3><p class="service-desc">Furniture repair, custom woodwork, polishing</p><span class="service-price">Starting from PKR 1,500</span></div><div class="service-card-modern" onclick="openServiceModal('General Electrician')"><div class="service-icon-modern"><i class="fas fa-bolt"></i></div><h3 class="service-title good-times">Electrician</h3><p class="service-desc">Wiring, troubleshooting, home maintenance</p><span class="service-price">Starting from PKR 1,200</span></div></div></div>
 
-    <!-- ======================================== -->
-    <!-- VALUE CARDS SECTION (3 CARDS) - MOVED DOWN -->
-    <!-- ======================================== -->
+    <!-- VALUE CARDS SECTION (3 CARDS) -->
     <div class="section-spacing"><div class="text-center mb-8 md:mb-10"><h2 class="text-2xl md:text-3xl font-bold text-gray-800 good-times inline-block border-b-4 border-zeetech pb-2">Why Choose Zeetech</h2><p class="text-gray-500 text-sm md:text-base mt-3">Our commitment to excellence</p></div><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"><div class="value-card-modern"><div class="value-icon"><i class="fas fa-handshake"></i></div><h3 class="font-bold text-lg good-times mb-2">Reliability</h3><p class="text-gray-500 text-sm">Services customers can trust, every time.</p></div><div class="value-card-modern"><div class="value-icon"><i class="fas fa-tools"></i></div><h3 class="font-bold text-lg good-times mb-2">Quality Workmanship</h3><p class="text-gray-500 text-sm">Skilled technicians with attention to detail.</p></div><div class="value-card-modern"><div class="value-icon"><i class="fas fa-smile"></i></div><h3 class="font-bold text-lg good-times mb-2">Customer Satisfaction</h3><p class="text-gray-500 text-sm">Long-term relationships & dependable service.</p></div></div></div>
 
     <!-- Testimonials Section -->
-    <div class="mb-16"><div class="text-center mb-8 md:mb-10"><h2 class="text-2xl md:text-3xl font-bold text-gray-800 good-times inline-block border-b-4 border-zeetech pb-2">What Our Clients Say</h2><p class="text-gray-500 text-sm md:text-base mt-3">Trusted by hundreds of happy customers</p></div><div class="grid grid-cols-1 md:grid-cols-3 gap-6"><div class="testimonial-card"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="text-gray-600 text-sm mb-3">"Excellent AC repair service! The technician arrived on time and fixed my AC within an hour. Very professional."</p><div class="flex items-center gap-3"><div class="w-10 h-10 bg-zeetech/20 rounded-full flex items-center justify-center"><i class="fas fa-user text-zeetech"></i></div><div><p class="font-semibold text-sm">Ahmed Raza</p><p class="text-xs text-gray-400">Islamabad</p></div></div></div><div class="testimonial-card"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="text-gray-600 text-sm mb-3">"Best solar installation team! They helped me save 60% on my electricity bill. Highly recommended!"</p><div class="flex items-center gap-3"><div class="w-10 h-10 bg-zeetech/20 rounded-full flex items-center justify-center"><i class="fas fa-user text-zeetech"></i></div><div><p class="font-semibold text-sm">Sana Khalid</p><p class="text-xs text-gray-400">Rawalpindi</p></div></div></div><div class="testimonial-card"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="text-gray-600 text-sm mb-3">"Quick response and affordable pricing. The electrician fixed all my wiring issues perfectly."</p><div class="flex items-center gap-3"><div class="w-10 h-10 bg-zeetech/20 rounded-full flex items-center justify-center"><i class="fas fa-user text-zeetech"></i></div><div><p class="font-semibold text-sm">Usman Tariq</p><p class="text-xs text-gray-400">Islamabad</p></div></div></div></div></div>
+    <div class="mb-16">
+      <div class="text-center mb-8 md:mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-800 good-times inline-block border-b-4 border-zeetech pb-2">What Our Clients Say</h2>
+        <p class="text-gray-500 text-sm md:text-base mt-3">Trusted by hundreds of happy customers</p>
+      </div>
+      
+      <!-- Review Cards Grid - Original 3 Sample Reviews + Dynamic Approved Reviews -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="reviewsContainer">
+        <!-- Sample Review 1 -->
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="text-gray-600 text-sm mb-3">"Excellent AC repair service! The technician arrived on time and fixed my AC within an hour. Very professional."</p>
+          <div class="flex items-center gap-3"><div class="w-10 h-10 bg-zeetech/20 rounded-full flex items-center justify-center"><i class="fas fa-user text-zeetech"></i></div><div><p class="font-semibold text-sm">Ahmed Raza</p><p class="text-xs text-gray-400">Islamabad</p></div></div>
+        </div>
+        <!-- Sample Review 2 -->
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="text-gray-600 text-sm mb-3">"Best solar installation team! They helped me save 60% on my electricity bill. Highly recommended!"</p>
+          <div class="flex items-center gap-3"><div class="w-10 h-10 bg-zeetech/20 rounded-full flex items-center justify-center"><i class="fas fa-user text-zeetech"></i></div><div><p class="font-semibold text-sm">Sana Khalid</p><p class="text-xs text-gray-400">Rawalpindi</p></div></div>
+        </div>
+        <!-- Sample Review 3 -->
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="text-gray-600 text-sm mb-3">"Quick response and affordable pricing. The electrician fixed all my wiring issues perfectly."</p>
+          <div class="flex items-center gap-3"><div class="w-10 h-10 bg-zeetech/20 rounded-full flex items-center justify-center"><i class="fas fa-user text-zeetech"></i></div><div><p class="font-semibold text-sm">Usman Tariq</p><p class="text-xs text-gray-400">Islamabad</p></div></div>
+        </div>
+      </div>
+    </div>
 
     <!-- Mission & Vision -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 bg-gradient-to-r from-gray-50 to-white p-5 md:p-8 rounded-2xl"><div><i class="fas fa-bullseye text-2xl md:text-3xl text-zeetech mb-2"></i><h2 class="text-xl md:text-2xl font-bold good-times">Our Mission</h2><p class="mt-2 text-gray-600 text-sm md:text-base">To provide dependable technical services that improve everyday living through quality workmanship, reliable service, and professional expertise.</p></div><div><i class="fas fa-eye text-2xl md:text-3xl text-zeetech mb-2"></i><h2 class="text-xl md:text-2xl font-bold good-times">Our Vision</h2><p class="mt-2 text-gray-600 text-sm md:text-base">To become a trusted leading technical services provider delivering complete home & commercial solutions with excellence and integrity.</p></div></div>
   </main>
 
-  <!-- MODALS -->
+  <!-- REVIEW MODAL -->
+  <div id="reviewModal" class="modal-overlay review-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3><i class="fas fa-star"></i> Write a Review</h3>
+        <button class="modal-close" id="closeReviewModalBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="reviewForm">
+          <div class="form-group">
+            <label><i class="fas fa-user mr-2"></i> Your Name *</label>
+            <input type="text" id="reviewName" placeholder="Enter your full name" required>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-heading mr-2"></i> Review Title *</label>
+            <input type="text" id="reviewTitle" placeholder="e.g., Excellent Service!" required>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-star mr-2"></i> Rating *</label>
+            <div class="rating-input" id="reviewRatingGroup">
+              <input type="radio" id="star5_review" name="review_rating" value="5"><label for="star5_review" class="fas fa-star"></label>
+              <input type="radio" id="star4_review" name="review_rating" value="4"><label for="star4_review" class="fas fa-star"></label>
+              <input type="radio" id="star3_review" name="review_rating" value="3"><label for="star3_review" class="fas fa-star"></label>
+              <input type="radio" id="star2_review" name="review_rating" value="2"><label for="star2_review" class="fas fa-star"></label>
+              <input type="radio" id="star1_review" name="review_rating" value="1"><label for="star1_review" class="fas fa-star"></label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-comment mr-2"></i> Your Feedback *</label>
+            <textarea id="reviewFeedback" rows="4" placeholder="Share your experience with Zeetech..." required></textarea>
+          </div>
+          <button type="submit" class="btn-submit" id="submitReviewBtn"><i class="fas fa-paper-plane mr-2"></i> Submit Review</button>
+        </form>
+        <p class="text-xs text-gray-400 text-center mt-3">Your review will be published after admin approval</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICE DETAIL MODAL -->
   <div id="serviceDetailModal" class="modal-overlay service-detail-modal"><div class="modal-container"><div class="modal-header"><h3><i class="fas fa-cog"></i> <span id="serviceDetailTitle">Service Details</span></h3><button class="modal-close" id="closeServiceDetailBtn">&times;</button></div><div class="modal-body"><div class="service-detail-content"><div class="service-detail-image-section"><img id="serviceDetailImg" src="" alt="Service Image" class="service-detail-img"></div><div class="service-detail-info"><p id="serviceDetailDescription" class="service-detail-description"></p><div class="price-badge" id="serviceDetailPrice">💰 Starting from PKR 1,500 <i class="fas fa-tag"></i></div><div class="detail-section-title"><i class="fas fa-list-check"></i> Key Features & Benefits</div><ul id="serviceDetailFeatures" class="service-features-list"></ul><div class="detail-section-title"><i class="fas fa-headset"></i> Need Help?</div><div class="contact-buttons"><a href="https://wa.me/923005518622" target="_blank" class="whatsapp-link"><i class="fab fa-whatsapp"></i> WhatsApp Now</a><a href="tel:+923005518622" class="call-link"><i class="fas fa-phone-alt"></i> Call Now</a></div><div class="modal-footer-buttons"><button id="serviceDetailBookBtn" class="book-now-btn">📅 Book Now →</button><button id="closeServiceDetailModalBtn" class="book-now-btn" style="background:#6b7280;">✖️ Close</button></div></div></div></div></div></div>
 
+  <!-- BOOKING MODAL -->
   <div id="bookingModal" class="modal-overlay"><div class="modal-container"><div class="modal-header"><h3><i class="fas fa-envelope"></i> Book Your Service</h3><button class="modal-close" id="closeBookingModalBtn">&times;</button></div><form id="bookingForm" class="modal-body" action="https://api.web3forms.com/submit" method="POST"><div id="formMessage"></div><input type="hidden" name="access_key" value="4c4c9b02-6bd4-40c0-98eb-ef7946ccfa5a"><input type="hidden" name="subject" value="Zeetech - New Service Booking Request"><input type="hidden" id="serviceName" name="service_name"><div class="form-group"><label><i class="fas fa-wrench mr-1"></i> Service Required *</label><div id="selectedServiceDisplay" class="bg-gray-100 text-zeetech font-semibold px-4 py-2 rounded-lg text-sm"></div></div><div class="form-group"><label><i class="fas fa-user mr-1"></i> Full Name *</label><input type="text" id="name" name="name" required placeholder="Enter your full name"></div><div class="form-group"><label><i class="fas fa-phone mr-1"></i> Phone Number *</label><input type="tel" id="phone" name="phone" required placeholder="e.g., 0300 1234567"></div><div class="form-group"><label><i class="fas fa-envelope mr-1"></i> Email *</label><input type="email" id="email" name="email" required placeholder="your@email.com"></div><div class="form-group"><label><i class="fas fa-map-marker-alt mr-1"></i> Address *</label><textarea id="address" name="address" rows="2" required placeholder="Street, area, city"></textarea></div><div class="form-group"><label><i class="fas fa-calendar-alt mr-1"></i> Preferred Date</label><input type="date" id="preferredDate" name="preferred_date"></div><div class="form-group"><label><i class="fas fa-clock mr-1"></i> Preferred Time</label><select id="preferredTime" name="preferred_time"><option value="">Select time slot</option><option>Morning (9am-12pm)</option><option>Afternoon (12pm-3pm)</option><option>Evening (3pm-6pm)</option><option>Any time</option></select></div><div class="form-group"><label><i class="fas fa-comment mr-1"></i> Message</label><textarea id="extraMsg" name="message" rows="2" placeholder="Any special requirements..."></textarea></div><input type="checkbox" name="botcheck" style="display:none"><button type="submit" id="submitBtn" class="btn-submit"><i class="fas fa-paper-plane"></i> Send Request via Email</button></form></div></div>
 
   <!-- FOOTER -->
@@ -469,19 +600,106 @@
 
   <script>
     (function(){
+      // API Configuration
+      const API_URL = 'https://api.sheetbest.com/sheets/8929939d-6797-4443-9185-2c8071d4c92f';
+      
+      // Function to fetch and display approved reviews (appends to existing sample reviews)
+      async function loadApprovedReviews() {
+        const container = document.getElementById('reviewsContainer');
+        if (!container) return;
+        
+        try {
+          const response = await fetch(API_URL);
+          const data = await response.json();
+          
+          // Filter approved reviews (Approved === "YES")
+          const approvedReviews = data.filter(review => review.Approved === "YES");
+          
+          if (approvedReviews.length === 0) return;
+          
+          // Create HTML for approved reviews
+          const approvedReviewsHTML = approvedReviews.slice(-3).reverse().map(review => {
+            const rating = parseInt(review.Rating) || 0;
+            const stars = '⭐'.repeat(rating) + '☆'.repeat(5 - rating);
+            return `
+              <div class="testimonial-card">
+                <div class="stars">${stars}</div>
+                <h4 class="font-bold text-md mb-1">${escapeHtml(review.Title || 'Customer Review')}</h4>
+                <p class="text-gray-600 text-sm mb-3">"${escapeHtml(review.Feedback || '')}"</p>
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 bg-zeetech/20 rounded-full flex items-center justify-center">
+                    <i class="fas fa-user text-zeetech"></i>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-sm">${escapeHtml(review.Name || 'Anonymous')}</p>
+                    <p class="text-xs text-gray-400">${formatDate(review.Timestamp)}</p>
+                  </div>
+                </div>
+              </div>
+            `;
+          }).join('');
+          
+          // Append approved reviews after sample reviews
+          if (approvedReviewsHTML) {
+            container.insertAdjacentHTML('beforeend', approvedReviewsHTML);
+          }
+          
+        } catch (error) {
+          console.error('Error loading approved reviews:', error);
+        }
+      }
+      
+      // Helper function to escape HTML
+      function escapeHtml(text) {
+        if (!text) return '';
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+      }
+      
+      // Helper function to format date
+      function formatDate(timestamp) {
+        if (!timestamp) return 'Recently';
+        try {
+          const parts = timestamp.split(' ');
+          if (parts.length >= 1) {
+            return parts[0];
+          }
+          return timestamp;
+        } catch(e) {
+          return timestamp;
+        }
+      }
+      
+      // Function to submit review to Google Sheet
+      async function submitReview(reviewData) {
+        const response = await fetch(API_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify([reviewData])
+        });
+        return response.ok;
+      }
+      
+      // Location Button
       document.getElementById('locationBtn')?.addEventListener('click', () => window.open('https://www.google.com/maps?q=33.6598056,72.9891944','_blank'));
       document.getElementById('siteLogo').src = "/static/zeetech-lago.jpeg";
       document.getElementById('footerLogo').src = "/static/zeetech-lago.jpeg";
 
+      // Service Data
       const SERVICE_IMAGES = { "Air Conditioner": "/static/ac.jpeg","Refrigerator": "/static/fridge.jpeg","Solar Energy": "/static/solor-pic.png","Inverter Services": "/static/invertor.jpeg","Carpenter": "/static/carpenter.jpeg","General Electrician": "/static/general.jpeg" };
       const SERVICE_PRICES = { "Air Conditioner": "Starting from PKR 2,500","Refrigerator": "Starting from PKR 1,800","Solar Energy": "Starting from PKR 15,000","Inverter Services": "Starting from PKR 2,000","Carpenter": "Starting from PKR 1,500","General Electrician": "Starting from PKR 1,200" };
       const SERVICE_DETAILS = { "Air Conditioner": "We provide complete AC solutions including professional installation, repair services, gas filling, and regular maintenance. Our certified technicians work with all major brands like Gree, Dawlance, Haier, LG, and Samsung. We offer same-day service and 30-day warranty on all repairs. Our team is available 24/7 for emergency AC repairs across Islamabad and Rawalpindi.","Refrigerator": "Expert fridge repair services covering cooling issues, gas refilling, compressor repair, door seal replacement, thermostat fix, and deep cleaning. We support all brands including Dawlance, Haier, Kenwood, LG, and Samsung.","Solar Energy": "Complete solar solutions including panel installation, inverter setup, battery configuration, regular maintenance, panel cleaning, and net metering support. Reduce your electricity bills by up to 70% with our professional solar services.","Inverter Services": "Professional inverter services including installation, repair, battery check and replacement, charging issue fix, and regular maintenance.","Carpenter": "Expert carpentry services including furniture repair, custom woodwork, assembly service, polishing, cabinet making, and door/window fitting.","General Electrician": "Complete electrical solutions including wiring installation, troubleshooting, home maintenance, quick fixes, panel upgrades, and fan/light fitting." };
       const SERVICE_FEATURES = { "Air Conditioner": ["Professional Installation","Repair Service","Gas Filling","Regular Maintenance","All Brands Support","24/7 Emergency","1-Month Warranty"], "Refrigerator": ["Cooling Issue Fix","Gas Refilling","Compressor Repair","Door Seal Replacement","Thermostat Fix","Deep Cleaning","30-Day Warranty"], "Solar Energy": ["Panel Installation","Inverter Setup","Battery Configuration","Regular Maintenance","Net Metering Support","5-Year Warranty","Free Consultation"], "Inverter Services": ["New Installation","Repair Service","Battery Check & Replacement","Charging Issue Fix","Regular Maintenance","All Brands Support"], "Carpenter": ["Furniture Repair","Custom Woodwork","Assembly Service","Polishing & Finishing","Cabinet Making","Door & Window Fitting"], "General Electrician": ["Wiring Installation","Troubleshooting","Home Maintenance","Quick Fixes","Panel Upgrades","Fan & Light Fitting"] };
 
+      // Swiper Slider
       const swiper = new Swiper('.swiper', { loop: true, autoplay: { delay: 3500, disableOnInteraction: false }, pagination: { el: '.swiper-pagination', clickable: true }, speed: 800 });
       const sliderContainer = document.getElementById('sliderContainer');
       if(sliderContainer){ sliderContainer.addEventListener('mouseenter',()=>swiper.autoplay.stop()); sliderContainer.addEventListener('mouseleave',()=>swiper.autoplay.start()); }
 
+      // Service Detail Modal
       const serviceDetailModal = document.getElementById('serviceDetailModal');
       const closeServiceDetailBtn = document.getElementById('closeServiceDetailBtn');
       const closeServiceDetailModalBtn = document.getElementById('closeServiceDetailModalBtn');
@@ -502,6 +720,7 @@
       if(closeServiceDetailModalBtn) closeServiceDetailModalBtn.onclick = closeServiceDetailModalFunc;
       if(serviceDetailModal) serviceDetailModal.addEventListener('click', (e)=>{ if(e.target === serviceDetailModal) closeServiceDetailModalFunc(); });
 
+      // Booking Modal
       const bookingModal = document.getElementById('bookingModal');
       const closeBookingBtn = document.getElementById('closeBookingModalBtn');
       const bookingForm = document.getElementById('bookingForm');
@@ -511,6 +730,81 @@
       if(bookingModal) bookingModal.addEventListener('click', (e)=>{ if(e.target === bookingModal) closeBookingModalFunc(); });
       if(bookingForm) bookingForm.addEventListener('submit', async(e)=>{ e.preventDefault(); const btn=document.getElementById('submitBtn'); btn.disabled=true; btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Sending...'; try{ const fd=new FormData(bookingForm); const res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd}); const data=await res.json(); if(data.success){ alert('✅ Booking request sent! We will contact you shortly.'); bookingForm.reset(); closeBookingModalFunc(); } else throw new Error(); } catch(err){ alert('❌ Failed, try WhatsApp'); } finally{ btn.disabled=false; btn.innerHTML='<i class="fas fa-paper-plane"></i> Send Request via Email'; } });
 
+      // Review Modal - Floating Button
+      const reviewModal = document.getElementById('reviewModal');
+      const openReviewFloatingBtn = document.getElementById('openReviewFloatingBtn');
+      const closeReviewBtn = document.getElementById('closeReviewModalBtn');
+      const reviewForm = document.getElementById('reviewForm');
+
+      if(openReviewFloatingBtn){
+        openReviewFloatingBtn.addEventListener('click', () => {
+          reviewModal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+      }
+      if(closeReviewBtn){
+        closeReviewBtn.addEventListener('click', () => {
+          reviewModal.classList.remove('active');
+          document.body.style.overflow = 'auto';
+        });
+      }
+      if(reviewModal){
+        reviewModal.addEventListener('click', (e) => { if(e.target === reviewModal){ reviewModal.classList.remove('active'); document.body.style.overflow = 'auto'; } });
+      }
+
+      if(reviewForm){
+        reviewForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          
+          const name = document.getElementById('reviewName').value.trim();
+          const title = document.getElementById('reviewTitle').value.trim();
+          const ratingRadios = document.querySelectorAll('input[name="review_rating"]');
+          let rating = '';
+          for(let r of ratingRadios) if(r.checked) { rating = r.value; break; }
+          const feedback = document.getElementById('reviewFeedback').value.trim();
+          
+          if(!name) { alert('❌ Please enter your name'); return; }
+          if(!title) { alert('❌ Please enter a review title'); return; }
+          if(!rating) { alert('❌ Please select a rating'); return; }
+          if(!feedback) { alert('❌ Please write your feedback'); return; }
+          
+          const submitBtn = document.getElementById('submitReviewBtn');
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<div class="loader" style="width:16px;height:16px;"></div> Submitting...';
+          
+          const now = new Date();
+          const timestamp = `${now.getDate().toString().padStart(2,'0')}/${(now.getMonth()+1).toString().padStart(2,'0')}/${now.getFullYear()} ${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}:${now.getSeconds().toString().padStart(2,'0')}`;
+          
+          const reviewData = {
+            Name: name,
+            Title: title,
+            Rating: rating,
+            Feedback: feedback,
+            Timestamp: timestamp,
+            Approved: "NO"
+          };
+          
+          try {
+            const success = await submitReview(reviewData);
+            if(success) {
+              alert('✅ Thank you for your review! It will be published after admin approval.');
+              reviewForm.reset();
+              document.querySelectorAll('input[name="review_rating"]').forEach(r => r.checked = false);
+              reviewModal.classList.remove('active');
+              document.body.style.overflow = 'auto';
+            } else {
+              throw new Error('Failed to submit');
+            }
+          } catch(error) {
+            alert('❌ Failed to submit review. Please try again or contact us on WhatsApp.');
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane mr-2"></i> Submit Review';
+          }
+        });
+      }
+
+      // Navigation Dropdowns
       const mobileBtn = document.getElementById('mobileMenuBtn'), mobileMenu = document.getElementById('mobileMenu');
       if(mobileBtn) mobileBtn.onclick = () => mobileMenu.classList.toggle('hidden');
       const desktopArrow = document.getElementById('desktopDropdownArrow'), desktopMenu = document.getElementById('desktopDropdownMenu');
@@ -519,11 +813,16 @@
       if(mobileArrow && mobileDropdownMenu){ mobileArrow.addEventListener('click',(e)=>{ e.stopPropagation(); mobileDropdownMenu.classList.toggle('show'); mobileArrow.classList.toggle('rotated'); }); }
       document.querySelectorAll('#mobileMenu a, #mobileServicesDropdown a').forEach(link => link.addEventListener('click',()=>{ if(mobileMenu) mobileMenu.classList.add('hidden'); }));
 
+      // Feedback Widget
       const mainBtn = document.getElementById('feedbackMainBtn'), panel = document.getElementById('feedbackPanel'), closePanel = document.getElementById('closeFeedbackPanel');
       if(mainBtn && panel){ mainBtn.addEventListener('click', (e)=>{ e.stopPropagation(); panel.classList.toggle('active'); }); closePanel?.addEventListener('click',()=>panel.classList.remove('active')); document.addEventListener('click',(e)=>{ if(!panel.contains(e.target) && !mainBtn.contains(e.target)) panel.classList.remove('active'); }); panel.addEventListener('click',(e)=>e.stopPropagation()); }
       document.getElementById('submitFeedbackBtn')?.addEventListener('click',()=>{ let rating = document.querySelector('input[name="fb_rating"]:checked')?.value||''; let msg=document.getElementById('feedbackTextMsg')?.value||''; if(!rating && !msg){ alert('Please provide rating or feedback'); return; } let waMsg=`⭐ Rating: ${rating||'N/A'}\n💬 Feedback: ${msg}`; window.open(`https://wa.me/923005518622?text=${encodeURIComponent(waMsg)}`,'_blank'); alert('Thank you!'); document.getElementById('feedbackPanel')?.classList.remove('active'); document.querySelectorAll('input[name="fb_rating"]').forEach(r=>r.checked=false); document.getElementById('feedbackTextMsg').value=''; });
 
+      // Timer
       function setThirtyDayTimer(){ let target=new Date(); target.setDate(target.getDate()+30); target.setHours(23,59,59,999); function update(){ let diff=target-new Date(); if(diff<=0){ ['days','hours','minutes','seconds'].forEach(id=>document.getElementById(id).innerText='00'); return; } document.getElementById('days').innerText=String(Math.floor(diff/86400000)).padStart(2,'0'); document.getElementById('hours').innerText=String(Math.floor((diff%86400000)/3600000)).padStart(2,'0'); document.getElementById('minutes').innerText=String(Math.floor((diff%3600000)/60000)).padStart(2,'0'); document.getElementById('seconds').innerText=String(Math.floor((diff%60000)/1000)).padStart(2,'0'); } update(); setInterval(update,1000); } setThirtyDayTimer();
+      
+      // Load approved reviews from API on page load (appends to sample reviews)
+      loadApprovedReviews();
     })();
   </script>
 </body>
